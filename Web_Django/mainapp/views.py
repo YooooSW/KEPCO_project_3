@@ -8,3 +8,8 @@ def index(request):
 
 def Create_Posts_page(request):
     return render(request, "mainapp/Create_Posts_page.html", {})
+
+def login_form1(request) :
+    return render(request,
+                  "mainapp/login/login_form1.html",
+                  {})
