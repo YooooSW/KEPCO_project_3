@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>::: 게시글 작성 페이지 :::</title>
+    <!-- css파일 불러오기 -->
+    {% include 'mainapp/include/css.html' %}
+</head>
+<body>
+    <div class="header">
+        {% include 'mainapp/include/navbar.html' %}
+        <div class="element">
+        <form id="fm" name="fm" method="post" action="/Post_send/">
+            {% csrf_token %}
+            <h3>게시글 작성하기</h3>
+            <hr/>
+            <table>
+                <tr>
+                    <th>카테고리 :  </th>
+                    <td>
+                        <select name="category" style="width: 200px; font-size: 20px; padding: 5px;">
+                            <option value="서울">서울</option>
+                            <option value="경기">경기</option>
+                            <option value="광주">광주</option>
+                            <option value="부산">부산</option>
+                        </select>
+                    </td>
+
+                    <th>제목 :  </th>
+                    <td><input type="text" name="title" size="25" style="height: 35px;" required></td>
+                </tr>
+                <tr>
+                    <th>내용</th>
+                    <td colspan="3">
+                        <textarea name="content" rows="20" cols="55" required></textarea>
+                    </td>
+                </tr>
+                <tr class="button-row">
+                    <td colspan="4" style="text-align: right;">
+                        <input type="button" value="글 작성" onclick="oneSelect()"> 
+                        <input type="button" value="cancel post" onclick="history.back()">
+
+                    </td>
+                </tr>
+            </table>
+            <hr/>
+            
+        </form>
+
+    </div>
+    </div>
+    
+
+
+
+    <!-- js파일불러오기 -->
+    {% include 'mainapp/include/js.html' %}
+</body>
+</html>
