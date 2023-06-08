@@ -107,7 +107,7 @@ nav{
 /* --------------comm------------------ */
 .comm{
     margin: 80px 0;
-    background-image: linear-gradient(to right, white,transparent), url(img/community.jpg);
+    background-image: linear-gradient(to right, white,transparent), url(/static/img/community.jpg);
     background-size: cover;
     background-position: center;
     border-radius: 5px;
