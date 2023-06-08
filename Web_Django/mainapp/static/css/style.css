@@ -1,0 +1,274 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* 폰트 */
+    font-family: 'Black Han Sans', 'poppins', sans-serif; 
+    
+}
+/* css초기화 코드 */
+
+.header{
+    min-height: 100vh;
+    width: 100%;
+    background: linear-gradient(59deg, rgba(255,67,128,1) 0%, rgba(149,88,165,1) 44%, rgba(55,84,123,1) 100%);
+    background-size: cover;
+    background-position: center;
+}
+
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 7%;
+
+}
+
+.logo{
+    width: 130px;
+    cursor: pointer; /*마우스 올렸을때 마우스 커서를 손모양으로 바꿔줌*/
+}
+
+.nav-links li{
+    list-style: none; /* li태그의 밑줄을 없애고 앞에 원도 떼어버림(글자만 나타나게) */
+    display: inline-block; /* block을 inline-block으로 세로로 정렬되어있던 li를 가로로 정렬하는 기능 */
+    margin: 10px 30px;
+}
+
+.nav-links li a{
+    text-decoration: none; 
+    color: white;
+}
+
+.login-btn{
+    background: white;
+    color: black;
+    padding: 8px 20px;
+    border-radius: 20px;
+    text-decoration: none; /* 밑줄 없애기 */
+    font-size: 14px;
+}
+
+.container{
+    padding: 0 5%;  
+}
+
+.header h1{
+    font-size: 4vw;
+    font-weight: 500;
+    color: white;
+    text-align: center;
+    padding-top: 8%;
+}
+
+/* 배경이미지 */
+.custom-shape-divider-bottom-1686114266 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1686114266 svg {
+    position: relative;
+    display: block;
+    width: calc(120% + 1.3px);
+    height: 157px;
+}
+
+.custom-shape-divider-bottom-1686114266 .shape-fill {
+    fill: #FFFFFF;
+}
+
+
+/* --------------test2------------------- */
+.test2{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 30px;
+    margin-bottom: 30px; /*bottom에 30px공간 생김*/
+
+}
+
+.test2 div img{
+    width: 100%;
+    border-radius: 10px;
+}
+
+.test2 h3{
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+
+/* --------------comm------------------ */
+.comm{
+    margin: 80px 0;
+    background-image: linear-gradient(to right, white,transparent), url(img/community.jpg);
+    background-size: cover;
+    background-position: center;
+    border-radius: 5px;
+    padding: 5%;
+    color: black;
+}
+
+.comm h3{
+    font-size: 4vw;
+    line-height: 5.3vw;
+    font-weight: 500;
+}
+
+.comm p{
+    font-size: 17px;
+    margin: 10px 0;
+}
+
+.comm-btn{
+    background: #37547B;
+    color: white;
+    text-decoration: none;
+    padding: 12px 30px;
+    border-radius: 5px;
+    margin-top: 20px;
+    display: inline-block;
+}
+/* 커뮤니티로 이동하는 버튼 */
+
+.upload-btn{
+    text-decoration: none;
+    background: #FF4380;
+    color: white;
+    width: 70%;
+    max-width: 300px;
+    display: block;
+    text-align: center;
+    margin: 60px auto;
+    padding: 15px;
+    border-radius: 30px;
+    font-size: 20px; 
+}
+/* 파일 업로드하는 버튼 꾸미기 */
+
+#file {
+    display: none;
+  }
+  /* input type="file"의 경우 자동으로 버튼이랑 파일이름이 나오는게 나타나는 데 이걸 없애기 위해 display:none; */
+
+
+/* ------------footer------------ */
+
+.footer{
+    margin: 80px 0 10px;
+    text-align: center;
+}
+
+.footer a{
+    text-decoration: none;
+    color: #FF4380;
+    font-size: 22px;
+    margin: 0 10px;
+}
+
+.footer hr{
+    background: #999;
+    height: 1px;
+    width: 100%;
+    border: 0;
+    margin: 20px 0;
+}
+
+.footer p{
+    padding-bottom: 10px;
+}
+
+.active{
+    position: relative;
+}
+
+.active::after{
+    content: '';
+    background: #ffff;
+    width: 25px;
+    height: 2px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -12px;
+    border-radius: 2px;
+}
+
+/* 큰 미디어 화면에서는 메뉴 아이콘이 나타나지 않도록 none */
+nav .fa-bars{
+    display: none;
+}
+
+
+/* -----------------for small screen devices--------------------- */
+@media only screen and (max-width: 700px){
+    .logo{
+        position: fixed;
+        top: 4%;
+        left: 7%;
+    }
+    nav{
+        position: fixed;
+        top: 0;
+        z-index: 100;
+        display: inline-block;
+        width: 100%;
+        padding: 100px 7% 0;
+        background: #5D5A98;
+        text-align: right;
+        max-height: 100px;
+        overflow: hidden;
+        transition: max-height 0.5s;
+    }
+    nav .nav-links li{
+        margin: 10px 0;
+        display: block;
+    }
+
+    .login-btn{
+        margin: 15px 0 30px;
+        display: inline-block;
+    }
+
+    nav .fa-bars{
+        display: block;
+        position: fixed;
+        top: 4%;
+        right: 7%;
+        color: #FF4380;
+        font-size: 28px;
+    }
+    .active::after{
+        left: -40px;
+        transform: translate(0, 50%);
+        bottom: 50%;
+    }
+    .hidemenu{
+        max-height: 300px;
+    }
+
+    .header h1{
+        padding-top: 200px;
+        font-size: 7vw;
+    }
+
+    .img-input{
+        width: 90%;
+        margin: 30px auto;
+        padding: 20px 10px 30px;
+        border-radius: 5px;
+        position: relative;
+    }
+
+    .img-input form{
+        display: block;
+    }
+    
+    
+}
