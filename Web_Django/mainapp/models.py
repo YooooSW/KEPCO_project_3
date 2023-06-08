@@ -15,11 +15,11 @@ from django.db.models.fields import TextField
 # Create your models here.
 
 class User(models.Model):
-    user_id = model.CharField(primary_key=True, max_length=20, null=False)
-    user_name = model.CharField(max_length=20, null=False)
-    user_email = model.CharField(max_length=20, null=False)
-    user_pass = model.CharField(max_length=20, null=False)
-    user_phon = model.CharField(max_length=20, null=False)
+    user_id = CharField(primary_key=True, max_length=20, null=False)
+    user_name = CharField(max_length=20, null=False)
+    user_email = CharField(max_length=20, null=False)
+    user_pass = CharField(max_length=20, null=False)
+    user_phon = CharField(max_length=20, null=False)
     
     class Meta:
         # 실제 사용할 테이블 이름 정의
@@ -35,13 +35,13 @@ class User(models.Model):
         managed = False
         
 class User_img(models.Model):
-    user_num = models.IntegerField(primary_key=True, null=False)
+    user_num = IntegerField(primary_key=True, null=False)
     user_id = models.ForeignKey(User,
                                 to_field="user_id",
                                 db_column="user_id",
                                 on_delete=models.PROTECT)
-    user_path = model.CharField(max_length=100, null=False)
-    user_date = model.DateField(auto_now = True, null=False)
+    user_path = CharField(max_length=100, null=False)
+    user_date = DateTimeField(auto_now = True, null=False)
     
     class Meta:
         db_table = "user_img"
@@ -51,15 +51,15 @@ class User_img(models.Model):
         managed = False
         
 class User_service(models.Model):
-    user_ser_num = models.IntegerField(primary_key=True, null=False)
+    user_ser_num = IntegerField(primary_key=True, null=False)
     user_id = models.ForeignKey(User,
                                 to_field="user_id",
                                 db_column="user_id",
                                 on_delete=models.PROTECT)
-    user_create = model.DateField(auto_now_add = True, null=False)
-    user_pass_modified = model.DateField(auto_now = True, null=False)
-    user_login_date = model.DateField(auto_now = True, null=False)
-    user_count = models.IntegerField(null=False)
+    user_create = DateTimeField(auto_now_add = True, null=False)
+    user_pass_modified = DateTimeField(auto_now = True, null=False)
+    user_login_date = DateTimeField(auto_now = True, null=False)
+    user_count = IntegerField(null=False)
     
     class Meta:
         db_table = "user_img"
@@ -74,9 +74,9 @@ class Provision(models.Model):
                                 to_field="user_id",
                                 db_column="user_id",
                                 on_delete=models.PROTECT)
-    pro_name = model.CharField(max_length=20, null=False)
-    pro_content = model.CharField(max_length=2000, null=False)
-    pro_essential = model.CharField(max_length=1, null=False)
+    pro_name = CharField(max_length=20, null=False)
+    pro_content = CharField(max_length=2000, null=False)
+    pro_essential = CharField(max_length=1, null=False)
     
     
     class Meta:
@@ -87,7 +87,7 @@ class Provision(models.Model):
         managed = False
         
 class Provision_history(models.Model):
-    his_num = models.IntegerField(primary_key=True, null=False)
+    his_num = IntegerField(primary_key=True, null=False)
     pro_code = models.ForeignKey(Provision,
                                 to_field="pro_code",
                                 db_column="pro_code",
@@ -96,8 +96,8 @@ class Provision_history(models.Model):
                                 to_field="user_id",
                                 db_column="user_id",
                                 on_delete=models.PROTECT)
-    his_consent = model.CharField(max_length=1, null=False)
-    his_date = model.DateField(auto_now_add = True, null=False)
+    his_consent = CharField(max_length=1, null=False)
+    his_date = DateTimeField(auto_now_add = True, null=False)
     
     class Meta:
         db_table = "provisionhistory"
@@ -107,12 +107,12 @@ class Provision_history(models.Model):
         managed = False
         
 class Naver_account(models.Model):
-    naver_id = model.CharField(primary_key=True, max_length=20, null=False)
+    naver_id = CharField(primary_key=True, max_length=20, null=False)
     user_id = models.ForeignKey(User,
                                 to_field="user_id",
                                 db_column="user_id",
                                 on_delete=models.PROTECT)
-    naver_token = model.CharField(max_length=255, null=False)
+    naver_token = CharField(max_length=255, null=False)
     
     class Meta:
         db_table = "naver_account"
@@ -122,12 +122,12 @@ class Naver_account(models.Model):
         managed = False
 
 class google_account(models.Model):
-    google_id = model.CharField(primary_key=True, max_length=20, null=False)
+    google_id = CharField(primary_key=True, max_length=20, null=False)
     user_id = models.ForeignKey(User,
                                 to_field="user_id",
                                 db_column="user_id",
                                 on_delete=models.PROTECT)
-    google_token = model.CharField(max_length=255, null=False)
+    google_token = CharField(max_length=255, null=False)
     
     class Meta:
         db_table = "google_account"
@@ -137,12 +137,12 @@ class google_account(models.Model):
         managed = False
 
 class Kakao_account(models.Model):
-    kakao_id = model.CharField(primary_key=True, max_length=20, null=False)
+    kakao_id = CharField(primary_key=True, max_length=20, null=False)
     user_id = models.ForeignKey(User,
                                 to_field="user_id",
                                 db_column="user_id",
                                 on_delete=models.PROTECT)
-    kakao_token = model.CharField(max_length=255, null=False)
+    kakao_token = CharField(max_length=255, null=False)
     
     class Meta:
         db_table = "kakao_account"
@@ -152,13 +152,13 @@ class Kakao_account(models.Model):
         managed = False
 
 class Category(models.Model):
-    cate_num = models.IntegerField(primary_key=True, null=False)
+    cate_num = IntegerField(primary_key=True, null=False)
     user_id = models.ForeignKey(User,
                                 to_field="user_id",
                                 db_column="user_id",
                                 on_delete=models.PROTECT)
-    cate_name = model.CharField(max_length=100, null=False)
-    cate_date = model.DateField(auto_now_add = True, null=False)
+    cate_name = CharField(max_length=100, null=False)
+    cate_date = DateTimeField(auto_now_add = True, null=False)
     
     class Meta:
         db_table = "category"
@@ -168,7 +168,7 @@ class Category(models.Model):
         managed = False
 
 class Community(models.Model):
-    com_num = models.IntegerField(primary_key=True, null=False)
+    com_num = IntegerField(primary_key=True, null=False)
     user_id = models.ForeignKey(User,
                                 to_field="user_id",
                                 db_column="user_id",
@@ -177,12 +177,12 @@ class Community(models.Model):
                                 to_field="cate_num",
                                 db_column="cate_num",
                                 on_delete=models.PROTECT)
-    com_title = model.CharField(max_length=255, null=False)
-    com_content = model.TextField(null=False)
-    com_combool = model.models.CharField(max_length=1, null=False)
-    com_date = model.DateField(auto_now_add = True, null=False)
-    com_count = model.IntegerField(null=False)
-    com_path = model.CharField(max_length=100, null=False)
+    com_title = CharField(max_length=255, null=False)
+    com_content = TextField(null=False)
+    com_combool = CharField(max_length=1, null=False)
+    com_date = DateTimeField(auto_now_add = True, null=False)
+    com_count = IntegerField(null=False)
+    com_path = CharField(max_length=100, null=False)
     
     class Meta:
         db_table = "community"
@@ -192,7 +192,7 @@ class Community(models.Model):
         managed = False
 
 class Comment(models.Model):
-    comment_num = models.IntegerField(primary_key=True, null=False)
+    comment_num = IntegerField(primary_key=True, null=False)
     com_num = models.ForeignKey(Community,
                                 to_field="com_num",
                                 db_column="com_num",
@@ -201,9 +201,9 @@ class Comment(models.Model):
                                 to_field="user_id",
                                 db_column="user_id",
                                 on_delete=models.PROTECT)
-    comment_content = model.TextField(null=False)
-    comment_create_date = model.DateField(auto_now_add = True, null=False)
-    comment_modified_date = model.DateField(auto_now = True, null=False)
+    comment_content = TextField(null=False)
+    comment_create_date = DateTimeField(auto_now_add = True, null=False)
+    comment_modified_date = DateTimeField(auto_now = True, null=False)
     
     class Meta:
         db_table = "comment"
