@@ -12,6 +12,8 @@ urlpatterns = [
     path('', views.index),
     path('index/', views.index),
     path('Create_Posts_page/', views.Create_Posts_page),
+
+    path('login_form1/', views.login_form1),
     
 
     
