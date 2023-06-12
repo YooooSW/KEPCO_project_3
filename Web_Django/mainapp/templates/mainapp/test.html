@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>::: 차 수리 견적 계산 :::</title>
+    <!-- css파일 불러오기 -->
+    {% include 'mainapp/include/css.html' %}
+    <script>
+        function previewImage(event) {
+            var reader = new FileReader();
+            reader.onload = function () {
+                var preview = document.getElementById('imagePreview');
+                var img = document.createElement('img');
+                img.src = reader.result;
+                //img.style.maxWidth = '300px';  // Adjust the maximum width as needed
+                preview.innerHTML = '';
+                preview.appendChild(img);
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        }
+
+        function changeLoadView(url){
+            $("#load_view").load("/nonmodel/" + url);
+        }
+    </script> 
+</head>
+<body>
+    <div class="header">
+        {% include 'mainapp/include/navbar.html' %}
+        <div class="element">
+        <h3 style="text-align: center;">차 수리 견적 계산</h3>
+            <hr/>
+
+
+        <div class="container">
+            <div class="image-upload" id="image-upload">
+                <form method="post" enctype="multipart/form-data" action="/car_repair_calculation/">
+                    {% csrf_token %}
+                    <input type="file" name="image" accept="image/*" required onchange="previewImage(event)">
+                    <br>
+                    <div id="imagePreview"></div>
+                    <br>
+                    <input type="submit" value="submit">
+                </form>
+            </div>
+            {% if car_data %}
+                <h3>{{ car_data }}</h3>
+            {% endif %}
+
+
+
+            
+            <div class="image-show" id="image-show"></div>
+        </div>
+
+    </div>
+    <!-- js파일불러오기 -->
+    {% include 'mainapp/include/js.html' %}
+</body>
+</html>
+
+                    

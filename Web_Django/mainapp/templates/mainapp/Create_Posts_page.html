@@ -17,25 +17,27 @@
             {% csrf_token %}
             <h3>게시글 작성하기</h3>
             <hr/>
-            <table>
+            <table style="width: 90%;">
                 <tr>
-                    <th>카테고리 :  </th>
-                    <td>
-                        <select name="category" style="width: 200px; font-size: 20px; padding: 5px;">
-                            <option value="서울">서울</option>
-                            <option value="경기">경기</option>
-                            <option value="광주">광주</option>
-                            <option value="부산">부산</option>
+                    <th style="width: 10%;">제목: </th>
+                    <td style="width: 50%;"><input type="text" name="title" size="25" style="height: 35px; width: 100%;" required></td>
+
+                    <th style="width: 10%;">카테고리: </th>
+                    <td style="width: 20%;">
+                        <select name="category" style="width: 100%; font-size: 20px; padding: 5px;">
+                            <option value="Seoul">Seoul</option>
+                            <option value="match">match</option>
+                            <option value="Gwangju">Gwangju</option>
+                            <option value="Busan">Busan</option>
                         </select>
                     </td>
 
-                    <th>제목 :  </th>
-                    <td><input type="text" name="title" size="25" style="height: 35px;" required></td>
+                    
                 </tr>
                 <tr>
-                    <th>내용</th>
+                    <th>Content</th>
                     <td colspan="3">
-                        <textarea name="content" rows="20" cols="55" required></textarea>
+                        <textarea name="content" rows="20" cols="55" style="width: 100%;" required></textarea>
                     </td>
                 </tr>
                 <tr class="button-row">
@@ -46,6 +48,7 @@
                     </td>
                 </tr>
             </table>
+
             <hr/>
             
         </form>

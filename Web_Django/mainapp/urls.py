@@ -12,6 +12,10 @@ urlpatterns = [
     path('', views.index),
     path('index/', views.index),
     path('Create_Posts_page/', views.Create_Posts_page),
+    path('car_repair_calculation_Page/', views.car_repair_calculation_Page),
+    path('car_repair_calculation/', views.car_repair_calculation),
+    path('load_view/', views.car_repair_price),
+    path('test/', views.test),
     
 
     
