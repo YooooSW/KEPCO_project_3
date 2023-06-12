@@ -23,3 +23,13 @@ def login_form(request) :
     return render(request,
                   "mainapp/login/loginform.html",
                   {})
+
+def search_id(request) :
+    return render(request,
+                  "mainapp/login/id_search.html",
+                  {})
+
+def search_pwd(request) :
+    return render(request,
+                  "mainapp/login/pwd_search.html",
+                  {})

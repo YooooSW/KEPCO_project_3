@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: /*'Black Han Sans',*/ 'poppins', sans-serif; 
+    font-family: 'Black Han Sans', 'poppins', sans-serif; 
     /* 폰트 */
 }
 
@@ -13,6 +13,14 @@
     background-size: cover;
     position: relative;
 }
+
+#back-arrow{
+    position:absolute;
+    top: 8%;
+    left: 7%;
+    transform: translate(-50%, -50%);
+}
+/* 뒤로 가기위한 버튼*/
 .form-img{
     width: 40%;
 }
@@ -69,6 +77,7 @@ input{
    background-color: #FF4380;
 }
 
+/* -------------sns 로그인 버튼------------- */
 .naver-btn button{
     width: 100%;
     height: 100%;
@@ -111,6 +120,8 @@ input{
     border-radius: 3px;
     background-color: #fef01b;
 }
+
+
 form p{
     font-size: 13px;
     margin-top: 5px;
@@ -123,4 +134,9 @@ form a{
 
 .input-group span{
     color: rgb(215, 215, 215);
+}
+
+/* 아이디 & 비밀번호 찾기 */
+form p .sub-t{
+    font-size: 13px;
 }
