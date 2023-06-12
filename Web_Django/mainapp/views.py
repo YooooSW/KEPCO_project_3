@@ -18,8 +18,30 @@ def Create_Posts_page(request):
 def car_repair_calculation_Page(request):
     return render(request, "mainapp/car_repair_calculation_Page.html", {})
 
-def test(request):
-    return render(request, "mainapp/test.html", {})
+def login_form1(request) :
+    return render(request,
+                  "mainapp/login/login_form1.html",
+                  {})
+
+def slogin_form(request) :
+    return render(request,
+                  "mainapp/login/sns_loginform.html",
+                  {})
+
+def login_form(request) :
+    return render(request,
+                  "mainapp/login/loginform.html",
+                  {})
+
+def search_id(request) :
+    return render(request,
+                  "mainapp/login/id_search.html",
+                  {})
+
+def search_pwd(request) :
+    return render(request,
+                  "mainapp/login/pwd_search.html",
+                  {})
 
 
 def car_repair_calculation(request):
