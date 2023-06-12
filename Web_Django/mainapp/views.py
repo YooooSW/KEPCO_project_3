@@ -48,34 +48,32 @@ def car_repair_calculation(request):
     
     if request.method == 'POST' and request.FILES['image']:
         image_file = request.FILES.get('image')
-        image_data = request.FILES['image']
         img_data = image_file.read()
-
-
-        # image_data = base64.b64encode(img_data).decode('utf-8')
-        # img = cv2.imdecode(np.frombuffer(img_data, np.uint8), cv2.IMREAD_COLOR)
         img = cv2.imdecode(np.frombuffer(img_data, np.uint8), cv2.IMREAD_COLOR)
         image_url = f"/media/{image_file.name}"  # Update this based on your image's actual path or URL
     else:
         image_url = None
-        image_data = None
     car_view = Car_View(img)
     car_data = car_view.result()
-    return render(request, 'mainapp/car_repair_calculation_Page.html', {'car_data': car_data, 'image_data': image_data})
+    return render(request, 'mainapp/car_repair_calculation_Page.html', {'car_data': car_data})
 
+
+
+from django.http import JsonResponse
+import json
 def car_repair_price(request):
-    
-    if request.method == 'POST' and request.FILES['image']:
-        image_file = request.FILES.get('image')
-        image_data = request.FILES['image']
+    if request.method == 'POST' and request.FILES.get('image'):
+        image_file = request.FILES['image']
         img_data = image_file.read()
-    return HttpResponse(image_data)
+        img = cv2.imdecode(np.frombuffer(img_data, np.uint8), cv2.IMREAD_COLOR)
+        car_view = Car_View(img)
+        car_data = car_view.result()
 
-    #     img = cv2.imdecode(np.frombuffer(img_data, np.uint8), cv2.IMREAD_COLOR)
-    #     image_url = f"/media/{image_file.name}"  # Update this based on your image's actual path or URL
-    # else:
-    #     image_url = None
-    #     image_data = None
-    # car_view = Car_View(img)
-    # car_data = car_view.result()
-    # return render(request, 'mainapp/car_repair_calculation_Page.html', {'car_data': car_data, 'image_data': image_data})
+        # 넘파이 배열을 리스트로 변환
+        car_data = car_data.astype(int)
+
+        car_data_json = json.dumps(car_data.tolist())
+
+        return HttpResponse(car_data_json, content_type='application/json')
+    else:
+        return HttpResponse("Image not found")

@@ -141,7 +141,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 # 정적파일 관리(css, javascript, 이미지 등)
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 # 추가
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
