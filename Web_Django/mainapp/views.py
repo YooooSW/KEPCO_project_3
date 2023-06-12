@@ -13,3 +13,13 @@ def login_form1(request) :
     return render(request,
                   "mainapp/login/login_form1.html",
                   {})
+
+def slogin_form(request) :
+    return render(request,
+                  "mainapp/login/sns_loginform.html",
+                  {})
+
+def login_form(request) :
+    return render(request,
+                  "mainapp/login/loginform.html",
+                  {})
