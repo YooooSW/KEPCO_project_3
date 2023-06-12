@@ -83,8 +83,7 @@ DATABASES = {
 # 오라클 또는 Mysql 데이터베이스 등 외부 데이터베이스가 추가되는 경우
 # - 추가된 DB를 사용할 app 지정
 DATABASE_ROUTERS = [
-    'oracleapp.router.DBRouter',
-    'secondapp.router.DBRouter',
+    'mainapp.router.DBRouter',
 ]
 
 # logging 처리
@@ -154,5 +153,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # 로그인 상태에서 브라우저가 닫혔을 때 세션정보 삭제하기
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
+# 이미지 업로드시 다운받을 경로 설정
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

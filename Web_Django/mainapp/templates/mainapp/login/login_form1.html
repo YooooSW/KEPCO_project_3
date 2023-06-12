@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>::: 게시글 작성 페이지 :::</title>
+    <!-- css파일 불러오기 -->
+    {% include 'mainapp/include/css.html' %}
+</head>
+<body>    
+    <div class="container">
+        <div class="input-box">
+            <input type="text" id="id" name="id" class="input-field" placeholder="아이디">
+        </div>
+        <div class="input-box">
+            <input type="password" id="password" name="password" class="input-field" placeholder="비밀번호">
+        </div>
+        <div class="button-box">
+            <input type="submit" value="로그인" style="width: 100px;">
+        </div>
+        <div style="display: flex; flex-direction: column; align-items: center; margin-top: 10px;">
+            <div>
+                <a href="/main/find_id/">아이디 찾기</a> | <a href="/main/forgot_password/">비밀번호 찾기</a>
+            </div>
+            <div>
+                아직 계정이 없으신가요? <a href="/main/signup/">회원가입하기</a>
+            </div>
+        </div>
+        <div style="margin-top: 10px;">
+            <a href="/main/naver_login/">
+                <img src="/static/img/naver_logo.png" alt="네이버 로그인" width="50px" height="50px">
+            </a>
+            <a href="/main/kakao_login/">
+                <img src="/static/img/kakao_logo.png" alt="카카오 로그인" width="50px" height="50px">
+            </a>
+        </div>
+    </div>
+    
+
+    <!-- js파일불러오기 -->
+    {% include 'mainapp/include/js.html' %}
+</body>
+</html>
