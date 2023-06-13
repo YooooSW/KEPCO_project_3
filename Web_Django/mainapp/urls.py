@@ -16,8 +16,8 @@ urlpatterns = [
 
     path('car_repair_calculation_Page/', views.car_repair_calculation_Page),
     path('car_repair_price/', views.car_repair_price, name='car_repair_price'),
-    path('load_view/', views.car_repair_price),
 
+    
     # path('test/', views.test),
     path('login_form1/', views.login_form1),
     # sns로그인 폼 연결

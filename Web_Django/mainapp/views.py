@@ -44,23 +44,6 @@ def search_pwd(request) :
                   "mainapp/login/pwd_search.html",
                   {})
 
-
-def car_repair_calculation(request):
-    
-    if request.method == 'POST' and request.FILES['image']:
-        image_file = request.FILES.get('image')
-        img_data = image_file.read()
-        img = cv2.imdecode(np.frombuffer(img_data, np.uint8), cv2.IMREAD_COLOR)
-        image_url = f"/media/{image_file.name}"  # Update this based on your image's actual path or URL
-    else:
-        image_url = None
-    car_view = Car_View(img)
-    car_data = car_view.result()
-    return render(request, 'mainapp/car_repair_calculation_Page.html', {'car_data': car_data})
-
-
-
-from django.http import JsonResponse
 import json
 def car_repair_price(request):
     if request.method == 'POST' and request.FILES.get('image'):
