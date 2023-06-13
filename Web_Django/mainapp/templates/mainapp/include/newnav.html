@@ -1,0 +1,31 @@
+<nav id="navBar">  <!-- 작은 화면에서 메뉴바가 작동하는 함수(js)를 위해 id값을 줌 -->
+    <a href="/"><img src="/static/img/logo.png" class="logo" alt="project logo image"></a>
+    <ul class="nav-links">
+        <li><a href="#" class="active">견적뽑기</a></li>
+        <li><a href="#">커뮤니티</a></li>
+        <li><a href="#">주변 공업사 찾기</a></li>
+    </ul>
+    <img src="/static/img/user.png" class="user-pic" onclick="toggleMenu()"> 
+    <!-- 프로필 사진 클릭시 드롭다운 프로필 메뉴가 나타나는 js와 상관있음 -->
+    <i class="fa-solid fa-bars" onclick="togglebtn()"></i>
+
+    <div class="sub-menu-wrap" id="subMenu">
+        <div class="sub-menu">
+            <div class="user-info">
+                <img src="/static/img/user.png">
+                <h4>홍길동</h4>
+            </div>
+            <hr>
+
+            <a href="#" class="sub-menu-link">
+                <p>마이페이지</p>
+                <span>></span>
+            </a>
+            <a href="#" class="sub-menu-link">
+                <p>로그아웃</p>
+                <span>></span>
+            </a>
+        </div>
+    </div>
+
+</nav>

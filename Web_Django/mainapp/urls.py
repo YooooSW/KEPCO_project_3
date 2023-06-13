@@ -35,4 +35,7 @@ urlpatterns = [
 
     ### http://127.0.0.1:8000/sign_up
     path('sign_up/', views.sign_up),
+
+    ### http://127.0.0.1:8000/board
+    path('board/', views.board),
 ]
