@@ -1,4 +1,5 @@
-{% load static %}
+{% load static %} {% load socialaccount %} {% comment %} {% load
+providers_media_js %} {% endcomment %}
 <!DOCTYPE html>
 <html lang="ko">
   <head>
@@ -21,23 +22,36 @@
         <form>
           <div class="input-group">
             <div class="form-btn">
-              <button type="button" onclick="location.href='/login_form'">
+              <button
+                type="button"
+                onclick="location.href='/sns_login_form/account/login/'"
+              >
                 시작하기
               </button>
             </div>
             <div class="google-btn">
               <button
                 type="button"
-                onclick="location.href='/sns_login_form/account/'"
+                onclick="location.href='/sns_login_form/account/google/login/'"
               >
                 구글로 시작하기
               </button>
             </div>
             <div class="naver-btn">
-              <button>네이버로 시작하기</button>
+              <button
+                type="button"
+                onclick="location.href='/sns_login_form/account/naver/login/'"
+              >
+                네이버로 시작하기
+              </button>
             </div>
             <div class="kakao-btn">
-              <button>카카오로 시작하기</button>
+              <button
+                type="button"
+                onclick="location.href='/sns_login_form/account/kakao/login/'"
+              >
+                카카오로 시작하기
+              </button>
             </div>
 
             <span>
