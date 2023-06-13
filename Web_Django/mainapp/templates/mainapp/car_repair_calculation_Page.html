@@ -8,7 +8,11 @@
     <title>::: 차 수리 견적 계산 :::</title>
     <!-- css파일 불러오기 -->
     {% include 'mainapp/include/css.html' %}
-
+    <style>
+    .file-input {
+        width: 25%;
+    }
+</style>
 </head>
 <body>
     <div class="header">
@@ -27,6 +31,8 @@
                     <div id="imagePreview"></div>
                     <br>
                     <button type="button" onclick="uploadImage()">Submit</button>
+                    <button type="button" onclick="window.location.href = '/'">Exit</button>
+
                 </form>
             </div>
 
