@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from mainapp.car.car_view import Car_View
+from django.utils import timezone
 import cv2
 import numpy as np
 import base64
