@@ -28,6 +28,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    # allauth
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.naver',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.kakao',
 ]
 
 MIDDLEWARE = [
@@ -70,14 +78,14 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     },
     # 오라클 데이터베이스 설정 추가
-    'oracle': {
-        'ENGINE': 'django.db.backends.oracle',
-        'NAME': 'xe',
-        'USER': 'gwangju_a',
-        'PASSWORD': 'dbdb',
-        'HOST': 'localhost',
-        'PORT': '1521',
-    },
+    # 'oracle': {
+    #     'ENGINE': 'django.db.backends.oracle',
+    #     'NAME': 'xe',
+    #     'USER': 'gwangju_a',
+    #     'PASSWORD': 'dbdb',
+    #     'HOST': 'localhost',
+    #     'PORT': '1521',
+    # },
 }
 
 # 오라클 또는 Mysql 데이터베이스 등 외부 데이터베이스가 추가되는 경우
@@ -156,3 +164,42 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 # 이미지 업로드시 다운받을 경로 설정
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+SITE_ID = 1
+LOGIN_REDIRECT_URL = '/'
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google' : {
+        'SCOPE' : [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS' : {
+            'access_type' : 'online',
+        }
+    },
+    'naver' : {
+        'SCOPE' : [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS' : {
+            'access_type' : 'online',
+        }
+    },
+    'kakao' : {
+        'SCOPE' : [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS' : {
+            'access_type' : 'online',
+        }
+    }
+    
+}
