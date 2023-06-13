@@ -192,14 +192,5 @@ SOCIALACCOUNT_PROVIDERS = {
             'access_type' : 'online',
         }
     },
-    'kakao' : {
-        'SCOPE' : [
-            'profile',
-            'email',
-        ],
-        'AUTH_PARAMS' : {
-            'access_type' : 'online',
-        }
-    }
     
 }
