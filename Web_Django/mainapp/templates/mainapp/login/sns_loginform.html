@@ -1,45 +1,55 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="login.css">
-    <script type="text/javascript" src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="login.css" />
+    <script
+      type="text/javascript"
+      src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
+      crossorigin="anonymous"
+    ></script>
     {% include 'mainapp/include/css.html' %}
-</head>
-<body>
-   <div class="container2">
-    <div class="form-box">
-        <a href="/index"><img class="form-img" src="/static/img/logo.png"></a>
+  </head>
+  <body>
+    <div class="container2">
+      <div class="form-box">
+        <a href="/index"><img class="form-img" src="/static/img/logo.png" /></a>
         <form>
-            <div class="input-group">
-                
-                <div class="form-btn">
-                    <button type="button" onclick="location.href='/login_form'">시작하기</button>
-                </div>
-                <div class="google-btn">
-                    <button>구글로 시작하기</button>
-                </div>
-                <div class="naver-btn">
-                    <button>네이버로 시작하기</button>
-                </div>
-                <div class="kakao-btn">
-                    <button>카카오로 시작하기</button>
-                </div>
-               
-                <span>
-                    <a href="/search_id">아이디 찾기</a> | <a href="/search_pwd">비밀번호 찾기</a>
-                </span>
-                <p>아직 계정이 없으신가요? <a href="#">회원가입하기</a></p>
+          <div class="input-group">
+            <div class="form-btn">
+              <button type="button" onclick="location.href='/login_form'">
+                시작하기
+              </button>
+            </div>
+            <div class="google-btn">
+              <button
+                type="button"
+                onclick="location.href='/sns_login_form/account/'"
+              >
+                구글로 시작하기
+              </button>
+            </div>
+            <div class="naver-btn">
+              <button>네이버로 시작하기</button>
+            </div>
+            <div class="kakao-btn">
+              <button>카카오로 시작하기</button>
             </div>
 
+            <span>
+              <a href="/search_id">아이디 찾기</a> |
+              <a href="/search_pwd">비밀번호 찾기</a>
+            </span>
+            <p>아직 계정이 없으신가요? <a href="#">회원가입하기</a></p>
+          </div>
         </form>
+      </div>
     </div>
-   </div>
 
     <script src="login.js"></script>
-</body>
+  </body>
 </html>
