@@ -44,6 +44,11 @@ def search_pwd(request) :
                   "mainapp/login/pwd_search.html",
                   {})
 
+def sign_up(request) :
+    return render(request,
+                  "mainapp/login/sign_up.html",
+                  {})
+
 import json
 def car_repair_price(request):
     if request.method == 'POST' and request.FILES.get('image'):
