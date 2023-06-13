@@ -32,7 +32,11 @@ class User(models.Model):
         # - 존재하면 : False
         # - 존재하지 않으면 : True
         # --> 일반적으로 외부에 테이블을 생성한 후 개발이 진행됨
+<<<<<<< HEAD
         managed = True
+=======
+        managed = False
+>>>>>>> 5879c8e5fbe55e523ff62764647e64bb98fd86bc
         
 class User_img(models.Model):
     user_num = IntegerField(primary_key=True, null=False)
@@ -48,7 +52,11 @@ class User_img(models.Model):
 
         app_label = "mainapp"
 
+<<<<<<< HEAD
         managed = True
+=======
+        managed = False
+>>>>>>> 5879c8e5fbe55e523ff62764647e64bb98fd86bc
         
 class User_service(models.Model):
     user_ser_num = IntegerField(primary_key=True, null=False)
@@ -66,7 +74,11 @@ class User_service(models.Model):
 
         app_label = "mainapp"
 
+<<<<<<< HEAD
         managed = True
+=======
+        managed = False
+>>>>>>> 5879c8e5fbe55e523ff62764647e64bb98fd86bc
         
 class Provision(models.Model):
     pro_code = CharField(primary_key=True, max_length=20, null=False)
@@ -84,7 +96,11 @@ class Provision(models.Model):
 
         app_label = "mainapp"
 
+<<<<<<< HEAD
         managed = True
+=======
+        managed = False
+>>>>>>> 5879c8e5fbe55e523ff62764647e64bb98fd86bc
         
 class Provision_history(models.Model):
     his_num = IntegerField(primary_key=True, null=False)
@@ -104,7 +120,11 @@ class Provision_history(models.Model):
 
         app_label = "mainapp"
 
+<<<<<<< HEAD
         managed = True
+=======
+        managed = False
+>>>>>>> 5879c8e5fbe55e523ff62764647e64bb98fd86bc
         
 class Naver_account(models.Model):
     naver_id = CharField(primary_key=True, max_length=20, null=False)
@@ -119,7 +139,11 @@ class Naver_account(models.Model):
 
         app_label = "mainapp"
 
+<<<<<<< HEAD
         managed = True
+=======
+        managed = False
+>>>>>>> 5879c8e5fbe55e523ff62764647e64bb98fd86bc
 
 class google_account(models.Model):
     google_id = CharField(primary_key=True, max_length=20, null=False)
@@ -134,7 +158,11 @@ class google_account(models.Model):
 
         app_label = "mainapp"
 
+<<<<<<< HEAD
         managed = True
+=======
+        managed = False
+>>>>>>> 5879c8e5fbe55e523ff62764647e64bb98fd86bc
 
 class Kakao_account(models.Model):
     kakao_id = CharField(primary_key=True, max_length=20, null=False)
@@ -149,7 +177,11 @@ class Kakao_account(models.Model):
 
         app_label = "mainapp"
 
+<<<<<<< HEAD
         managed = True
+=======
+        managed = False
+>>>>>>> 5879c8e5fbe55e523ff62764647e64bb98fd86bc
 
 class Category(models.Model):
     cate_num = IntegerField(primary_key=True, null=False)
@@ -165,7 +197,11 @@ class Category(models.Model):
 
         app_label = "mainapp"
 
+<<<<<<< HEAD
         managed = True
+=======
+        managed = False
+>>>>>>> 5879c8e5fbe55e523ff62764647e64bb98fd86bc
 
 class Community(models.Model):
     com_num = IntegerField(primary_key=True, null=False)
@@ -189,7 +225,11 @@ class Community(models.Model):
 
         app_label = "mainapp"
 
+<<<<<<< HEAD
         managed = True
+=======
+        managed = False
+>>>>>>> 5879c8e5fbe55e523ff62764647e64bb98fd86bc
 
 class Comment(models.Model):
     comment_num = IntegerField(primary_key=True, null=False)
@@ -210,4 +250,8 @@ class Comment(models.Model):
 
         app_label = "mainapp"
 
+<<<<<<< HEAD
         managed = True
+=======
+        managed = False
+>>>>>>> 5879c8e5fbe55e523ff62764647e64bb98fd86bc
