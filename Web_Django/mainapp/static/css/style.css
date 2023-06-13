@@ -157,6 +157,7 @@ nav{
     text-decoration: none;
     color: white;
 }
+
 /* 파일 업로드하는 버튼 꾸미기 */
 
 #file {
@@ -195,7 +196,7 @@ nav{
     position: relative;
 }
 
-.active::after{
+/* .active::after{
     content: '';
     background: #ffff;
     width: 25px;
@@ -205,7 +206,7 @@ nav{
     transform: translateX(-50%);
     bottom: -12px;
     border-radius: 2px;
-}
+} */
 
 /* 큰 미디어 화면에서는 메뉴 아이콘이 나타나지 않도록 none */
 nav .fa-bars{

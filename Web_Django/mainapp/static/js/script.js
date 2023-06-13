@@ -1,3 +1,4 @@
+//로그인시 나타나는 모달창을 위해 필요한 것
 // 미디어사이즈에 따른 메뉴 바 모양 변경 관련 함수
 let navBar = document.getElementById("navBar");
 function togglebtn(){
