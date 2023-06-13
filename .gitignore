@@ -1,5 +1,5 @@
 /Web_Django/config/settings.py
 
-/Web_Django/db.sqlite3
+# /Web_Django/db.sqlite3
 
-/Web_Django/config/db.sqlite3
+# /Web_Django/config/db.sqlite3
