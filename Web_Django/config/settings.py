@@ -22,6 +22,7 @@ ALLOWED_HOSTS = ['127.0.0.1']
 
 INSTALLED_APPS = [
     'mainapp',
+    'social_django',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -168,10 +169,13 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
+    # 'social_core.backends.google.GoogleOAuth2', # Google
+    # 'social_core.backends.naver.NaverOAuth2', # Naver
 )
 
-SITE_ID = 1
+SITE_ID = 2
 LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 
 SOCIALACCOUNT_PROVIDERS = {
     'google' : {
@@ -192,5 +196,14 @@ SOCIALACCOUNT_PROVIDERS = {
             'access_type' : 'online',
         }
     },
-    
+    'kakao' : {
+        'SCOPE' : [
+            'profile_nickname',
+            'account_email',
+            'gender',
+        ],
+        'AUTH_PARAMS' : {
+            'access_type' : 'online',
+        }
+    },
 }
