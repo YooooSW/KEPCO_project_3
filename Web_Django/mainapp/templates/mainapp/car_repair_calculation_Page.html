@@ -6,37 +6,61 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>::: 차 수리 견적 계산 :::</title>
-    <!-- css파일 불러오기 -->
+    <!-- css 파일 불러오기 -->
     <link rel="stylesheet" type="text/css" href="/static/css/result.css">
     <link rel="stylesheet" type="text/css" href="/static/css/board.css">
     <style>
-    .file-input {
-        width: 25%;
-    }
-    input::-webkit-file-upload-button {
-    display: none;
-    }
-    input {
-    background-color: blue;
-    }
-    #imagePreview img {
-    max-width: 100%;
-    max-height: 100%;
-  }
-</style>
+        .file-input {
+            width: 25%;
+        }
+        input::-webkit-file-upload-button {
+            display: none;
+        }
+        input {
+            background-color: blue;
+        }
+        #image-upload {
+            text-align: center;
+        }
+        #imagePreview {
+            width: 100%;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        #imagePreview img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        #car_data {
+            text-align: center;
+            margin-top: 20px;
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        #car_data h4 {
+            font-size: 20px;
+        }
+    </style>
 </head>
 <body>
-    <div class="header">
-        {% include 'mainapp/include/newnav.html' %}
-        <div class="element">
+<div class="header">
+    {% include 'mainapp/include/newnav.html' %}
+    <div class="element">
         <h3 style="text-align: center;">차 수리 견적 계산</h3>
-            <div class="container">
-                <div class="image-upload" id="image-upload">
-                  <form id="imageForm" method="post" enctype="multipart/form-data">
+        <div class="container">
+            <div class="image-upload" id="image-upload">
+                <form id="imageForm" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <label for="imageInput" class="drag-area">
-                      <input class="drag-area"  type="file" name="image" id="imageInput" accept="image/*" required onchange="updateFileName(event)" style="background-color:aliceblue">
-                      <div id="imagePreview"></div>
+                        <input class="drag-area" type="file" name="image" id="imageInput" accept="image/*" required
+                               onchange="updateFileName(event)" style="background-color: aliceblue">
+                        <div id="imagePreview"></div>
                     </label>
 
                     <button type="button" onclick="uploadImage()">Submit</button>
@@ -47,6 +71,9 @@
                 
                 <div class="image-show" id="image-show"></div>
             </div>
+            <div id="car_data"></div>
+            <div class="image-show" id="image-show"></div>
+        </div>
     </div>
     <div id="car_data"></div>
     <!-- js파일불러오기 -->
@@ -61,45 +88,25 @@
             img.src = reader.result;
             preview.innerHTML = '';
             preview.appendChild(img);
-          };
-          reader.readAsDataURL(files[0]);
-        }
-      
-        // 파일명 업데이트
-        function updateFileName(event) {
-          var input = event.target;
-          var fileName = input.files[0]?.name || "파일을 넣어주세요";
-          input.parentNode.classList.toggle("empty", !fileName);
-          previewImage(event);
-        }
-      
-        // 이미지 업로드
-        function uploadImage() {
-          var input = document.getElementById('imageInput');
-          var files = input.files;
-          if (files.length === 0) {
+        };
+        reader.readAsDataURL(files[0]);
+    }
+
+    // 파일명 업데이트
+    function updateFileName(event) {
+        var input = event.target;
+        var fileName = input.files[0]?.name || "파일을 넣어주세요";
+        input.parentNode.classList.toggle("empty", !fileName);
+        previewImage(event);
+    }
+
+    // 이미지 업로드
+    function uploadImage() {
+        var input = document.getElementById('imageInput');
+        var files = input.files;
+        if (files.length === 0) {
             console.error('No file selected.');
             return;
-          }
-          var file = files[0];
-          var formData = new FormData();
-          formData.append('image', file);
-      
-          var xhr = new XMLHttpRequest();
-          xhr.onreadystatechange = function() {
-            if (xhr.readyState === XMLHttpRequest.DONE) {
-              if (xhr.status === 200) {
-                var response = xhr.responseText;
-                document.getElementById('car_data').innerHTML = response;
-              } else {
-                console.error("Error: " + xhr.status);
-              }
-            }
-          };
-      
-          xhr.open("POST", "/car_repair_price/");
-          xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
-          xhr.send(formData);
         }
       </script>
         

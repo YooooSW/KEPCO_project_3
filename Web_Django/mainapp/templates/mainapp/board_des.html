@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시판</title>
+     <!-- fontawesome 이게 있어야 sns아이콘 사용 가능-->
+    <script type="text/javascript" src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- css파일 불러오기 -->
+    <link rel="stylesheet" type="text/css" href="/static/css/board.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/board01.css">
+</head>
+<body>
+    <div class="header">
+        {% include 'mainapp/include/newnav.html' %}
+
+        <div class="container">
+             <div class="board_wrap">
+        <div class="board_title">
+            <strong>게 시 판</strong>
+        </div>
+        <div class="board_view_wrap">
+            <div class="board_view">
+                <div class="title">
+                    글 제목이 들어갑니다.
+                </div>
+                <div class="info">
+                    <dl>
+                        <dt>번호</dt>
+                        <dd>1</dd>
+                    </dl>
+                    <dl>
+                        <dt>글쓴이</dt>
+                        <dd>김이름</dd>
+                    </dl>
+                    <dl>
+                        <dt>작성일</dt>
+                        <dd>2021.1.16</dd>
+                    </dl>
+                    <dl>
+                        <dt>조회</dt>
+                        <dd>33</dd>
+                    </dl>
+                </div>
+                <div class="cont">
+                    글 내용이 들어갑니다<br>
+                    글 내용이 들어갑니다<br>
+                    글 내용이 들어갑니다<br>
+                    글 내용이 들어갑니다<br>
+                    글 내용이 들어갑니다<br>
+                    글 내용이 들어갑니다<br>
+                    글 내용이 들어갑니다<br>
+                    글 내용이 들어갑니다
+                </div>
+            </div>
+            <div class="bt_wrap">
+                <a href="/board" class="on">목록</a>
+                <a href="/article">수정</a>
+            </div>
+        </div>
+    </div>
+               
+        
+            
+
+
+
+
+
+        </div>  
+    </div>
+          
+     <!-- js파일불러오기 -->
+     <script src="/static/js/user.js"></script>
+</body>
+</html>

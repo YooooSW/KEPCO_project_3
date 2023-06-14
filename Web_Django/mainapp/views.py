@@ -88,6 +88,12 @@ def board(request) :
                   "mainapp/board.html",
                   {})
 
+# 게시판 상세 보기
+def board_des(request) :
+    return render(request,
+                  "mainapp/board_des.html",
+                  {})
+
 # 게시물 작성
 def article(request) :
     return render(request,
@@ -99,6 +105,7 @@ def my_page(request) :
     return render(request,
                   "mainapp/my_Page.html",
                   {})
+    
 
 # MAP
 def map(request) :

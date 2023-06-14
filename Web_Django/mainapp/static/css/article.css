@@ -32,7 +32,7 @@ hr {
 
 .w-btn-gra1 {
     /* background: linear-gradient(-45deg, #33ccff 0%, #ff99cc 100%); */
-    background: linear-gradient(-45deg,rgba(255,67,128,1) 0%, rgba(149,88,165,1) 44%, rgba(55,84,123,1) 100%);
+    background: linear-gradient(45deg,rgba(255,67,128,1) 0%, rgba(149,88,165,1) 44%, rgba(55,84,123,1) 100%);
     color: white;
 }
 
