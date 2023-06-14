@@ -58,6 +58,12 @@ def sign_up(request) :
                   "mainapp/login/sign_up.html",
                   {})
 
+# 회원가입 성공
+def Ssign_up(request) :
+    return render(request,
+                  "mainapp/login/success_signup.html",
+                  {})
+
 
 # 게시판
 def board(request) :
