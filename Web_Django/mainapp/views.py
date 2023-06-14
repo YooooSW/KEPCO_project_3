@@ -1,11 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from mainapp.car.car_view import Car_View
 from django.utils import timezone
 import cv2
 import numpy as np
 import base64
-
 
 from .models import User, User_img, User_service, Provision, Provision_history, Naver_account, google_account, Kakao_account, Category, Community, Comment 
 
@@ -60,9 +59,27 @@ def sign_up(request) :
 
 # 회원가입 성공
 def Ssign_up(request) :
-    return render(request,
-                  "mainapp/login/success_signup.html",
-                  {})
+    if request.method == "POST" :
+        if request.POST['user_pass1'] == request.POST['user_pass2']:
+            user = User.objects.create_user( 
+                user_id=request.POST['user_id'], 
+                user_name=request.POST['user_name'], 
+                user_email=request.POST['user_email'],
+                user_pass=request.POST['user_pass1'],
+                user_phon=request.POST['user_phon'],
+		    )
+            auth.login(request, user)
+            return render(request,
+                        "mainapp/login/success_signup.html",
+                        {})
+        else :    
+            return render(request,
+                    "mainapp/login/sign_up.html",
+                    {})
+    else :
+        return render(request,
+                "mainapp/login/sign_up.html",
+                {})
 
 
 # 게시판
