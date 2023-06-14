@@ -63,5 +63,11 @@ urlpatterns = [
 
     ### http://127.0.0.1:8000/board
     path('my_page/', views.my_page),
+
+    ### http://127.0.0.1:8000/map
+    path('map/', views.map),
+
+    ### http://127.0.0.1:8000/map
+    path('map_api/', views.map_api),
 ]
 
