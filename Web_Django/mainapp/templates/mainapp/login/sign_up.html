@@ -15,12 +15,18 @@
     <div class="form-box">
         <i class="fa-solid fa-arrow-left" id="back-arrow" value="뒤로돌아가기" onclick="back()"></i> 
         <a href="/index"><img class="form-img" src="/static/img/logo.png"></a>
+<<<<<<< HEAD
         <form method="POST">
             {% csrf_token %}
+=======
+        
+        <form action="/Ssign_up">
+>>>>>>> 81dec6f1a70c961e08e9b8e6085b7c809102f531
             <div class="input-group">
                 
                 <div class="input-field">
                     <i class="fa-solid fa-user" id="id-icon"></i>
+<<<<<<< HEAD
                     <input name="user_id" type="text" placeholder="아이디">
                 </div>
                 <div class="input-field">
@@ -42,69 +48,96 @@
                 <div class="input-field">
                     <i class="fa-solid fa-phone" id="pwd-icon"></i>
                     <input name="user_phon" type="tel" placeholder="전화번호">
+=======
+                    <input type="text" placeholder="아이디" required>
                 </div>
-            </div>    
-        </form>
-        
-        <div>    
+                <div class="input-field">
+                    <i class="fa-solid fa-lock" id="pwd-icon"></i>
+                    <input type="password" placeholder="비밀번호" required>
+                </div>
+                <div class="input-field">
+                    <i class="fa-solid fa-lock" id="pwd-icon"></i>
+                    <input type="password" placeholder="비밀번호 재확인" required>
+                </div>
+                <div class="input-field">
+                    <i class="fa-solid fa-user" id="pwd-icon"></i>
+                    <input type="text" placeholder="닉네임" required>
+                </div>
+                <div class="input-field">
+                    <i class="fa-solid fa-envelope" id="pwd-icon"></i>
+                    <input type="email" placeholder="본인확인 이메일" required>
+                </div>
+                <div class="input-field">
+                    <i class="fa-solid fa-phone" id="pwd-icon"></i>
+                    <input type="tel" placeholder="전화번호" required>
+>>>>>>> 81dec6f1a70c961e08e9b8e6085b7c809102f531
+                </div>
+
+
+                <div>    
     
-            <!-- 이용약관 -->
-
-                <p class="sign_up_text">    
-                    약관 동의
-                </p>
-                <hr>
-                
-                <div class="checkbox_group">
-
-                    <!-- 전체 동의 -->
-               
-                    <div>
-                        <label style="white-space: nowrap;">
-                            <input type="checkbox" name="terms" id="check_all" value='selectAll' onclick='selectAll(this)'>
-                            <span class='text' >전체 동의</span> 
-                        </label>    
+                    <!-- 이용약관 -->
+        
+                        <p class="sign_up_text">    
+                            약관 동의
+                        </p>
+                        <hr>
+                        
+                        <div class="checkbox_group">
+        
+                            <!-- 전체 동의 -->
+                       
+                            <div>
+                                <label style="white-space: nowrap;">
+                                    <input type="checkbox" name="terms" id="check_all" value='selectAll' onclick='selectAll(this)'>
+                                    <span class='text' >전체 동의</span> 
+                                </label>    
+                            </div>
+                            
+                            <!-- 필수 1 -->
+                            <div>
+                                <label style="white-space: nowrap;">
+                                    <input type="checkbox" name="terms" id="check_1" class="normal" required>
+                                    <span>(필수) 개인 정보 동의 <button>자세히보기</button></span>
+                                </label>    
+                            </div>
+                            
+                            <!-- 필수 2 -->
+                            <div>
+                                <label style="white-space: nowrap;">
+                                <input type="checkbox" name="terms" id="check_2" class="normal" required>
+                                <span>(필수) 개인회원 약관 <button>자세히보기</button></span>
+                                </label>
+                            </div>    
+                            
+        
+                            <!-- 선택 1 -->
+                            <div>
+                                <label style="white-space: nowrap;">
+                                <input type="checkbox" name="terms" id="check_3" class="normal">
+                                <span>(선택) 이메일 광고 수신<button>자세히보기</button></span>
+                                </label>
+                            </div>
+                            
+                            <!-- 선택 2 -->
+                            <div>
+                                <label style="white-space: nowrap;">
+                                <input type="checkbox" name="terms" id="check_3" class="normal">
+                                <span>(선택) SMS 광고 수신<button>자세히보기</button></span>
+                                </label>
+                            </div>
+        
+                        </div> 
+                       
+                    <div class="form-btn">
+                        <button>가입하기</button>
                     </div>
-                    
-                    <!-- 필수 1 -->
-                    <div>
-                        <label style="white-space: nowrap;">
-                            <input type="checkbox" name="terms" id="check_1" class="normal">
-                            <span>(필수) 개인 정보 동의 <button>자세히보기</button></span>
-                        </label>    
-                    </div>
-                    
-                    <!-- 필수 2 -->
-                    <div>
-                        <label style="white-space: nowrap;">
-                        <input type="checkbox" name="terms" id="check_2" class="normal">
-                        <span>(필수) 개인회원 약관 <button>자세히보기</button></span>
-                        </label>
-                    </div>    
-                    
+                </div>
 
-                    <!-- 선택 1 -->
-                    <div>
-                        <label style="white-space: nowrap;">
-                        <input type="checkbox" name="terms" id="check_3" class="normal">
-                        <span>(선택) 이메일 광고 수신<button>자세히보기</button></span>
-                        </label>
-                    </div>
-                    
-                    <!-- 선택 2 -->
-                    <div>
-                        <label style="white-space: nowrap;">
-                        <input type="checkbox" name="terms" id="check_3" class="normal">
-                        <span>(선택) SMS 광고 수신<button>자세히보기</button></span>
-                        </label>
-                    </div>
-
-                </div> 
-               
-            <div class="form-btn">
-                <button type="button" onclick="location.href='/Ssign_up'">가입하기</button>
-            </div>
-        </div>
+            </div>  
+            
+            
+        </form>
 
         
     </div>
