@@ -22,3 +22,4 @@ pip install --upgrade google-auth
 pip install google-auth-oauthlib
 pip install google-auth-httplib2
 pip install --upgrade google-api-python-client
+pip install social-auth-app-django

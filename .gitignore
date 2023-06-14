@@ -1,5 +1,4 @@
-/Web_Django/config/settings.py
-
+*.pyc
 # /Web_Django/db.sqlite3
 
 # /Web_Django/config/db.sqlite3

@@ -40,10 +40,6 @@ nav{
     color: white;
 }
 
-.nav-links li a:hover{
-    color: #FF4380;
-}
-
 .login-btn{
     background: white;
     color: black;

@@ -1,0 +1,168 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type= "text/css" href ='/static/css/yun.css'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins&display=swap">
+    <script type="text/javascript" src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+    
+        th, td {
+            border: 1px solid #dddddd;
+            padding: 8px;
+            text-align: left;
+        }
+    
+        th {
+            background-color: #f2f2f2;
+        }
+        .dynamic-width {
+            display: flex;
+            align-items: center;
+        }
+
+        .dynamic-width th {
+            flex: 1;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="hero">
+        <div class = "btn-box">
+            <button id="btn1" onclick="openHTML()"><i class="fa-brands fa-html5"></i>정보 수정</button>
+            <button id="btn2" onclick="openCSS()"><i class="fa-brands fa-css3-alt"></i>이력 관리</button>
+            <button id="btn3" onclick="openJAVASCRIPT()"><i class="fa-brands fa-codepen"></i>회원 탈퇴</button>
+        </div>
+
+
+        <div class="content" id="content1">
+            <div class="content-left">
+                <h1>마이페이지</h1>
+                
+                <table>
+                    <tr>
+                        <th class="dynamic-width">프로필 수정</th>
+                        <td style="display: flex;">
+                            <img src="/static/img/r_3.png" style="margin-right: 10px;">
+                            <div style="display: flex; flex-direction: column;">
+                                <button style="margin-bottom: 5px; width: 100%; height: 40px;">버튼1</button>
+                                <button style="width: 100%; height: 40px;">버튼2</button>
+                            </div>
+                        </td>
+                    </tr>
+                    
+
+                    <tr>
+                        <th class="dynamic-width" >비밀번호 변경</th>
+                        <td>
+                            <div style="display: flex; flex-direction: column;">
+                                <div style="display: flex; flex-direction: row; margin: 10px;">
+                                    <button style="margin-left: 5px; width: 80%; height: 40px;">비밀번호 확인</button>
+                                    <button style="margin-left: 10%; width: 40px; height: 40px; border-radius: 50%;">확인여부</button>
+
+                                </div>
+                                <div style="display: flex; flex-direction: row; margin: 10px;">
+                                    <button style="margin-left: 5px; width: 80%; height: 40px;">비밀번호 변경</button>
+                                    <button style="margin-left: 10%; width: 100px; height: 40px;">변경</button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                
+                
+            </div>
+        </div>
+
+
+        <div class="content" id="content2">
+            <div class="content-left">
+                <h1> Learn CSS</h1>
+                <p>기초 회화' 책 한권 무조건 외워라
+                    '영어책 한권 외워봤니'를 쓴 김민식(49) MBC 드라마 PD. 한국외국어대학교 통번역대학원을 나왔다. 외국에서 나고 자란 지원자도 몇 년 씩 재수할 정도로 입학이 어려운 학교다.
+                    김 PD는 영어를 한국에서만 배웠다. 학부는 영어와 상관없는 한양대 자원공학과를 나왔다. 대학을 졸업하고 바로 대학원에 간 것은 아니다. 첫 직장은 외국계 기업 3M의 영업직군이었다.
+                    3년 정도 직장을 다니다가 통역사가 되기 위해 통번역대학원에 갔다. 미국식 유머를 이해하기 위해 보기 시작한 미국 시트콤 '프렌즈'. "나도 이런 시트콤을 만들고 싶다"라는 마음으로 MBC 시험을 쳤다. 입사하고 시트콤 '뉴논스톱'을 성공시키고, '내조의 여왕' 등 인기 드라마를 연출했다.
+                    그의 영어 공부 비결은 '기초회화 책 한 권 암기'. 이 방법으로 일본어, 스페인어, 중국어도 일상 대화가 가능할 정도가 됐다. 
+                    영어교사였던 아버지는 초등학교 6학년 아들에게 중학교 1학년 영어교과서를 외우게 했다. "유창한 발음, 문법 이해. 필요 없다. 그냥 외워라." ABC도 몰랐지만 더듬 더듬 외웠다. 그날 이후 학교 영어 시험은 항상 100점이었다. 군대에서는 영어와 한글이 함께 나오는 성경을 외웠다. 개신교 신자는 아니었지만 군대에서 구할 수 있는 유일한 영어책이었다.
+                    김 PD는 "영어 덕에 연애에 성공했다"라고 말한다. 
+                </p>
+                <a href="#">WATCH VIDEO</a>
+            </div>
+            <div class="content-right">
+                <img src="/static/img/r_1.png">
+            </div>
+        </div>
+
+
+
+        <div class="content" id="content3">
+            <div class="content-left">
+                <h1> Learn JAVASCRPIT</h1>
+                <p>◇ '기초 회화' 책 한권 무조건 외워라
+                    '영어책 한권 외워봤니'를 쓴 김민식(49) MBC 드라마 PD. 한국외국어대학교 통번역대학원을 나왔다. 외국에서 나고 자란 지원자도 몇 년 씩 재수할 정도로 입학이 어려운 학교다.
+                    김 PD는 영어를 한국에서만 배웠다. 학부는 영어와 상관없는 한양대 자원공학과를 나왔다. 대학을 졸업하고 바로 대학원에 간 것은 아니다. 첫 직장은 외국계 기업 3M의 영업직군이었다.
+                    3년 정도 직장을 다니다가 통역사가 되기 위해 통번역대학원에 갔다. 미국식 유머를 이해하기 위해 보기 시작한 미국 시트콤 '프렌즈'. "나도 이런 시트콤을 만들고 싶다"라는 마음으로 MBC 시험을 쳤다. 입사하고 시트콤 '뉴논스톱'을 성공시키고, '내조의 여왕' 등 인기 드라마를 연출했다.
+                    그의 영어 공부 비결은 '기초회화 책 한 권 암기'. 이 방법으로 일본어, 스페인어, 중국어도 일상 대화가 가능할 정도가 됐다. 
+                    영어교사였던 아버지는 초등학교 6학년 아들에게 중학교 1학년 영어교과서를 외우게 했다. "유창한 발음, 문법 이해. 필요 없다. 그냥 외워라." ABC도 몰랐지만 더듬 더듬 외웠다. 그날 이후 학교 영어 시험은 항상 100점이었다. 군대에서는 영어와 한글이 함께 나오는 성경을 외웠다. 개신교 신자는 아니었지만 군대에서 구할 수 있는 유일한 영어책이었다.
+                    김 PD는 "영어 덕에 연애에 성공했다"라고 말한다.
+                </p>
+                <a href="#">WATCH VIDEO</a>
+            </div>
+            <div class="content-right">
+                <img src="/static/img/r_2.png">
+            </div>
+        </div>
+    </div>
+    <script>
+        var content1 = document.getElementById("content1");
+        var content2 = document.getElementById("content2");
+        var content3 = document.getElementById("content3");
+        var btn1 = document.getElementById("btn1");
+        var btn2 = document.getElementById("btn2");
+        var btn3 = document.getElementById("btn3");
+
+        function openHTML(){
+            content1.style.transform = "translateX(0)";
+            content2.style.transform = "translateX(100%)";
+            content3.style.transform = "translateX(100%)";
+            btn1.style.color = "#ff7846";
+            btn2.style.color = "#000";
+            btn3.style.color = "#000";
+            content1.style.transitionDelay = "0.3s"
+            content2.style.transitionDelay = "0s"
+            content3.style.transitionDelay = "0s"
+        }
+        function openCSS(){
+            content1.style.transform = "translateX(100%)";
+            content2.style.transform = "translateX(0)";
+            content3.style.transform = "translateX(100%)";
+            btn1.style.color = "#000";
+            btn2.style.color = "#ff7846";
+            btn3.style.color = "#000";
+            content1.style.transitionDelay = "0s"
+            content2.style.transitionDelay = "0.3s"
+            content3.style.transitionDelay = "0s"
+        }
+        function openJAVASCRIPT(){
+            content1.style.transform = "translateX(100%)";
+            content2.style.transform = "translateX(100%)";
+            content3.style.transform = "translateX(0)";
+            btn1.style.color = "#000";
+            btn2.style.color = "#000";
+            btn3.style.color = "#ff7846";
+            content1.style.transitionDelay = "0s"
+            content2.style.transitionDelay = "0s"
+            content3.style.transitionDelay = "0.3s"
+        }
+
+    </script>
+</body>
+</html>
