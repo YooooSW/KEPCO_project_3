@@ -3,8 +3,8 @@ from django.http import HttpResponse
 from mainapp.car.car_view import Car_View
 import cv2
 import numpy as np
-import base64
 
+import json
 
 from .models import User, User_img, User_service, Provision, Provision_history, Naver_account, google_account, Kakao_account, Category, Community, Comment 
 
@@ -42,8 +42,9 @@ def search_pwd(request) :
     return render(request,
                   "mainapp/login/pwd_search.html",
                   {})
+def my_page(request):
+    return render(request, "mainapp/my_Page.html", {})
 
-import json
 def car_repair_price(request):
     if request.method == 'POST' and request.FILES.get('image'):
         image_file = request.FILES['image']

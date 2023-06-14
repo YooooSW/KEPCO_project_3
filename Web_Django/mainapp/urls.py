@@ -32,4 +32,7 @@ urlpatterns = [
 
     ### http://127.0.0.1:8000/search_pwd
     path('search_pwd/', views.search_pwd),
+
+    ### http://127.0.0.1:8000/search_pwd
+    path('my_page/', views.my_page),
 ]
