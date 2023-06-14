@@ -66,7 +66,7 @@ def board(request) :
                   {})
 
 # MY_PAGE
-def board(request) :
+def my_page(request) :
     return render(request,
                   "mainapp/my_Page.html",
                   {})
