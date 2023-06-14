@@ -49,4 +49,7 @@
 .text{
     color: #a838c4;
     margin-bottom: 2%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
 }
