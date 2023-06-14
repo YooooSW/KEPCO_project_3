@@ -66,29 +66,15 @@
                     <button type="button" onclick="uploadImage()">Submit</button>
                     <button type="button" onclick="window.location.href = '/'">Exit</button>
                     <button type="button" onclick="window.location.href = '/car_repair_calculation_Page'">사진지우기</button>
-<<<<<<< HEAD
-                </form>
-=======
                   </form>
                 </div>
                 
                 <div class="image-show" id="image-show"></div>
->>>>>>> 26225ee6c53e400bf1c01bf8d171b4880a9b8e22
             </div>
             <div id="car_data"></div>
             <div class="image-show" id="image-show"></div>
         </div>
     </div>
-<<<<<<< HEAD
-</div>
-<!-- js 파일 불러오기 -->
-<script>
-    // 이미지 미리보기
-    function previewImage(event) {
-        var files = event.target.files;
-        var reader = new FileReader();
-        reader.onload = function () {
-=======
     <div id="car_data"></div>
     <!-- js파일불러오기 -->
     <script>
@@ -97,7 +83,6 @@
           var files = event.target.files;
           var reader = new FileReader();
           reader.onload = function() {
->>>>>>> 26225ee6c53e400bf1c01bf8d171b4880a9b8e22
             var preview = document.getElementById('imagePreview');
             var img = document.createElement('img');
             img.src = reader.result;
@@ -123,35 +108,9 @@
             console.error('No file selected.');
             return;
         }
-<<<<<<< HEAD
-        var file = files[0];
-        var formData = new FormData();
-        formData.append('image', file);
-
-        var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === XMLHttpRequest.DONE) {
-                if (xhr.status === 200) {
-                    var response = xhr.responseText;
-                    document.getElementById('car_data').innerHTML = '<h4>수리견적 : </h4><p>' + response + '</p>';
-                } else {
-                    console.error("Error: " + xhr.status);
-                }
-            }
-        };
-
-        xhr.open("POST", "/car_repair_price/");
-        xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
-        xhr.send(formData);
-    }
-</script>
-
-{% include 'mainapp/include/js.html' %}
-=======
       </script>
         
     {% include 'mainapp/include/js.html' %}
     <script src="/static/js/user.js"></script>
->>>>>>> 26225ee6c53e400bf1c01bf8d171b4880a9b8e22
 </body>
 </html>
