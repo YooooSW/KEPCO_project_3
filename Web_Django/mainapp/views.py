@@ -14,6 +14,12 @@ from .models import User, User_img, User_service, Provision, Provision_history, 
 def index(request):
     return render(request, "mainapp/index.html", {})
 
+# 로그인 후 메인페이지
+def login_index(request) :
+    return render(request,
+                  "mainapp/login_index.html",
+                  {})
+
 # 게시글 작성 페이지
 def Create_Posts_page(request):
     return render(request, "mainapp/Create_Posts_page.html", {})

@@ -112,95 +112,8 @@ li{
     /* 폰트 */
 }
 
-.mini-menu{
-    margin-top: 30px;
-}
-.mini-menu a{
-    text-decoration: none;
-}
-.mini-menu span{
-    font-size: 30px;
-    text-align: center;
-    color: #2F4858;
-}
-
-.my-changing:hover span{
-    color: #FF4380;
-}
-.my-manage:hover span{
-    color: #FF4380;
-}
-.my-goout:hover span{
-    color: #FF4380;
-}
 
 
-/* ---------------------------- 마이페이지 내용들어갈 자리! */
-
-.user-page{
-    padding: 20px 6%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.left-sidebar{
-    
-    flex-basis: 25%;
-    align-self: flex-start;
-}
-
-.sidebar-profile-box{
-    background: white;
-}
-.sidebar-profile-info{
-    padding: 0 25px;
-}
-.sidebar-profile-info img{
-    width: 90px;
-    border-radius: 50%;
-    background: palevioletred;
-    padding: 4px;
-    margin-top: -45px;
-}
-.sidebar-profile-info h1{
-    font-size: 20px;
-    font-weight: 600;
-    color: black;
-}
-
-.sidebar-profile-info ul{
-    list-style: none;
-    margin: 20px 0;
-}
-.sidebar-profile-info ul li{
-    width: 100%;
-    margin: 5px 0;
-    font-size: 13px;
-}
-
-
-
-.main-content{
-    flex-basis: 70%;
-}
-
-
-.mini-menu{
-    width: 30%;
-    height: 100%;  
-    float: left;
-    background-color: #7171ff;
-}
-
-.sub-content{
-    width: 70%;
-    height: 100%;
-    float: right;
-    background-color: #ff7171;
-}
-
-/* ---------------------------- 마이페이지 내용들어갈 자리 끝 */
 .header{
     height: 15vh;
     width: 100%;
@@ -234,6 +147,10 @@ nav{
     text-decoration: none;
     color: white;
 }
+.nav-links li a:hover{
+    color: #FF4380;
+}
+
 
 .login-btn{
     background: white;
@@ -334,18 +251,6 @@ nav{
 
 .active{
     position: relative;
-}
-
-.active::after{
-    content: '';
-    background: #ffff;
-    width: 25px;
-    height: 2px;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: -12px;
-    border-radius: 2px;
 }
 
 /* 큰 미디어 화면에서는 메뉴 아이콘이 나타나지 않도록 none */
