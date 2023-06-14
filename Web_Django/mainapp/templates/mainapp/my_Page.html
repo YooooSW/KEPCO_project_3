@@ -6,12 +6,16 @@
     <title>Document</title>
     <link rel="stylesheet" type= "text/css" href ="/static/css/yun.css">
 
+    <!-- header부분 -->
+    <link rel="stylesheet" type="text/css" href="/static/css/board.css">
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins&display=swap">
     <script type="text/javascript" src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <style>
-        table {
+        .table_my_page {
             border-collapse: collapse;
             width: 100%;
+            margin: 0 auto;
         }
     
         th, td {
@@ -23,25 +27,14 @@
         th {
             background-color: #f2f2f2;
         }
-        .dynamic-width {
-            display: flex;
-            align-items: center;
-        }
-
-        .dynamic-width th {
-            flex: 1;
-        }
-        .container {
+        .btn-img-row {
             display: flex;
             flex-direction: row;
         }
-        .container th {
+        .btn-img-row th {
             width: calc(100% - 200px);
         }
         .buttons {
-            margin: 10px;
-        }
-        div {
             margin: 10px;
         }
         
@@ -49,143 +42,142 @@
     
 </head>
 <body>
-    <div class="hero">
-        <div class = "btn-box">
-            <button id="btn1" onclick="openHTML()"><i class="fa-brands fa-html5"></i>정보 수정</button>
-            <button id="btn2" onclick="openCSS()"><i class="fa-brands fa-css3-alt"></i>이력 관리</button>
-            <button id="btn3" onclick="openJAVASCRIPT()"><i class="fa-brands fa-codepen"></i>회원 탈퇴</button>
-        </div>
+    <div class="header">
+    {% include 'mainapp/include/newnav.html' %}
+        <div class="hero">
+            <div class = "btn-box">
+                <button id="btn1" onclick="openHTML()"><i class="fa-brands fa-html5"></i>정보 수정</button>
+                <button id="btn2" onclick="openCSS()"><i class="fa-brands fa-css3-alt"></i>이력 관리</button>
+                <button id="btn3" onclick="openJAVASCRIPT()"><i class="fa-brands fa-codepen"></i>회원 탈퇴</button>
+            </div>
 
 
-        <div class="content" id="content1">
-            <div class="content-left">
-                <h1>마이페이지</h1>
-                
-                <table>
-                    <tbody>
-                        <tr>
-                            <th >프로필 수정</th>
-                            <td>
-                                <div class="container">
-                                    <img src="/static/img/r_3.png" alt="image">
-                                    <div class="buttons">
-                                        <div style="display: flex; flex-direction: row;"><button>사진 변경</button></div>
-                                        <div style="display: flex; flex-direction: row;"><button>사진 삭제</button></div>
+            <div class="content" id="content1">
+                <div class="content-left">
+                    <h2>마이페이지</h2>
+                    
+                    <table class="table_my_page">
+                        <tbody>
+                            <tr>
+                                <th >프로필 수정</th>
+                                <td>
+                                    <div class="btn-img-row">
+                                        <img src="/static/img/r_3.png" alt="image">
+                                        <div class="buttons">
+                                            <div style="display: flex; flex-direction: row;"><button>사진 변경</button></div>
+                                            <div style="display: flex; flex-direction: row;"><button>사진 삭제</button></div>
+                                        </div>
                                     </div>
-                                </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>비밀번호 변경</th>
+                                <td>
+                                    <div>
+                                        <div style="display: flex; flex-direction: row;">
+                                            <button style="width: 70%; height: 40px;">비밀번호 확인</button>
+                                            <div style="width: 50px;"></div> <!-- 여백을 추가 -->
+                                            <button style="width: 40px; height: 40px; border-radius: 100%;">확인여부</button>
+                                        </div>
+                                        <div style="display: flex; flex-direction: row;">
+                                            <button style="width: 70%; height: 40px;">비밀번호 변경</button>
+                                            <div style="width: 55px;"></div> <!-- 여백을 추가 -->
+                                            <button style="height: 40px;">변경</button>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    
+                </div>
+            </div>
+
+
+            <div class="content" id="content2">
+                <div class="content-left">
+                    <h2 align="left">게시글 내역</h2>
+                    <table class="table_my_page">
+                        <tbody>
+                            <tr>
+                            <td>데이터분석 전문가 자격검정 시험. 빅데이터 시대가 도래하고 데이터 분석가의 필요성이 증가함에 따라 데이터 분석 전문가 자격에 대한 기업의 수요를 반영하여 
+                                2014년부터 실시한 시험으로 과학기술정보통신부가 주무부처이고 한국데이터산업진흥원이 시행한다.
                             </td>
-                        </tr>
-                        <tr>
-                            <th>비밀번호 변경</th>
-                            <td>
-                                <div>
-                                    <div style="display: flex; flex-direction: row;">
-                                        <button style="width: 70%; height: 40px;">비밀번호 확인</button>
-                                        <div style="width: 50px;"></div> <!-- 여백을 추가 -->
-                                        <button style="width: 40px; height: 40px; border-radius: 100%;">확인여부</button>
-                                    </div>
-                                    <div style="display: flex; flex-direction: row;">
-                                        <button style="width: 70%; height: 40px;">비밀번호 변경</button>
-                                        <div style="width: 55px;"></div> <!-- 여백을 추가 -->
-                                        <button style="height: 40px;">변경</button>
-                                    </div>
-                                </div>
-                                
-                                
+                            <td style="white-space: nowrap;">댓글 개수 </td>
+                            <td style="white-space: nowrap;">댓글 작성시간 </td>
+                            </tr>
+                            <tr>
+                                <td>데이터분석 전문가 자격검정 시험. 빅데이터 시대가 도래하고 데이터 분석가의 필요성이 증가함에 따라 데이터 분석 전문가 자격에 대한 기업의 수요를 반영하여 
+                                    2014년부터 실시한 시험으로 과학기술정보통신부가 주무부처이고 한국데이터산업진흥원이 시행한다.
+                                </td>
+                                <td style="white-space: nowrap;">댓글 개수 </td>
+                                <td style="white-space: nowrap;">댓글 작성시간 </td>
+                            </tr>
+
+                            <tr>
+                                <td>데이터분석 전문가 자격검정 시험. 빅데이터 시대가 도래하고 데이터 분석가의 필요성이 증가함에 따라 데이터 분석 전문가 자격에 대한 기업의 수요를 반영하여 
+                                    2014년부터 실시한 시험으로 과학기술정보통신부가 주무부처이고 한국데이터산업진흥원이 시행한다.
+                                </td>
+                                <td style="white-space: nowrap;">댓글 개수 </td>
+                                <td style="white-space: nowrap;">댓글 작성시간 </td>
+                            </tr>
+                        </tbody>
+                        </table>
+
+                        <h2 align="left">댓글 내역</h2>
+                        <table class="table_my_page">
+                        <tbody>
+                            <tr>
+                            <td>데이터분석 전문가 자격검정 시험. 빅데이터 시대가 도래하고 데이터 분석가의 필요성이 증가함에 따라 데이터 분석 전문가 자격에 대한 기업의 수요를 반영하여 
+                                2014년부터 실시한 시험으로 과학기술정보통신부가 주무부처이고 한국데이터산업진흥원이 시행한다.
                             </td>
-                        </tr>
-                    </tbody>
-                </table>
-                
-                
+                            <td style="white-space: nowrap;">댓글 개수 </td>
+                            <td style="white-space: nowrap;">댓글 작성시간 </td>
+                            </tr>
+
+                            <tr>
+                                <td>데이터분석 전문가 자격검정 시험. 빅데이터 시대가 도래하고 데이터 분석가의 필요성이 증가함에 따라 데이터 분석 전문가 자격에 대한 기업의 수요를 반영하여 
+                                    2014년부터 실시한 시험으로 과학기술정보통신부가 주무부처이고 한국데이터산업진흥원이 시행한다.
+                                </td>
+                                <td style="white-space: nowrap;">댓글 개수 </td>
+                                <td style="white-space: nowrap;">댓글 작성시간 </td>
+                            </tr>
+
+                            <tr>
+                                <td>데이터분석 전문가 자격검정 시험. 빅데이터 시대가 도래하고 데이터 분석가의 필요성이 증가함에 따라 데이터 분석 전문가 자격에 대한 기업의 수요를 반영하여 
+                                    2014년부터 실시한 시험으로 과학기술정보통신부가 주무부처이고 한국데이터산업진흥원이 시행한다.
+                                </td>
+                                <td style="white-space: nowrap;">댓글 개수 </td>
+                                <td style="white-space: nowrap;">댓글 작성시간 </td>
+                            </tr>
+                        </tbody>
+                        </table>
+                </div>
             </div>
-        </div>
+
+            
+            
+            
 
 
-        <div class="content" id="content2">
-            <div class="content-left">
-                <h1> Learn CSS</h1>
-                <p>기초 회화' 책 한권 무조건 외워라
-                    '영어책 한권 외워봤니'를 쓴 김민식(49) MBC 드라마 PD. 한국외국어대학교 통번역대학원을 나왔다. 외국에서 나고 자란 지원자도 몇 년 씩 재수할 정도로 입학이 어려운 학교다.
-                    김 PD는 영어를 한국에서만 배웠다. 학부는 영어와 상관없는 한양대 자원공학과를 나왔다. 대학을 졸업하고 바로 대학원에 간 것은 아니다. 첫 직장은 외국계 기업 3M의 영업직군이었다.
-                    3년 정도 직장을 다니다가 통역사가 되기 위해 통번역대학원에 갔다. 미국식 유머를 이해하기 위해 보기 시작한 미국 시트콤 '프렌즈'. "나도 이런 시트콤을 만들고 싶다"라는 마음으로 MBC 시험을 쳤다. 입사하고 시트콤 '뉴논스톱'을 성공시키고, '내조의 여왕' 등 인기 드라마를 연출했다.
-                    그의 영어 공부 비결은 '기초회화 책 한 권 암기'. 이 방법으로 일본어, 스페인어, 중국어도 일상 대화가 가능할 정도가 됐다. 
-                    영어교사였던 아버지는 초등학교 6학년 아들에게 중학교 1학년 영어교과서를 외우게 했다. "유창한 발음, 문법 이해. 필요 없다. 그냥 외워라." ABC도 몰랐지만 더듬 더듬 외웠다. 그날 이후 학교 영어 시험은 항상 100점이었다. 군대에서는 영어와 한글이 함께 나오는 성경을 외웠다. 개신교 신자는 아니었지만 군대에서 구할 수 있는 유일한 영어책이었다.
-                    김 PD는 "영어 덕에 연애에 성공했다"라고 말한다. 
-                </p>
-                <a href="#">WATCH VIDEO</a>
-            </div>
-            <div class="content-right">
-                <img src="/static/img/r_1.png">
-            </div>
-        </div>
 
+            <div class="content" id="content3">
+                <div class="content-left">
+                    <img src="/static/img/r_2.png">
+                    <p>닉네임</p>
+                    <a href="#" style="position: absolute; left: 50%; transform: translateX(-50%);">회원탈퇴</a>
+                </div>
 
-
-        <div class="content" id="content3">
-            <div class="content-left">
-                <h1> Learn JAVASCRPIT</h1>
-                <p>◇ '기초 회화' 책 한권 무조건 외워라
-                    '영어책 한권 외워봤니'를 쓴 김민식(49) MBC 드라마 PD. 한국외국어대학교 통번역대학원을 나왔다. 외국에서 나고 자란 지원자도 몇 년 씩 재수할 정도로 입학이 어려운 학교다.
-                    김 PD는 영어를 한국에서만 배웠다. 학부는 영어와 상관없는 한양대 자원공학과를 나왔다. 대학을 졸업하고 바로 대학원에 간 것은 아니다. 첫 직장은 외국계 기업 3M의 영업직군이었다.
-                    3년 정도 직장을 다니다가 통역사가 되기 위해 통번역대학원에 갔다. 미국식 유머를 이해하기 위해 보기 시작한 미국 시트콤 '프렌즈'. "나도 이런 시트콤을 만들고 싶다"라는 마음으로 MBC 시험을 쳤다. 입사하고 시트콤 '뉴논스톱'을 성공시키고, '내조의 여왕' 등 인기 드라마를 연출했다.
-                    그의 영어 공부 비결은 '기초회화 책 한 권 암기'. 이 방법으로 일본어, 스페인어, 중국어도 일상 대화가 가능할 정도가 됐다. 
-                    영어교사였던 아버지는 초등학교 6학년 아들에게 중학교 1학년 영어교과서를 외우게 했다. "유창한 발음, 문법 이해. 필요 없다. 그냥 외워라." ABC도 몰랐지만 더듬 더듬 외웠다. 그날 이후 학교 영어 시험은 항상 100점이었다. 군대에서는 영어와 한글이 함께 나오는 성경을 외웠다. 개신교 신자는 아니었지만 군대에서 구할 수 있는 유일한 영어책이었다.
-                    김 PD는 "영어 덕에 연애에 성공했다"라고 말한다.
-                </p>
-                <a href="#">WATCH VIDEO</a>
             </div>
-            <div class="content-right">
-                <img src="/static/img/r_2.png">
-            </div>
+            
         </div>
     </div>
 
+    <script src="/static/js/yun.js"></script>
+    <script src="/static/js/user.js"></script>
 
-
-
-    <script>
-        var content1 = document.getElementById("content1");
-        var content2 = document.getElementById("content2");
-        var content3 = document.getElementById("content3");
-        var btn1 = document.getElementById("btn1");
-        var btn2 = document.getElementById("btn2");
-        var btn3 = document.getElementById("btn3");
-
-        function openHTML(){
-            content1.style.transform = "translateX(0)";
-            content2.style.transform = "translateX(100%)";
-            content3.style.transform = "translateX(100%)";
-            btn1.style.color = "#ff7846";
-            btn2.style.color = "#000";
-            btn3.style.color = "#000";
-            content1.style.transitionDelay = "0.3s"
-            content2.style.transitionDelay = "0s"
-            content3.style.transitionDelay = "0s"
-        }
-        function openCSS(){
-            content1.style.transform = "translateX(100%)";
-            content2.style.transform = "translateX(0)";
-            content3.style.transform = "translateX(100%)";
-            btn1.style.color = "#000";
-            btn2.style.color = "#ff7846";
-            btn3.style.color = "#000";
-            content1.style.transitionDelay = "0s"
-            content2.style.transitionDelay = "0.3s"
-            content3.style.transitionDelay = "0s"
-        }
-        function openJAVASCRIPT(){
-            content1.style.transform = "translateX(100%)";
-            content2.style.transform = "translateX(100%)";
-            content3.style.transform = "translateX(0)";
-            btn1.style.color = "#000";
-            btn2.style.color = "#000";
-            btn3.style.color = "#ff7846";
-            content1.style.transitionDelay = "0s"
-            content2.style.transitionDelay = "0s"
-            content3.style.transitionDelay = "0.3s"
-        }
-
-    </script>
 </body>
 </html>
