@@ -57,5 +57,8 @@ urlpatterns = [
 
     ### http://127.0.0.1:8000/board
     path('board/', views.board),
+
+    ### http://127.0.0.1:8000/board
+    path('my_page/', views.my_page),
 ]
 
