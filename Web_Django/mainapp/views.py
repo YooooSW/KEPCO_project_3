@@ -61,7 +61,7 @@ def sign_up(request) :
 def Ssign_up(request) :
     if request.method == "POST" :
         if request.POST['user_pass1'] == request.POST['user_pass2']:
-            user = User.objects.create_user( 
+            user = User.objects.create( 
                 user_id=request.POST['user_id'], 
                 user_name=request.POST['user_name'], 
                 user_email=request.POST['user_email'],
@@ -72,14 +72,22 @@ def Ssign_up(request) :
             return render(request,
                         "mainapp/login/success_signup.html",
                         {})
-        else :    
-            return render(request,
-                    "mainapp/login/sign_up.html",
-                    {})
+        else :
+            msg = """
+                <script type="text/javascript">
+                    alert("비밀번호가 다릅니다.!!");
+                    location.href = "/sign_up/";
+                </script>
+            """    
+            return HttpResponse(msg)
     else :
-        return render(request,
-                "mainapp/login/sign_up.html",
-                {})
+        msg = """
+            <script type="text/javascript">
+                alert("잘못된 접근입니다.");
+                location.href = "/sign_up/";
+            </script>
+        """    
+        return HttpResponse(msg)
 
 
 # 게시판
