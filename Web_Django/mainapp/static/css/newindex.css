@@ -2,11 +2,51 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* 폰트 */
     font-family: 'Black Han Sans', 'poppins', sans-serif; 
-    
+    /* 폰트 */
 }
-/* css초기화 코드 */
+h2{
+    font-family:  'poppins', sans-serif; 
+}
+.container5{
+    width: 100%;
+    height: 100vh;
+   
+}
+
+.slides{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    color: white;
+    scroll-snap-align: start;
+   
+}
+
+.slides img{
+    width: 350px;
+
+}
+
+.slides h2{
+    font-size: 50px;
+    font-weight: 600;
+    max-width: 650px;
+}
+
+.slide1{
+    background: linear-gradient(297deg, rgba(89,152,140,1) 0%, rgba(114,208,190,1) 41%, rgba(196,252,240,1) 100%);
+}
+
+.slide2{
+    background: linear-gradient(56deg, rgba(255,67,128,1) 0%, rgba(255,167,218,1) 48%, rgba(216,181,255,1) 100%);
+}
+.slide3{
+    background: linear-gradient(90deg, rgba(47,72,88,1) 0%, rgba(55,84,123,1) 35%, rgba(93,90,152,1) 100%);
+}
 
 .header{
     min-height: 100vh;
@@ -53,9 +93,6 @@ nav{
     font-size: 14px;
 }
 
-.container{
-    padding: 0 5%;  
-}
 
 .header h1{
     font-size: 4vw;
@@ -66,7 +103,7 @@ nav{
 }
 
 /* 배경이미지 */
-.custom-shape-divider-bottom-1686114266 {
+.custom-shape-divider-bottom-1686727694 {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -76,70 +113,18 @@ nav{
     transform: rotate(180deg);
 }
 
-.custom-shape-divider-bottom-1686114266 svg {
+.custom-shape-divider-bottom-1686727694 svg {
     position: relative;
     display: block;
-    width: calc(120% + 1.3px);
-    height: 157px;
+    width: calc(114% + 1.3px);
+    height: 148px;
+    transform: rotateY(180deg);
 }
 
-.custom-shape-divider-bottom-1686114266 .shape-fill {
+.custom-shape-divider-bottom-1686727694 .shape-fill {
     fill: #FFFFFF;
 }
 
-
-/* --------------test2------------------- */
-.test2{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    grid-gap: 30px;
-    margin-bottom: 30px; /*bottom에 30px공간 생김*/
-
-}
-
-.test2 div img{
-    width: 100%;
-    border-radius: 10px;
-}
-
-.test2 h3{
-    font-weight: 600;
-    margin-top: 10px;
-}
-
-
-/* --------------comm------------------ */
-.comm{
-    margin: 80px 0;
-    background-image: linear-gradient(to right, white,transparent), url(/static/img/community.jpg);
-    background-size: cover;
-    background-position: center;
-    border-radius: 5px;
-    padding: 5%;
-    color: black;
-}
-
-.comm h3{
-    font-size: 4vw;
-    line-height: 5.3vw;
-    font-weight: 500;
-}
-
-.comm p{
-    font-size: 17px;
-    margin: 10px 0;
-}
-
-.comm-btn{
-    background: #37547B;
-    color: white;
-    text-decoration: none;
-    padding: 12px 30px;
-    border-radius: 5px;
-    margin-top: 20px;
-    display: inline-block;
-}
-/* 커뮤니티로 이동하는 버튼 */
 
 .upload-btn{
     text-decoration: none;
@@ -164,6 +149,7 @@ nav{
     display: none;
   }
   /* input type="file"의 경우 자동으로 버튼이랑 파일이름이 나오는게 나타나는 데 이걸 없애기 위해 display:none; */
+
 
 
 /* ------------footer------------ */
@@ -280,3 +266,77 @@ nav .fa-bars{
     
     
 }
+
+/* --------------로그인 상태의 유저가 프로필 사진 클릭시 나타나는 drop-down profile과 관련있는 css시작------------- */
+.user-pic{
+    width: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-left: 30px;
+}
+.sub-menu-wrap{
+    position: absolute;
+    top: 11%; 
+    /* 위에서 얼마나 떨어져 있는지 */
+    right: 6.5%;
+    /* 오른쪽으로 얼마나 떨어져 있는지 */
+    width: 320px;
+    max-height: 0px;  /* 0px이면  프로필 창이 안보이고 400px인 경우 나타남*/
+    overflow: hidden;
+    transition: max-height 0.5s;
+}
+.sub-menu-wrap.open-menu{
+    max-height: 400px;
+}
+
+
+.sub-menu{
+    background: whitesmoke;
+    padding: 20px;
+    margin: 5px;
+}
+.user-info{
+    display: flex;
+    align-items: center;
+}
+.user-info h3{
+    font-weight: 500;
+}
+.user-info img{
+    width: 60px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.sub-menu hr{
+    border: 0;
+    height: 1px;
+    width: 100%;
+    background: #ccc;
+    margin: 15px 0 5px;
+}
+.sub-menu-link{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #525252;
+    margin: 12px 0;
+}
+
+.sub-menu-link p{
+    width: 100%;
+}
+
+.sub-menu-link span{
+    font-size: 25px; /* > 사이즈 */
+    transition: transform 0.3s; /* > 움직이는 속도 조절 */
+}
+
+.sub-menu-link:hover span{
+    transform: translateX(5px);  /* 마우스 올려놓을 시 >가 움직이는 x좌표 거리  */
+    color: #FF4380;
+}
+.sub-menu-link:hover p{
+    color: #FF4380;
+}
+/* ------------------------------------------------------------------------------------------ */
