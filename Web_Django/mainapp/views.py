@@ -96,10 +96,35 @@ def board(request) :
                   "mainapp/board.html",
                   {})
 
+# 게시판 상세 보기
+def board_des(request) :
+    return render(request,
+                  "mainapp/board_des.html",
+                  {})
+
+# 게시물 작성
+def article(request) :
+    return render(request,
+                  "mainapp/article.html",
+                  {})
+
 # MY_PAGE
 def my_page(request) :
     return render(request,
                   "mainapp/my_Page.html",
+                  {})
+    
+
+# MAP
+def map(request) :
+    return render(request,
+                  "mainapp/map.html",
+                  {})
+
+# MAP
+def map_api(request) :
+    return render(request,
+                  "mainapp/map_api.html",
                   {})
 
 import json

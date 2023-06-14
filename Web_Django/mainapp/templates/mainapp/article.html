@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>::: 게시판 페이지 :::</title>
+    <!-- fontawesome 이게 있어야 sns아이콘 사용 가능-->
+    <script type="text/javascript" src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- css파일 불러오기 -->
+    <link rel="stylesheet" type="text/css" href="/static/css/board.css">
+    <link rel="stylesheet" href="/static/css/article.css">
+ 
+</head>
+<body>
+    <div class="header">
+        {% include 'mainapp/include/newnav.html' %}
+
+        <div class="container">
+            
+                <form id="fm" name="fm" method="post" action="/Post_send/">
+                    {% csrf_token %}
+                    <br><br>
+                    <h3 class="title">게시글 작성하기</h3>
+                    <hr>
+                    <br>
+                    <table style="width: 90%;">
+                        <tr>
+                            <th style="width: 10%;"> </th>
+                            <td style="width: 50%;"><input type="text" name="title" size="25" style="height: 35px; width: 100%; font-size: 15px;" required placeholder="    제목을 입력해 주세요."></td>
+        
+                            <th style="width: 1%;"></th> 
+                            <td style="width: 20%;">
+                                <select name="category" style="width: 100%; font-size: 15px; padding: 5px;">
+                                    <option value="Seoul">Seoul</option>
+                                    <option value="match">match</option>
+                                    <option value="Gwangju">Gwangju</option>
+                                    <option value="Busan">Busan</option>
+                                </select>
+                            </td>
+        
+                            
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td colspan="3">
+                                <br>
+                                <textarea name="content" rows="20" cols="55" style="width: 100%; font-size: 15px;" required placeholder="     내용을 입력하세요."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="button-row">
+                            <td colspan="4" style="text-align: right;">
+                                <input type="button" value="글 작성" class="w-btn w-btn-gra1"  onclick="oneSelect()"> 
+                                <input type="button" value="뒤로 가기" class="w-btn w-btn-gra1" onclick="history.back()">
+        
+                            </td>
+                        </tr>
+                    </table>
+                   
+                    
+                </form>
+        
+            
+
+
+
+
+
+        </div>  
+    </div>
+          
+    <!-- js파일불러오기 -->
+    <script src="/static/js/user.js"></script>
+</body>
+</html>
