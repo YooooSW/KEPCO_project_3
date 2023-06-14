@@ -88,6 +88,12 @@ def board(request) :
                   "mainapp/board.html",
                   {})
 
+# 게시물 작성
+def article(request) :
+    return render(request,
+                  "mainapp/article.html",
+                  {})
+
 # MY_PAGE
 def my_page(request) :
     return render(request,
