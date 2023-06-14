@@ -69,6 +69,15 @@ urlpatterns = [
 
     ### http://127.0.0.1:8000/my_page
     path('my_page/', views.my_page),
+<<<<<<< HEAD
     
+=======
+
+    ### http://127.0.0.1:8000/map
+    path('map/', views.map),
+
+    ### http://127.0.0.1:8000/map
+    path('map_api/', views.map_api),
+>>>>>>> d4697b441f2352123a6bc04a483c5d1849a7225b
 ]
 

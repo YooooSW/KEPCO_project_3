@@ -107,6 +107,18 @@ def my_page(request) :
                   {})
     
 
+# MAP
+def map(request) :
+    return render(request,
+                  "mainapp/map.html",
+                  {})
+
+# MAP
+def map_api(request) :
+    return render(request,
+                  "mainapp/map_api.html",
+                  {})
+
 import json
 def car_repair_price(request):
     if request.method == 'POST' and request.FILES.get('image'):
