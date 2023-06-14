@@ -15,32 +15,33 @@
     <div class="form-box">
         <i class="fa-solid fa-arrow-left" id="back-arrow" value="뒤로돌아가기" onclick="back()"></i> 
         <a href="/index"><img class="form-img" src="/static/img/logo.png"></a>
-        <form>
+        <form method="POST">
+            {% csrf_token %}
             <div class="input-group">
                 
                 <div class="input-field">
                     <i class="fa-solid fa-user" id="id-icon"></i>
-                    <input type="text" placeholder="아이디">
+                    <input name="user_id" type="text" placeholder="아이디">
                 </div>
                 <div class="input-field">
                     <i class="fa-solid fa-lock" id="pwd-icon"></i>
-                    <input type="password" placeholder="비밀번호">
+                    <input name="user_pass1" type="password" placeholder="비밀번호">
                 </div>
                 <div class="input-field">
                     <i class="fa-solid fa-lock" id="pwd-icon"></i>
-                    <input type="password" placeholder="비밀번호 재확인">
+                    <input name="user_pass2" type="password" placeholder="비밀번호 재확인">
                 </div>
                 <div class="input-field">
                     <i class="fa-solid fa-user" id="pwd-icon"></i>
-                    <input type="text" placeholder="닉네임">
+                    <input name="user_name" type="text" placeholder="닉네임">
                 </div>
                 <div class="input-field">
                     <i class="fa-solid fa-envelope" id="pwd-icon"></i>
-                    <input type="email" placeholder="본인확인 이메일">
+                    <input name="user_email" type="email" placeholder="본인확인 이메일">
                 </div>
                 <div class="input-field">
                     <i class="fa-solid fa-phone" id="pwd-icon"></i>
-                    <input type="tel" placeholder="전화번호">
+                    <input name="user_phon" type="tel" placeholder="전화번호">
                 </div>
             </div>    
         </form>
