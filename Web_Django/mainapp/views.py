@@ -65,6 +65,11 @@ def board(request) :
                   "mainapp/board.html",
                   {})
 
+# MY_PAGE
+def board(request) :
+    return render(request,
+                  "mainapp/my_Page.html",
+                  {})
 
 import json
 def car_repair_price(request):
