@@ -1,0 +1,231 @@
+/* 게시판 페이지 css, table코드를 사용하지않음 */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: /*'Black Han Sans',*/ 'poppins', sans-serif; 
+    /* 폰트 */
+}
+
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50vh;
+    
+}
+h3{
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+hr{
+    width: 50%;
+    margin-left: 25%;
+}
+
+.image-upload input{
+    padding: 10px 25px;
+    font-size: 20px;
+    font-weight: 500;
+    border: none;
+    outline: none;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    background-color: #FF4380;
+    margin: 10px 0 15px 0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.image-upload button{
+    padding: 10px 25px;
+    font-size: 20px;
+    font-weight: 500;
+    border: none;
+    outline: none;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    background-color: #FF4380;
+    margin: 10px 0 15px 0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+/* -----------드래그 앤 드롭-----------  */
+.drag-area{
+    border: 2px dashed rgb(89, 89, 89);
+    height: 500px;
+    width: 700px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.drag-area.active{
+    border: 2px solid rgb(89, 89, 89);
+
+}
+.drag-area .icon{
+    font-size: 100px;
+    color: black;
+}
+.drag-area h2{
+    font-size: 30px;
+    font-weight: 600;
+    color: black;
+}
+.drag-area span{
+    font-size: 30px;
+    font-weight: 600;
+    color: black;
+    margin: 10px 0 15px 0;
+}
+.drag-area button{
+    padding: 10px 25px;
+    font-size: 20px;
+    font-weight: 500;
+    border: none;
+    outline: none;
+    text-align: center;
+    color: black;
+    background-color: #FF4380;
+    margin: 10px 0 15px 0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+
+.drag-area img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+
+}
+
+
+
+
+/* --------해더 nav--------------- */
+.header{
+    height: 15vh;
+    width: 100%;
+    /* 배경높이 조절 */
+    background: linear-gradient(59deg, rgba(255,67,128,1) 0%, rgba(149,88,165,1) 44%, rgba(55,84,123,1) 100%); 
+    background-size: cover;
+    background-position: center;
+   
+}
+
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 7%;
+
+}
+
+.logo{
+    width: 130px;
+    cursor: pointer; /*마우스 올렸을때 마우스 커서를 손모양으로 바꿔줌*/
+}
+
+.nav-links li{
+    list-style: none; /* li태그의 밑줄을 없애고 앞에 원도 떼어버림(글자만 나타나게) */
+    display: inline-block; /* block을 inline-block으로 세로로 정렬되어있던 li를 가로로 정렬하는 기능 */
+    margin: 10px 30px;
+}
+
+.nav-links li a{
+    text-decoration: none;
+    color: white;
+}
+
+.login-btn{
+    background: white;
+    color: black;
+    padding: 8px 20px;
+    border-radius: 20px;
+    text-decoration: none; /* 밑줄 없애기 */
+    font-size: 14px;
+}
+
+.container{
+    padding: 0 5%;  
+}
+
+.header h1{
+    font-size: 4vw;
+    font-weight: 500;
+    color: white;
+    text-align: center;
+    padding-top: 8%;
+}
+
+/* -----------------for small screen devices--------------------- */
+@media only screen and (max-width: 700px){
+    .logo{
+        position: fixed;
+        top: 4%;
+        left: 7%;
+    }
+    nav{
+        position: fixed;
+        top: 0;
+        z-index: 100;
+        display: inline-block;
+        width: 100%;
+        padding: 100px 7% 0;
+        background: #5D5A98;
+        text-align: right;
+        max-height: 100px;
+        overflow: hidden;
+        transition: max-height 0.5s;
+    }
+    nav .nav-links li{
+        margin: 10px 0;
+        display: block;
+    }
+
+    .login-btn{
+        margin: 15px 0 30px;
+        display: inline-block;
+    }
+
+    nav .fa-bars{
+        display: block;
+        position: fixed;
+        top: 4%;
+        right: 7%;
+        color: #FF4380;
+        font-size: 28px;
+    }
+    .active::after{
+        left: -40px;
+        transform: translate(0, 50%);
+        bottom: 50%;
+    }
+    .hidemenu{
+        max-height: 300px;
+    }
+
+    .header h1{
+        padding-top: 200px;
+        font-size: 7vw;
+    }
+
+    .img-input{
+        width: 90%;
+        margin: 30px auto;
+        padding: 20px 10px 30px;
+        border-radius: 5px;
+        position: relative;
+    }
+
+    .img-input form{
+        display: block;
+    }
+    
+    
+}
