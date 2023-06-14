@@ -4,41 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" type= "text/css" href ="/static/css/yun.css">
+
 
     <!-- header부분 -->
     <link rel="stylesheet" type="text/css" href="/static/css/header.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/mypage.css">
+
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins&display=swap">
     <script type="text/javascript" src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-    <style>
-        .table_my_page {
-            border-collapse: collapse;
-            width: 100%;
-            margin: 0 auto;
-        }
-    
-        th, td {
-            border: 1px solid #dddddd;
-            padding: 8px;
-            text-align: left;
-        }
-    
-        th {
-            background-color: #f2f2f2;
-        }
-        .btn-img-row {
-            display: flex;
-            flex-direction: row;
-        }
-        .btn-img-row th {
-            width: calc(100% - 200px);
-        }
-        .buttons {
-            margin: 10px;
-        }
-        
-    </style>
     
 </head>
 <body>
@@ -46,9 +20,9 @@
     {% include 'mainapp/include/newnav.html' %}
         <div class="hero">
             <div class = "btn-box">
-                <button id="btn1" onclick="openHTML()"><i class="fa-brands fa-html5"></i>정보 수정</button>
-                <button id="btn2" onclick="openCSS()"><i class="fa-brands fa-css3-alt"></i>이력 관리</button>
-                <button id="btn3" onclick="openJAVASCRIPT()"><i class="fa-brands fa-codepen"></i>회원 탈퇴</button>
+                <button id="btn1" onclick="openHTML()"><i class="fa-solid fa-user-pen"></i>정보 수정</button>
+                <button id="btn2" onclick="openCSS()"><i class="fa-solid fa-table-list"></i>이력 관리</button>
+                <button id="btn3" onclick="openJAVASCRIPT()"><i class="fa-solid fa-lock"></i>회원 탈퇴</button>
             </div>
 
 
@@ -64,8 +38,8 @@
                                     <div class="btn-img-row">
                                         <img src="/static/img/r_3.png" alt="image">
                                         <div class="buttons">
-                                            <div style="display: flex; flex-direction: row;"><button>사진 변경</button></div>
-                                            <div style="display: flex; flex-direction: row;"><button>사진 삭제</button></div>
+                                            <div class="img-btn" style="display: flex; flex-direction: row;"><button>사진 변경</button></div>
+                                            <div class="img-btn" style="display: flex; flex-direction: row;"><button>사진 삭제</button></div>
                                         </div>
                                     </div>
                                 </td>

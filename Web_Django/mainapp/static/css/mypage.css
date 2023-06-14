@@ -1,0 +1,140 @@
+.hero{
+    width:  80%;
+    height:  800px;
+    position: relative;
+    margin: 100px auto;
+    overflow: hidden;
+}
+
+/* .img-btn{
+
+  appearance: none;
+    text-decoration: none;
+    background: #FF4380;
+    width: 100%;
+    margin: 60px auto;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 20px; 
+} */
+
+.btn-box{
+    display: flex;
+    border-bottom: 1px solid #ccc;
+}
+.btn-box button{
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    margin-right: 50px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+.btn-box button .fa-html5,
+.btn-box button .fa-css3-alt,
+.btn-box button .fa-codepen {
+    margin-right: 20px;
+}
+
+.btn-box button:hover .fa-html5,
+.btn-box button:hover .fa-css3-alt,
+.btn-box button:hover .fa-codepen {
+    color: #ff7846;
+}
+
+.content-right img{
+    width: 350px;
+}
+/* display: flex; 제거함 */
+.content {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    margin: 5% auto;
+    position: absolute;
+    transform: translateX(100%);
+    transition: 0.3s;
+
+  }
+  
+.content-left{
+    flex-basis: 50%;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+.content-left p{
+    font-size: 13px;
+    text-align: 30px 0;
+}
+
+.content-left a{
+    width: 150px;
+    display: block;
+    padding: 8px 5px;
+    border-radius: 20px;
+    text-decoration: none;
+    background-color: #ff7846;
+    color: #fff;
+    text-align: center;
+}
+
+.content-right{
+    flex-basis: 50%;
+    text-align: center;
+}
+
+#content1{
+    transform: translateX(0px);
+    width: 100%;
+
+}
+
+.dynamic-width th {
+    width: auto;
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+
+
+.table_my_page {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0 auto;
+}
+
+th, td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+.btn-img-row {
+    display: flex;
+    flex-direction: row;
+}
+.btn-img-row th {
+    width: calc(100% - 200px);
+}
+.buttons {
+    margin: 10px;
+}
+
+.fa-user-pen, .fa-table-list{
+    color: rgb(255, 173, 203);
+    margin-right: 2px;
+}
+.fa-lock{
+    color: rgb(255, 173, 203);
+    margin-right: 3px;
+}
