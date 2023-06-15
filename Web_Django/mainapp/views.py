@@ -5,6 +5,7 @@ from django.utils import timezone
 import cv2
 import numpy as np
 import base64
+from django.contrib import auth
 
 from .models import User, User_img, User_service, Provision, Provision_history, Naver_account, google_account, Kakao_account, Category, Community, Comment 
 
@@ -68,7 +69,7 @@ def Ssign_up(request) :
                 user_pass=request.POST['user_pass1'],
                 user_phon=request.POST['user_phon'],
 		    )
-            auth.login(request, user)
+            auth.login(request, user, backend='django.contrib.auth.backends.ModelBackend')
             return render(request,
                         "mainapp/login/success_signup.html",
                         {})
