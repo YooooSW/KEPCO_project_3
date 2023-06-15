@@ -1,9 +1,10 @@
 .hero{
-    width:  80%;
+    width:  60%;
     height:  800px;
     position: relative;
     margin: 100px auto;
     overflow: hidden;
+    
 }
 
 /* .img-btn{
@@ -18,6 +19,22 @@
     font-size: 20px; 
 } */
 
+.img-btn{
+    display: flex; 
+    flex-direction: row;
+    margin-bottom: 15px;
+    position: relative;
+    border: none;
+    width: 100%;
+    border-radius: 5px;
+    color: #ffffff;
+    background-color: #ff7846;
+    font-size:20px; 
+    padding:10px 10px;
+}
+button{
+    cursor: pointer;
+}
 .btn-box{
     display: flex;
     border-bottom: 1px solid #ccc;
@@ -101,9 +118,6 @@
     text-overflow: ellipsis;
 }
 
-
-
-
 .table_my_page {
     border-collapse: collapse;
     width: 100%;
@@ -127,7 +141,8 @@ th {
     width: calc(100% - 200px);
 }
 .buttons {
-    margin: 10px;
+    margin-left: 20px;
+    margin-top: 10px;
 }
 
 .fa-user-pen, .fa-table-list{
@@ -137,4 +152,19 @@ th {
 .fa-lock{
     color: rgb(255, 173, 203);
     margin-right: 3px;
+}
+
+/* ------check 아이콘--------- */
+.fa-check{
+    color: rgb(0, 205, 0);
+}
+
+
+/* ------비밀번호 변경 줄------ */
+
+.ch-pwd-row{
+    width: 50%;
+}
+.ch-pwd-row .img-btn{
+    width: 30%;
 }
