@@ -47,17 +47,17 @@ def login_form(request) :
 # 로그인 성공
 def login(request) :
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = AuthenticationForm(request, request.POST) # 먼저 request 인자를 받아야함
         if form.is_valid():
-            user = form.save()
-            auth.login(request, user)
+            auth_login(request, form.get_user())
             return render(request, "mainapp/index.html", {})
-        return render(request,
-                  "mainapp/login/sign_up.html",
-                  {})
     else:
-        form = UserCreationForm()
-        return render(request, "mainapp/login/sign_up.html", {'form' : form})
+        form = AuthenticationForm()
+        
+    context = {
+        'form' : form,
+    }    
+    return render(request, "mainapp/login/loginform.html", context)
 
 #  아이디 찾기
 def search_id(request) :
