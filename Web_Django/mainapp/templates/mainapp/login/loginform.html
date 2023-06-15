@@ -1,50 +1,61 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="login.css">
-    
+    <link rel="stylesheet" href="login.css" />
+
     {% include 'mainapp/include/css.html' %}
-</head>
-<body>
-   <div class="container2">
-    <div class="form-box">
-        <i class="fa-solid fa-arrow-left" id="back-arrow" onclick="back()"></i> 
-        <a href="/index"><img class="form-img" src="/static/img/logo.png"></a>
-        <form>
-            <div class="input-group">
-                <div class="input-field">
-                    <i class="fa-solid fa-user" id="id-icon"></i>
-                    <input type="text" placeholder="아이디" required>
-                </div>
-            
-                <div class="input-field">
-                    <i class="fa-solid fa-lock" id="pwd-icon"></i>
-                    <input type="password" placeholder="비밀번호" required>
-                </div>
-                <div class="form-btn">
-                    <button>LOGIN</button>
-                </div>
-                <span>
-                    <a href="/search_id">아이디 찾기</a> | <a href="/search_pwd">비밀번호 찾기</a>
-                </span>
-                <p>아직 계정이 없으신가요? <a href="/sign_up">회원가입하기</a></p>
+  </head>
+  <body>
+    <div class="container2">
+      <div class="form-box">
+        <i class="fa-solid fa-arrow-left" id="back-arrow" onclick="back()"></i>
+        <a href="/index"><img class="form-img" src="/static/img/logo.png" /></a>
+        <form method="POST" action="/login/">
+          {% csrf_token %} {% include "mainapp/login/form_errors.html" %}
+          <div class="input-group">
+            <div class="input-field">
+              <i class="fa-solid fa-user" id="id-icon"></i>
+              <input
+                type="text"
+                name="username"
+                placeholder="아이디"
+                required
+              />
             </div>
 
+            <div class="input-field">
+              <i class="fa-solid fa-lock" id="pwd-icon"></i>
+              <input
+                type="password"
+                name="password"
+                placeholder="비밀번호"
+                required
+              />
+            </div>
+            <div class="form-btn">
+              <button>LOGIN</button>
+            </div>
+            <span>
+              <a href="/search_id">아이디 찾기</a> |
+              <a href="/search_pwd">비밀번호 찾기</a>
+            </span>
+            <p>아직 계정이 없으신가요? <a href="/sign_up">회원가입하기</a></p>
+          </div>
         </form>
+      </div>
     </div>
-   </div>
 
     <script src="login.js"></script>
-     <!-- 페이지 뒤로가기 -->
-     <script>
-        const back = () =>{
-            window.history.back();
-        }
+    <!-- 페이지 뒤로가기 -->
+    <script>
+      const back = () => {
+        window.history.back();
+      };
     </script>
-</body>
+  </body>
 </html>

@@ -48,6 +48,9 @@ urlpatterns = [
 
     ### http://127.0.0.1:8000/login_form
     path('login_form/', views.login_form),
+    
+    ### http://127.0.0.1:8000/login_form
+    path('login/', views.login),
 
     ### http://127.0.0.1:8000/search_id
     path('search_id/', views.search_id),
