@@ -28,7 +28,7 @@ urlpatterns = [
     path('index/', views.index),
 
      ### http://127.0.0.1:8000/login_index
-    path('login_index/', views.login_index),
+    # path('login_index/', views.login_index),
     
     path('Create_Posts_page/', views.Create_Posts_page),
 

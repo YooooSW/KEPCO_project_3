@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.naver',
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.kakao',
+    # 패스워드 관련
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -173,7 +175,7 @@ AUTHENTICATION_BACKENDS = (
     # 'social_core.backends.naver.NaverOAuth2', # Naver
 )
 
-SITE_ID = 2
+SITE_ID = 3
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
@@ -207,3 +209,5 @@ SOCIALACCOUNT_PROVIDERS = {
         }
     },
 }
+
+AUTH_USER_MODEL = 'mainapp.User'

@@ -5,20 +5,19 @@ from django.utils import timezone
 import cv2
 import numpy as np
 import base64
-
-from .models import User, User_img, User_service, Provision, Provision_history, Naver_account, google_account, Kakao_account, Category, Community, Comment 
+from django.contrib import auth
+from django.contrib.auth import login as auth_login
+from django.contrib.auth import authenticate
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from .forms import CustomUserCreationForm
+from .models import User, User_img, User_service, Provision, Provision_history, Naver_account, google_account, Kakao_account, Category, Community, Comment
+# from .forms import SignupForm
 
 # Create your views here.
 
 # 메인페이지
 def index(request):
     return render(request, "mainapp/index.html", {})
-
-# 로그인 후 메인페이지
-def login_index(request) :
-    return render(request,
-                  "mainapp/login_index.html",
-                  {})
 
 # 게시글 작성 페이지
 def Create_Posts_page(request):
@@ -44,6 +43,21 @@ def login_form(request) :
     return render(request,
                   "mainapp/login/loginform.html",
                   {})
+    
+# 로그인 성공
+def login(request) :
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            auth.login(request, user)
+            return render(request, "mainapp/index.html", {})
+        return render(request,
+                  "mainapp/login/sign_up.html",
+                  {})
+    else:
+        form = UserCreationForm()
+        return render(request, "mainapp/login/sign_up.html", {'form' : form})
 
 #  아이디 찾기
 def search_id(request) :
@@ -66,35 +80,28 @@ def sign_up(request) :
 # 회원가입 성공
 def Ssign_up(request) :
     if request.method == "POST" :
-        if request.POST['user_pass1'] == request.POST['user_pass2']:
-            user = User.objects.create( 
-                user_id=request.POST['user_id'], 
-                user_name=request.POST['user_name'], 
-                user_email=request.POST['user_email'],
-                user_pass=request.POST['user_pass1'],
-                user_phon=request.POST['user_phon'],
-		    )
-            auth.login(request, user)
-            return render(request,
-                        "mainapp/login/success_signup.html",
-                        {})
-        else :
-            msg = """
-                <script type="text/javascript">
-                    alert("비밀번호가 다릅니다.!!");
-                    location.href = "/sign_up/";
-                </script>
-            """    
-            return HttpResponse(msg)
-    else :
-        msg = """
-            <script type="text/javascript">
-                alert("잘못된 접근입니다.");
-                location.href = "/sign_up/";
-            </script>
-        """    
-        return HttpResponse(msg)
-
+        form = CustomUserCreationForm(request.POST)
+        if form.is_valid() :
+            form.save()
+            print(form)
+            return redirect('/login_form/')
+        # else :
+        #     print(form.is_valid())
+        #     print(form)
+        #     return redirect('')
+    else : 
+        form = CustomUserCreationForm()
+    context = {
+        'form': form
+    }
+    msg = """
+        <script type="text/javascript">
+            alert('잘못된 접근입니다.');
+            location.href = "/sign_up/";
+        </script>
+    """
+    return HttpResponse(msg)
+#    return render(request, "mainapp/login/sign_up.html", context)
 
 # 게시판
 def board(request) :

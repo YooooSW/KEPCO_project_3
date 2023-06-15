@@ -23,3 +23,8 @@ pip install google-auth-oauthlib
 pip install google-auth-httplib2
 pip install --upgrade google-api-python-client
 pip install social-auth-app-django
+
+# 패스워드 기능
+
+pip install django-extensions
+pip install ipython
