@@ -1,11 +1,5 @@
 /* 게시판 페이지 css, table코드를 사용하지않음 */
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: /*'Black Han Sans',*/ 'poppins', sans-serif; 
-    /* 폰트 */
-}
+
 .table-box{
     margin: 50px auto;
 }
@@ -19,7 +13,6 @@
     color: #555;
     font-size: 13px;
     box-shadow: 0 1px 4px 0 rgba(0, 0, 50, 0.5);
-    
 }
 
 .table-cell{
@@ -103,14 +96,6 @@ li{
 }
 
 
-
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: /*'Black Han Sans',*/ 'poppins', sans-serif; 
-    /* 폰트 */
-}
 
 
 

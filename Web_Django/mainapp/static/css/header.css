@@ -2,22 +2,18 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family:  'Black Han Sans','poppins', sans-serif; 
-    /* 폰트 */
+    
 }
 
 
-.nav-links li{
-    font-family: 'Black Han Sans', 'poppins', sans-serif;  
-}
 .header{
     height: 15vh;
     width: 100%;
     /* 배경높이 조절 */
     background: linear-gradient(59deg, rgba(255,67,128,1) 0%, rgba(149,88,165,1) 44%, rgba(55,84,123,1) 100%);
-    
     background-size: cover;
     background-position: center;
+    font-family:  'Black Han Sans','poppins', sans-serif; 
 }
 
 nav{
