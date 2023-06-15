@@ -7,23 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>::: 차 수리 견적 계산 :::</title>
     <!-- css파일 불러오기 -->
+    {% include 'mainapp/include/css.html' %}
+    <link rel="stylesheet" type="text/css" href="/static/css/header.css">
     <link rel="stylesheet" type="text/css" href="/static/css/result.css">
-    <link rel="stylesheet" type="text/css" href="/static/css/board.css">
-    <style>
-    .file-input {
-        width: 25%;
-    }
-    input::-webkit-file-upload-button {
-    display: none;
-    }
-    input {
-    background-color: blue;
-    }
-    #imagePreview img {
-    max-width: 100%;
-    max-height: 100%;
-  }
-</style>
+
+    <script>
+      
+    
+
+    </script>
 </head>
 <body>
     <div class="header">
@@ -35,7 +27,7 @@
                   <form id="imageForm" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <label for="imageInput" class="drag-area">
-                      <input class="drag-area"  type="file" name="image" id="imageInput" accept="image/*" required onchange="updateFileName(event)" style="background-color:aliceblue">
+                      <input class="drag-area"  type="file" name="image" id="imageInput" accept="image/*" required onchange="updateFileName(event)">
                       <div id="imagePreview"></div>
                     </label>
 

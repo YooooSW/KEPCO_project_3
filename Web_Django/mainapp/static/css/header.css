@@ -2,16 +2,20 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family:  'Black Han Sans','poppins', sans-serif; 
     /* 폰트 */
-    font-family: 'Black Han Sans', 'poppins', sans-serif; 
-    
 }
-/* css초기화 코드 */
 
+
+.nav-links li{
+    font-family: 'Black Han Sans', 'poppins', sans-serif;  
+}
 .header{
-    min-height: 100vh;
+    height: 15vh;
     width: 100%;
+    /* 배경높이 조절 */
     background: linear-gradient(59deg, rgba(255,67,128,1) 0%, rgba(149,88,165,1) 44%, rgba(55,84,123,1) 100%);
+    
     background-size: cover;
     background-position: center;
 }
@@ -36,13 +40,13 @@ nav{
 }
 
 .nav-links li a{
-    text-decoration: none; 
+    text-decoration: none;
     color: white;
 }
-
 .nav-links li a:hover{
     color: #FF4380;
 }
+
 
 .login-btn{
     background: white;
@@ -65,148 +69,85 @@ nav{
     padding-top: 8%;
 }
 
-/* 배경이미지 */
-.custom-shape-divider-bottom-1686114266 {
+/* --------------로그인 상태의 유저가 프로필 사진 클릭시 나타나는 drop-down profile과 관련있는 css시작------------- */
+.user-pic{
+    width: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-left: 30px;
+}
+.sub-menu-wrap{
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
+    top: 11%; 
+    /* 위에서 얼마나 떨어져 있는지 */
+    right: 6.5%;
+    /* 오른쪽으로 얼마나 떨어져 있는지 */
+    width: 320px;
+    max-height: 0px;  /* 0px이면  프로필 창이 안보이고 400px인 경우 나타남*/
     overflow: hidden;
-    line-height: 0;
-    transform: rotate(180deg);
+    transition: max-height 0.5s;
 }
-
-.custom-shape-divider-bottom-1686114266 svg {
-    position: relative;
-    display: block;
-    width: calc(120% + 1.3px);
-    height: 157px;
-}
-
-.custom-shape-divider-bottom-1686114266 .shape-fill {
-    fill: #FFFFFF;
+.sub-menu-wrap.open-menu{
+    max-height: 400px;
 }
 
 
-/* --------------test2------------------- */
-.test2{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    grid-gap: 30px;
-    margin-bottom: 30px; /*bottom에 30px공간 생김*/
-
+.sub-menu{
+    background: whitesmoke;
+    padding: 20px;
+    margin: 5px;
 }
-
-.test2 div img{
-    width: 100%;
-    border-radius: 10px;
+.user-info{
+    display: flex;
+    align-items: center;
 }
-
-.test2 h3{
-    font-weight: 600;
-    margin-top: 10px;
-}
-
-
-/* --------------comm------------------ */
-.comm{
-    margin: 80px 0;
-    background-image: linear-gradient(to right, white,transparent), url(/static/img/community.jpg);
-    background-size: cover;
-    background-position: center;
-    border-radius: 5px;
-    padding: 5%;
-    color: black;
-}
-
-.comm h3{
-    font-size: 4vw;
-    line-height: 5.3vw;
+.user-info h3{
     font-weight: 500;
 }
-
-.comm p{
-    font-size: 17px;
-    margin: 10px 0;
+.user-info img{
+    width: 60px;
+    border-radius: 50%;
+    margin-right: 15px;
 }
 
-.comm-btn{
-    background: #37547B;
-    color: white;
-    text-decoration: none;
-    padding: 12px 30px;
-    border-radius: 5px;
-    margin-top: 20px;
-    display: inline-block;
-}
-/* 커뮤니티로 이동하는 버튼 */
-
-.upload-btn{
-    text-decoration: none;
-    background: #FF4380;
-    width: 70%;
-    max-width: 300px;
-    display: block;
-    text-align: center;
-    margin: 60px auto;
-    padding: 15px;
-    border-radius: 30px;
-    font-size: 20px; 
-}
-.start-btn{
-    text-decoration: none;
-    color: white;
-}
-
-/* 파일 업로드하는 버튼 꾸미기 */
-
-#file {
-    display: none;
-  }
-  /* input type="file"의 경우 자동으로 버튼이랑 파일이름이 나오는게 나타나는 데 이걸 없애기 위해 display:none; */
-
-
-/* ------------footer------------ */
-
-.footer{
-    margin: 80px 0 10px;
-    text-align: center;
-}
-
-.footer a{
-    text-decoration: none;
-    color: #FF4380;
-    font-size: 22px;
-    margin: 0 10px;
-}
-
-.footer hr{
-    background: #999;
+.sub-menu hr{
+    border: 0;
     height: 1px;
     width: 100%;
-    border: 0;
-    margin: 20px 0;
+    background: #ccc;
+    margin: 15px 0 5px;
+}
+.sub-menu-link{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #525252;
+    margin: 12px 0;
 }
 
-.footer p{
-    padding-bottom: 10px;
+.sub-menu-link p{
+    width: 100%;
 }
+
+.sub-menu-link span{
+    font-size: 25px; /* > 사이즈 */
+    transition: transform 0.3s; /* > 움직이는 속도 조절 */
+}
+
+.sub-menu-link:hover span{
+    transform: translateX(5px);  /* 마우스 올려놓을 시 >가 움직이는 x좌표 거리  */
+    color: #FF4380;
+}
+.sub-menu-link:hover p{
+    color: #FF4380;
+}
+/* ------------------------------------------------------------------------------------------ */
+
+
 
 .active{
     position: relative;
 }
-
-/* .active::after{
-    content: '';
-    background: #ffff;
-    width: 25px;
-    height: 2px;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: -12px;
-    border-radius: 2px;
-} */
 
 /* 큰 미디어 화면에서는 메뉴 아이콘이 나타나지 않도록 none */
 nav .fa-bars{
@@ -279,4 +220,24 @@ nav .fa-bars{
     }
     
     
+}
+
+/* 게시물 작성 수정작업 */
+.board{
+    margin-top: 17px;
+}
+
+.p-table1{
+    margin-top: 15px;
+}
+
+.p-table1 select{
+    width: 200px; 
+    font-size: 20px; 
+    padding: 5px;
+}
+
+
+.p-table2{
+    margin-top: 20px;
 }

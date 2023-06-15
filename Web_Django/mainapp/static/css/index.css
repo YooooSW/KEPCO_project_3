@@ -1,0 +1,341 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Black Han Sans', 'poppins', sans-serif; 
+    /* 폰트 */
+}
+h2{
+    font-family:  'poppins', sans-serif; 
+}
+.container5{
+    width: 100%;
+    height: 100vh;
+   
+}
+
+.slides{
+    width: 100%;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    color: white;
+    scroll-snap-align: start;
+   
+}
+
+.slides img{
+    width: 350px;
+
+}
+
+.slides h2{
+    font-size: 50px;
+    font-weight: 600;
+    max-width: 650px;
+}
+
+.slide1{
+    background: linear-gradient(297deg, rgba(89,152,140,1) 0%, rgba(114,208,190,1) 41%, rgba(196,252,240,1) 100%);
+}
+
+.slide2{
+    background: linear-gradient(56deg, rgba(255,67,128,1) 0%, rgba(255,167,218,1) 48%, rgba(216,181,255,1) 100%);
+}
+.slide3{
+    background: linear-gradient(90deg, rgba(47,72,88,1) 0%, rgba(55,84,123,1) 35%, rgba(93,90,152,1) 100%);
+}
+
+.header{
+    min-height: 100vh;
+    width: 100%;
+    background: linear-gradient(59deg, rgba(255,67,128,1) 0%, rgba(149,88,165,1) 44%, rgba(55,84,123,1) 100%);
+    background-size: cover;
+    background-position: center;
+}
+
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 7%;
+
+}
+
+.logo{
+    width: 130px;
+    cursor: pointer; /*마우스 올렸을때 마우스 커서를 손모양으로 바꿔줌*/
+}
+
+.nav-links li{
+    list-style: none; /* li태그의 밑줄을 없애고 앞에 원도 떼어버림(글자만 나타나게) */
+    display: inline-block; /* block을 inline-block으로 세로로 정렬되어있던 li를 가로로 정렬하는 기능 */
+    margin: 10px 30px;
+}
+
+.nav-links li a{
+    text-decoration: none; 
+    color: white;
+}
+
+.nav-links li a:hover{
+    color: #FF4380;
+}
+
+.login-btn{
+    background: white;
+    color: black;
+    padding: 8px 20px;
+    border-radius: 20px;
+    text-decoration: none; /* 밑줄 없애기 */
+    font-size: 14px;
+}
+
+
+.header h1{
+    font-size: 4vw;
+    font-weight: 500;
+    color: white;
+    text-align: center;
+    padding-top: 8%;
+}
+
+/* 배경이미지 */
+.custom-shape-divider-bottom-1686727694 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1686727694 svg {
+    position: relative;
+    display: block;
+    width: calc(114% + 1.3px);
+    height: 148px;
+    transform: rotateY(180deg);
+}
+
+.custom-shape-divider-bottom-1686727694 .shape-fill {
+    fill: #FFFFFF;
+}
+
+
+.upload-btn{
+    text-decoration: none;
+    background: #FF4380;
+    width: 70%;
+    max-width: 300px;
+    display: block;
+    text-align: center;
+    margin: 60px auto;
+    padding: 15px;
+    border-radius: 30px;
+    font-size: 20px; 
+}
+.start-btn{
+    text-decoration: none;
+    color: white;
+}
+
+/* 파일 업로드하는 버튼 꾸미기 */
+
+#file {
+    display: none;
+  }
+  /* input type="file"의 경우 자동으로 버튼이랑 파일이름이 나오는게 나타나는 데 이걸 없애기 위해 display:none; */
+
+
+
+/* ------------footer------------ */
+
+.footer{
+    margin: 80px 0 10px;
+    text-align: center;
+}
+
+.footer a{
+    text-decoration: none;
+    color: #FF4380;
+    font-size: 22px;
+    margin: 0 10px;
+}
+
+.footer hr{
+    background: #999;
+    height: 1px;
+    width: 100%;
+    border: 0;
+    margin: 20px 0;
+}
+
+.footer p{
+    padding-bottom: 10px;
+}
+
+.active{
+    position: relative;
+}
+
+/* .active::after{
+    content: '';
+    background: #ffff;
+    width: 25px;
+    height: 2px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -12px;
+    border-radius: 2px;
+} */
+
+/* 큰 미디어 화면에서는 메뉴 아이콘이 나타나지 않도록 none */
+nav .fa-bars{
+    display: none;
+}
+
+
+/* -----------------for small screen devices--------------------- */
+@media only screen and (max-width: 700px){
+    .logo{
+        position: fixed;
+        top: 4%;
+        left: 7%;
+    }
+    nav{
+        position: fixed;
+        top: 0;
+        z-index: 100;
+        display: inline-block;
+        width: 100%;
+        padding: 100px 7% 0;
+        background: #5D5A98;
+        text-align: right;
+        max-height: 100px;
+        overflow: hidden;
+        transition: max-height 0.5s;
+    }
+    nav .nav-links li{
+        margin: 10px 0;
+        display: block;
+    }
+
+    .login-btn{
+        margin: 15px 0 30px;
+        display: inline-block;
+    }
+
+    nav .fa-bars{
+        display: block;
+        position: fixed;
+        top: 4%;
+        right: 7%;
+        color: #FF4380;
+        font-size: 28px;
+    }
+    .active::after{
+        left: -40px;
+        transform: translate(0, 50%);
+        bottom: 50%;
+    }
+    .hidemenu{
+        max-height: 300px;
+    }
+
+    .header h1{
+        padding-top: 200px;
+        font-size: 7vw;
+    }
+
+    .img-input{
+        width: 90%;
+        margin: 30px auto;
+        padding: 20px 10px 30px;
+        border-radius: 5px;
+        position: relative;
+    }
+
+    .img-input form{
+        display: block;
+    }
+    
+    
+}
+
+/* --------------로그인 상태의 유저가 프로필 사진 클릭시 나타나는 drop-down profile과 관련있는 css시작------------- */
+.user-pic{
+    width: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-left: 30px;
+}
+.sub-menu-wrap{
+    position: absolute;
+    top: 11%; 
+    /* 위에서 얼마나 떨어져 있는지 */
+    right: 6.5%;
+    /* 오른쪽으로 얼마나 떨어져 있는지 */
+    width: 320px;
+    max-height: 0px;  /* 0px이면  프로필 창이 안보이고 400px인 경우 나타남*/
+    overflow: hidden;
+    transition: max-height 0.5s;
+}
+.sub-menu-wrap.open-menu{
+    max-height: 400px;
+}
+
+
+.sub-menu{
+    background: whitesmoke;
+    padding: 20px;
+    margin: 5px;
+}
+.user-info{
+    display: flex;
+    align-items: center;
+}
+.user-info h3{
+    font-weight: 500;
+}
+.user-info img{
+    width: 60px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.sub-menu hr{
+    border: 0;
+    height: 1px;
+    width: 100%;
+    background: #ccc;
+    margin: 15px 0 5px;
+}
+.sub-menu-link{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #525252;
+    margin: 12px 0;
+}
+
+.sub-menu-link p{
+    width: 100%;
+}
+
+.sub-menu-link span{
+    font-size: 25px; /* > 사이즈 */
+    transition: transform 0.3s; /* > 움직이는 속도 조절 */
+}
+
+.sub-menu-link:hover span{
+    transform: translateX(5px);  /* 마우스 올려놓을 시 >가 움직이는 x좌표 거리  */
+    color: #FF4380;
+}
+.sub-menu-link:hover p{
+    color: #FF4380;
+}
