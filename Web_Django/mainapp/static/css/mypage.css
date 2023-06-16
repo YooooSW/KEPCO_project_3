@@ -1,5 +1,5 @@
 .hero{
-    width:  60%;
+    width:  50%;
     height:  800px;
     position: relative;
     margin: 100px auto;
@@ -37,7 +37,9 @@ button{
 }
 .btn-box{
     display: flex;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 2px solid #ccc;
+    width: 95%;
+    
 }
 .btn-box button{
     background: transparent;
@@ -48,6 +50,7 @@ button{
     margin-right: 50px;
     font-size: 20px;
     font-weight: bold;
+    
 }
 
 
