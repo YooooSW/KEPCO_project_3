@@ -11,7 +11,7 @@ from django.contrib.auth import logout as auth_logout
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from .forms import CustomUserCreationForm
-from .models import User, User_img, User_service, Provision, Provision_history, Naver_account, google_account, Kakao_account, Category, Community, Comment
+from .models import User, User_img, Provision, Provision_history, Naver_account, google_account, Kakao_account, Category, Community, Comment
 from django.contrib.auth import get_user_model
 # from .forms import SignupForm
 

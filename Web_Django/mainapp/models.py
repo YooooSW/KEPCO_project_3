@@ -73,28 +73,6 @@ class User_img(models.Model):
 
         managed = False
         
-class User_service(models.Model):
-    user_ser_num = IntegerField(primary_key=True)
-    username = models.ForeignKey(User,
-                                related_name='service_name',
-                                to_field="username",
-                                db_column="username",
-                                on_delete=models.CASCADE)
-    email = models.ForeignKey(User,
-                                unique=True,
-                                related_name='service_email',
-                                to_field="email",
-                                db_column="email",
-                                on_delete=models.CASCADE)
-
-    
-    
-    class Meta:
-        db_table = "USER_SERVICE"
-
-        app_label = "mainapp"
-
-        managed = False
         
 class Provision(models.Model):
     pro_code = CharField(primary_key=True, max_length=20)
