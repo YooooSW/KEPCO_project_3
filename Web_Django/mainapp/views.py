@@ -7,10 +7,12 @@ import numpy as np
 import base64
 from django.contrib import auth
 from django.contrib.auth import login as auth_login
+from django.contrib.auth import logout as auth_logout
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from .forms import CustomUserCreationForm
 from .models import User, User_img, User_service, Provision, Provision_history, Naver_account, google_account, Kakao_account, Category, Community, Comment
+from django.contrib.auth import get_user_model
 # from .forms import SignupForm
 
 # Create your views here.
@@ -59,11 +61,25 @@ def login(request) :
     }    
     return render(request, "mainapp/login/loginform.html", context)
 
+#  로그아웃
+def logout(request) : 
+    auth_logout(request)
+    return render(request, "mainapp/index.html", {})
+
 #  아이디 찾기
 def search_id(request) :
+
     return render(request,
                   "mainapp/login/id_search.html",
                   {})
+def forgot_id(request) :
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        user_view = get_user_model().object.get(email=email)
+        username = user_view.username
+    return render(request,
+                  "mainapp/login/forgot_id.html",
+                  {"username" : username})
 
 # 비밀번호 찾기
 def search_pwd(request) :
@@ -83,7 +99,9 @@ def Ssign_up(request) :
         form = CustomUserCreationForm(request.POST)
         if form.is_valid() :
             form.save()
-            print(form)
+            User_service.object.create(username=form.cleaned_data["username"],
+                                       email=form.cleaned_data["email"],
+                                       user_ser_id=form.cleaned_data["id"])
             return redirect('/login_form/')
         # else :
         #     print(form.is_valid())
