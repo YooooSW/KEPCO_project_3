@@ -13,7 +13,7 @@
 <body>
    <div class="container2">
     <div class="form-box">
-        <i class="fa-solid fa-arrow-left" id="back-arrow" onclick="back()"></i> 
+        <i class="fa-solid fa-arrow-left" id="back-arrow" onclick="location.href='/index'"></i> 
         <!-- 뒤로 가기위한 버튼 -->
         <a href="/index"><img class="form-img" src="/static/img/logo.png"></a>
         <form>
@@ -38,10 +38,10 @@
 
     <script src="login.js"></script>
     <!-- 페이지 뒤로가기 -->
-    <script>
+    {% comment %} <script>
         const back = () =>{
             window.history.back();
         }
-    </script>
+    </script> {% endcomment %}
 </body>
 </html>
