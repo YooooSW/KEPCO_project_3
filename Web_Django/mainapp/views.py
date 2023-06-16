@@ -99,9 +99,7 @@ def Ssign_up(request) :
         form = CustomUserCreationForm(request.POST)
         if form.is_valid() :
             form.save()
-            User_service.object.create(username=form.cleaned_data["username"],
-                                       email=form.cleaned_data["email"],
-                                       user_ser_id=form.cleaned_data["id"])
+
             return redirect('/login_form/')
         # else :
         #     print(form.is_valid())
