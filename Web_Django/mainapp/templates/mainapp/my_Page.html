@@ -8,38 +8,6 @@
 
     <!-- header부분 -->
     {% include 'mainapp/include/css.html' %}
-<<<<<<< HEAD
-    <link rel="stylesheet" type="text/css" href="/static/css/header.css" />
-    <link rel="stylesheet" type="text/css" href="/static/css/mypage.css" />
-  </head>
-  <body>
-    <div class="header">{% include 'mainapp/include/newnav.html' %}</div>
-    <div class="hero" id="testt">
-      <div class="btn-box">
-        <button id="btn1" onclick="openHTML()">
-          <i class="fa-solid fa-user-pen"></i>정보 수정
-        </button>
-        <button id="btn2" onclick="openCSS()">
-          <i class="fa-solid fa-table-list"></i>이력 관리
-        </button>
-        <button id="btn3" onclick="openJAVASCRIPT()">
-          <i class="fa-solid fa-lock"></i>회원 탈퇴
-        </button>
-      </div>
-
-      <div class="content" id="content1">
-        <div class="content-left">
-          <h2>마이페이지</h2>
-
-          <table class="table_my_page">
-            <tbody>
-              <tr>
-                <th>프로필 수정</th>
-                <td>
-                  <div class="btn-img-row">
-                    <div class="profile_img">
-                      <img src="/static/img/r_1.png" alt="image" />
-=======
     <link rel="stylesheet" type="text/css" href="/static/css/header.css">
     <link rel="stylesheet" type="text/css" href="/static/css/mypage.css">
     <link rel="stylesheet" type="text/css" href="/static/css/board.css">
@@ -83,24 +51,40 @@
 
                                 </td>
                             </tr>
+                            <form method="POST" action="/my_page/change_pwd/">
+                              {% csrf_token %}
                             <tr>
                                 <th>비밀번호 변경</th>
                                 <td>
+                                  <div class="error_message">
+                                    {% if messages %}
+	                                    {% for message in messages %}
+                                        {{ message.message }}
+                                      {% endfor %}
+                                    {% endif %}
+                                    {{error}}
+                                  </div>
                                     <div class="ch-pwd-row">
                                         <div style="display: flex; flex-direction: row;">
-                                            <input type="password" placeholder="현재 비밀번호">
+                                            <input type="password" name="password" placeholder="현재 비밀번호">
                                             <i class="fa-solid fa-check"></i>
                                         </div>
                                         <div style="display: flex; flex-direction: row;">
-                                            <input type="password" placeholder="변경할 비밀번호">
-                                            
-                                            <button class="img-btn">변경</button>
+                                            <input type="password" name="new_password1" placeholder="변경 비밀번호">
                                         </div>
+                                        <div style="display: flex; flex-direction: row;">
+                                          <input type="password" name="new_password2" placeholder="변경 비밀번호 재입력">
+                                        </div>
+                                        <div style="display: flex; flex-direction: row;">
+                                          <button class="img-btn">변경</button>
+                                        </div>
+
                                     </div>
                                     
                                     
                                 </td>
                             </tr>
+                            </form>
                         </tbody>
                     </table>
                     
@@ -172,7 +156,6 @@
                                 <div>▶</div>
                             </div>
                         </li>
->>>>>>> aa5be43dc0f4727b1e1318b4fb84f1ee4cb64134
                     </div>
                     <div class="buttons">
                       <button class="img-btn">사진 변경</button>
