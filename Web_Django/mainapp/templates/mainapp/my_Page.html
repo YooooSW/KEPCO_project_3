@@ -32,19 +32,22 @@
                     
                     <table class="table_my_page">
                         <tbody>
+                            <form action="/my_page/nickname/" method="POST">
+                                {% csrf_token %}
                             <tr>
                                 <th>닉네임 수정</th>
                                 <td>
 
                                     <div class="nick-row">
                                         <form>
-                                       <input type="text" value="{{user.nickname}}">
+                                       <input type="text" name="nickname" value="{{user.nickname}}">
                                        <button>닉네임 수정</button>
                                         </form>
                                     </div>
 
                                 </td>
                             </tr>
+                            </form>
                             <form method="POST" action="/my_page/change_pwd/">
                               {% csrf_token %}
                             <tr>

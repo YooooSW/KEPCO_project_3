@@ -38,32 +38,44 @@ urlpatterns = [
     
     # path('test/', views.test),
     path('login_form1/', views.login_form1),
-    # sns로그인 폼 연결
+    # sns로그인 폼 연결 (완료)
     ### http://127.0.0.1:8000/sns_login_form
     path('sns_login_form/', views.slogin_form),
+    # sns로그인 (부분완료)
     ### http://127.0.0.1:8000/sns_login_form
     path('sns_login_form/account/', include('allauth.urls')),
     # path('logout', LogoutApi.as_view(), name="logout"),
     # path('login/', include(login_patterns)),
 
+    # 로그인 페이지 이동 (완료)
     ### http://127.0.0.1:8000/login_form
     path('login_form/', views.login_form),
     
+    # 로그인 (완료)
     ### http://127.0.0.1:8000/login/
     path('login/', views.login),
     
+    # 로그아웃 (완료)
     ### http://127.0.0.1:8000/logout
     path('logout/', views.logout),
 
+    # 아이디 찾기 페이지 이동 (완료)
     ### http://127.0.0.1:8000/search_id
     path('search_id/', views.search_id),
+    
+    # 아이디 찾기 (완료)
     ### http://127.0.0.1:8000/forgot_id/
     path('forgot_id/', views.forgot_id),
 
+    # 비밀번호 찾기 페이지 이동
     ### http://127.0.0.1:8000/search_pwd
     path('search_pwd/', views.search_pwd),
     
-    # 마이페이지/비밀번호 수정
+    # 마이페이지/닉네임 수정 (완료)
+    ### http://127.0.0.1:8000/my_page/nickname
+    path('my_page/nickname/', views.nickname),
+    
+    # 마이페이지/비밀번호 수정 (완료)
     ### http://127.0.0.1:8000/my_page/change_pwd
     path('my_page/change_pwd/', views.change_pwd),
 
@@ -71,14 +83,15 @@ urlpatterns = [
     ### http://127.0.0.1:8000/sign_up
     path('sign_up/', views.sign_up),
 
-    #  회원가입
+    #  회원가입 (완료)
     ### http://127.0.0.1:8000/Ssign_up
     path('Ssign_up/', views.Ssign_up),
     
-    #  회원탈퇴
+    #  회원탈퇴 (완료)
     ### http://127.0.0.1:8000/delete
     path('delete/', views.delete),
 
+    # 게시판 페이지 이동
     ### http://127.0.0.1:8000/board
     path('board/', views.board),
     
@@ -88,12 +101,15 @@ urlpatterns = [
     ### http://127.0.0.1:8000/article
     path('article/', views.article),
 
+    # my_page 이동
     ### http://127.0.0.1:8000/my_page
     path('my_page/', views.my_page),
 
+    # map 페이지 이동
     ### http://127.0.0.1:8000/map
     path('map/', views.map),
 
+    # map_api 연결
     ### http://127.0.0.1:8000/map
     path('map_api/', views.map_api),
 ]

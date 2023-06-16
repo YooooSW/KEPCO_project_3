@@ -12,6 +12,7 @@ from django.contrib.auth import logout as auth_logout
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from .forms import CustomUserCreationForm
+from .forms import CustomUserChangeForm
 from .models import User, Category, Community, Comment
 from django.contrib.auth import get_user_model
 # from .forms import SignupForm
@@ -88,6 +89,27 @@ def search_pwd(request) :
     return render(request,
                   "mainapp/login/pwd_search.html",
                   {})
+
+# 닉네임 수정
+def nickname(request) :
+    if request.method == "POST" :
+        form = CustomUserChangeForm(request.POST, instance=request.user)
+        user = request.user
+        if form.is_valid():
+            form.save()
+            messages.add_message(request, messages.INFO, '성공적으로 닉네임을 변경하였습니다.')
+            auth.login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+            return render(request,
+                  "mainapp/my_Page.html",
+                  {})
+    else :
+        form = CustomUserChangeForm(instance=request.user)
+    context = {
+        'form' : form,
+    }
+    return render(request,
+                  "mainapp/my_Page.html",
+                  context)
 
 #  비밀번호 변경
 from django.contrib.auth.forms import PasswordChangeForm
