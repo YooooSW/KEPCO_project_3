@@ -66,16 +66,17 @@ def logout(request) :
     auth_logout(request)
     return render(request, "mainapp/index.html", {})
 
-#  아이디 찾기
+#  아이디 찾기 페이지이동
 def search_id(request) :
-
     return render(request,
                   "mainapp/login/id_search.html",
                   {})
+    
+#  아이디 찾기
 def forgot_id(request) :
     if request.method == 'POST':
         email = request.POST.get('email')
-        user_view = get_user_model().object.get(email=email)
+        user_view = User.objects.get(email=email)
         username = user_view.username
     return render(request,
                   "mainapp/login/forgot_id.html",
@@ -118,6 +119,20 @@ def Ssign_up(request) :
     """
     return HttpResponse(msg)
 #    return render(request, "mainapp/login/sign_up.html", context)
+
+#  회원탈퇴
+def delete(request):
+    if request.method == 'POST':
+        if request.user.is_authenticated:
+            request.user.delete()
+        auth_logout(request) 
+    
+        # session 지우기. 단 탈퇴후 로그아웃순으로 처리. 먼저 로그아웃하면 해당 request 객체 정보가 없어져서 삭제가 안됨.
+        return render(request, "mainapp/index.html", {})
+    else :
+        return render(request,
+                  "mainapp/my_Page.html",
+                  {})
 
 # 게시판
 def board(request) :

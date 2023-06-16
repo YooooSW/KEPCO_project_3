@@ -43,7 +43,7 @@ class User(AbstractUser):
     email = CharField(max_length=100)
     phon = CharField(max_length=100)
     nickname = CharField(max_length=100)
-    
+
     class Meta:
         # 실제 사용할 테이블 이름 정의
         db_table = "User"
@@ -79,7 +79,7 @@ class Provision(models.Model):
     username = models.ForeignKey(User,
                                 to_field="username",
                                 db_column="username",
-                                on_delete=models.PROTECT)
+                                on_delete=models.CASCADE)
     pro_name = CharField(max_length=20)
     pro_content = CharField(max_length=2000)
     pro_essential = CharField(max_length=1)
@@ -97,11 +97,11 @@ class Provision_history(models.Model):
     pro_code = models.ForeignKey(Provision,
                                 to_field="pro_code",
                                 db_column="pro_code",
-                                on_delete=models.PROTECT)
+                                on_delete=models.CASCADE)
     username = models.ForeignKey(User,
                                 to_field="username",
                                 db_column="username",
-                                on_delete=models.PROTECT)
+                                on_delete=models.CASCADE)
     his_consent = CharField(max_length=1)
     his_date = DateTimeField(auto_now_add = True)
     
