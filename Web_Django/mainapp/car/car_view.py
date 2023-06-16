@@ -6,11 +6,8 @@ from mainapp.car.src.Models import Unet
 
 class Car_View :
 
-    def __init__(self,img_data):
+    def __init__(self):
         self.initModel()
-        self.imageLoad(img_data)
-        self.runModel()
-
 
     def initModel(self):
         self.labels = ['Breakage_3', 'Crushed_2', 'Scratch_0', 'Seperated_1']

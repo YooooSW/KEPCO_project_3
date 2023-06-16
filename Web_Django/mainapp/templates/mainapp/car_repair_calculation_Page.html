@@ -22,27 +22,22 @@
         <h3 style="text-align: center;">차 수리 견적 계산</h3>
 
         <div class="container">
-
-
-                <div class="image-upload" id="image-upload">
-                  <form id="imageForm" method="post" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    <label for="imageInput" class="drag-area">
-                      <input class="drag-area"  type="file" name="image" id="imageInput" accept="image/*" required onchange="updateFileName(event)">
-                      <div id="imagePreview"></div>
-                      <div id="car_data"></div>
-                    </label>
-                    <br>
-                    <button type="button" onclick="uploadImage()">Submit</button>
-                    <!-- <button type="button" onclick="window.location.href = '/'">Exit</button> -->
-                    <!-- <button type="button" onclick="window.location.href = '/car_repair_calculation_Page'">사진지우기</button> -->
-                  </form>
-                </div>
-                <div class="image-show" id="image-show"></div>
-            </div>
-         
-                <div class="image-show" id="image-show"></div>
+          <div class="image-upload" id="image-upload">
+            <form id="imageForm" method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+              <label for="imageInput" class="drag-area">
+                <input class="drag-area" type="file" name="image" id="imageInput" accept="image/*" required onchange="updateFileName(event)">
+                <div id="imagePreview"></div>
+              </label>
+              <br>
+              <!-- <div id="car_data"></div> 주석 처리됨 -->
+              <button type="button" onclick="uploadImage()">Submit</button>
+              <button type="button" onclick="removeImage()">Remove Image</button>
+              <div id="car_data">{{return_value}}</div> <!-- 이 부분이 container 내부로 이동됨 -->
+            </form>
+          </div>
         </div>
+        
     
     
     <!-- js파일불러오기 -->
@@ -97,6 +92,15 @@
           xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
           xhr.send(formData);
         }
+
+        // 이미지 제거 
+        function removeImage() {
+          var preview = document.getElementById('imagePreview');
+          preview.innerHTML = '';
+          var input = document.getElementById('imageInput');
+          input.value = null;
+        }
+
       </script>
         
     {% include 'mainapp/include/js.html' %}

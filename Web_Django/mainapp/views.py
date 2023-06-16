@@ -224,19 +224,22 @@ def map_api(request) :
                   {})
 
 import json
+car_view = Car_View()
 def car_repair_price(request):
     if request.method == 'POST' and request.FILES.get('image'):
         image_file = request.FILES['image']
         img_data = image_file.read()
         img = cv2.imdecode(np.frombuffer(img_data, np.uint8), cv2.IMREAD_COLOR)
-        car_view = Car_View(img)
+        car_data = car_view.imageLoad(img)
+        car_data = car_view.runModel()
+
         car_data = car_view.result()
 
         # 넘파이 배열을 리스트로 변환
         car_data = car_data.astype(int)
 
         car_data_json = json.dumps(car_data.tolist())
-
-        return HttpResponse(car_data_json, content_type='application/json')
+        return_value = str(car_data_json) + '원'
+        return HttpResponse(return_value, content_type='application/json')
     else:
         return HttpResponse("Image not found")

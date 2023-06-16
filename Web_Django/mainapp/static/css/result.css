@@ -91,9 +91,8 @@ input::-webkit-file-upload-button {
 #car_data{
     max-width: 30%;
     max-height: 50%;
-    position: absolute;
-    left: 44%;
-    top: 85%;
+    position: relative;
+    transform: translate(250%, -234%);
     z-index: 10;
 }
 
