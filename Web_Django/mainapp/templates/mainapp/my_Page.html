@@ -8,6 +8,7 @@
 
     <!-- header부분 -->
     {% include 'mainapp/include/css.html' %}
+<<<<<<< HEAD
     <link rel="stylesheet" type="text/css" href="/static/css/header.css" />
     <link rel="stylesheet" type="text/css" href="/static/css/mypage.css" />
   </head>
@@ -38,6 +39,140 @@
                   <div class="btn-img-row">
                     <div class="profile_img">
                       <img src="/static/img/r_1.png" alt="image" />
+=======
+    <link rel="stylesheet" type="text/css" href="/static/css/header.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/mypage.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/board.css">
+
+</head>
+<body>
+    <div class="header">
+    {% include 'mainapp/include/navbar.html' %}
+</div>
+        <div class="hero" id="testt">
+            <div class = "btn-box">
+                <button id="btn1" onclick="openHTML()"><i class="fa-solid fa-user-pen"></i>정보 수정</button>
+                <button id="btn2" onclick="openCSS()"><i class="fa-solid fa-table-list"></i>이력 관리</button>
+                <button id="btn3" onclick="openJAVASCRIPT()"><i class="fa-solid fa-lock"></i>회원 탈퇴</button>
+            </div>
+
+
+            <div class="content" id="content1">
+                <div class="content-left">
+                    <h2>마이페이지</h2>
+                    
+                    <table class="table_my_page">
+                        <tbody>
+                            <tr>
+                                <th>프로필 수정</th>
+                                <td>
+                                    <div class="btn-img-row">
+                                        <div class="profile_img"><img src="/static/img/r_1.png" alt="image"></div>
+                                        <div class="buttons">
+                                            <button class="img-btn">사진 변경</button>
+                                            <button class="img-btn">사진 삭제</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="nick-row">
+                                        <form>
+                                       <input type="text" value="{{user.nickname}}">
+                                       <button>닉네임 수정</button>
+                                        </form>
+                                    </div>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>비밀번호 변경</th>
+                                <td>
+                                    <div class="ch-pwd-row">
+                                        <div style="display: flex; flex-direction: row;">
+                                            <input type="password" placeholder="현재 비밀번호">
+                                            <i class="fa-solid fa-check"></i>
+                                        </div>
+                                        <div style="display: flex; flex-direction: row;">
+                                            <input type="password" placeholder="변경할 비밀번호">
+                                            
+                                            <button class="img-btn">변경</button>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    
+                </div>
+            </div>
+
+
+            <div class="content" id="content2">
+                <div class="content-left">
+                    <h2 align="left">게시글 내역</h2>
+                    <div class="table-box">
+
+                        <div class="table-row table-head">
+                            <div class="table-cell first-cell">
+                                <p>순번</p>
+                            </div>
+                            <div class="table-cell">
+                                <p>제목</p>
+                            </div>
+                            <div class="table-cell">
+                                <p>작성자</p>
+                            </div>
+                            <div class="table-cell last-cell">
+                                <p>작성일</p>
+                            </div>
+                            
+                        </div>
+                    
+                        <div class="table-row">
+                            <div class="table-cell first-cell">
+                                <p>001</p>
+                            </div>
+                            <div class="table-cell">
+                                <p>견적비용확인좀</p>
+                            </div>
+                            <div class="table-cell">
+                                <p>홍길동</p>
+                            </div>
+                            <div class="table-cell last-cell">
+                                <p>23.06.12</p>
+                            </div>
+                            
+                        </div>
+                        <div class="table-row">
+                            <div class="table-cell first-cell">
+                                <p>002</p>
+                            </div>
+                            <div class="table-cell">
+                                <p>견적비용확인좀22</p>
+                            </div>
+                            <div class="table-cell">
+                                <p>홍길동</p>
+                            </div>
+                            <div class="table-cell last-cell">
+                                <p>23.06.13</p>
+                            </div>
+                            
+                        </div>
+                        
+                        <li>
+                            <div id="divPaging">
+                                <div>◀</div>
+                                <div><b>1</b></div>
+                                <div>2</div>
+                                <div>3</div>
+                                <div>4</div>
+                                <div>5</div>
+                                <div>▶</div>
+                            </div>
+                        </li>
+>>>>>>> aa5be43dc0f4727b1e1318b4fb84f1ee4cb64134
                     </div>
                     <div class="buttons">
                       <button class="img-btn">사진 변경</button>

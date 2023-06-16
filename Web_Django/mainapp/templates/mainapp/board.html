@@ -14,28 +14,21 @@
 </head>
 <body>
     <div class="header">
-        {% include 'mainapp/include/newnav.html' %}
+        {% include 'mainapp/include/navbar.html' %}
     </div>
     
         <div class="container">
             <h2>게시판</h2>
-            <li id='liSearchOption'>
-                <div>
-                    <select id='selSearchOption' >
-                        <option value='A'>제목+내용</option>
-                        <option value='T'>제목</option>
-                        <option value='C'>내용</option>
-                    </select>
-                    <input id='txtKeyWord' />
-                    <input type='button' value='검색'/>
-                </div>
-            </li>
+            
             <!-- 게시판 -->
             <div class="table-box">
 
                 <div class="table-row table-head">
                     <div class="table-cell first-cell">
                         <p>순번</p>
+                    </div>
+                    <div class="table-cell">
+                        <p>카테고리</p>
                     </div>
                     <div class="table-cell">
                         <p>제목</p>
@@ -48,39 +41,37 @@
                     </div>
                     
                 </div>
-            
+            <!-- ----------------------db랑 연결시 이부분만 수정하면 됨----------------------- -->
                 <div class="table-row">
                     <div class="table-cell first-cell">
-                        <p>001</p>
+                        <p>{{com_num}}</p>
                     </div>
                     <div class="table-cell">
-                        <p>견적비용확인좀</p>
+                        <p>{{cate_name}}</p>
                     </div>
                     <div class="table-cell">
-                        <p>홍길동</p>
+                        <p>{{com_title}}</p>
+                    </div>
+                    <div class="table-cell">
+                        <p>{{nickname}}</p>
                     </div>
                     <div class="table-cell last-cell">
-                        <p>23.06.12</p>
+                        <p>{{com_date}}</p>
                     </div>
                     
                 </div>
-                <div class="table-row">
-                    <div class="table-cell first-cell">
-                        <p>002</p>
-                    </div>
-                    <div class="table-cell">
-                        <p>견적비용확인좀22</p>
-                    </div>
-                    <div class="table-cell">
-                        <p>홍길동</p>
-                    </div>
-                    <div class="table-cell last-cell">
-                        <p>23.06.13</p>
-                    </div>
-                    
-                </div>
+
+
+                 <!-- ------------로그인 한 사람만 글쓰기 가능하도록--------------- -->
+                 {% if user.is_active %}
+                 <button type="button" onclick="location.href='/article'">글쓰기</button>
+                 <!-- 유저정보까지 같이 넘어가야함 -->
                 
-                <button type="button" onclick="location.href='/article'">글쓰기</button>
+                {% else %}
+                <button type="button" onclick="btn_clink()">글쓰기</button>
+                   
+                {% endif %}
+               
                 
                
                 <li>
@@ -95,56 +86,17 @@
                     </div>
                 </li>
             </div>
-            <!-- 게시판 -->
-
-        <!-- <form id="fm" name="fm" method="post" action="/Post_send/">
-            <div class="board">
-            <h3>게시글 작성하기</h3>
-            <hr/>
-            <table>
-                <div class="p-table1">
-                <tr>
-                    <th>카테고리 :  </th>
-                    <td>
-                        <select name="category">
-                            <option value="카테고리1">카테고리1</option>
-                            <option value="카테고리2">카테고리2</option>
-                            <option value="카테고리3">카테고리3</option>
-                          
-                        </select>
-                    </td>
-
-                    <th>제목 :  </th>
-                    <td><input type="text" name="title" size="25" style="height: 35px;" required></td>
-                </tr>
-                </div>
-                
-                <div class="p-table2">
-                <tr>
-                    <th>내용</th>
-                    <td colspan="3">
-                        <textarea name="content" rows="20" cols="55" required></textarea>
-                    </td>
-                </tr>
-                </div>
-                <tr class="button-row">
-                    <td colspan="4" style="text-align: right;">
-                        <input type="button" value="글 작성" onclick="oneSelect()"> 
-                        <input type="button" value="cancel post" onclick="history.back()">
-
-                    </td>
-                </tr>
-            </table>
-                
-            </div>
-
-        </form> -->
 
     </div>
-    
     
 
     <!-- js파일불러오기 -->
     <script src="/static/js/user.js"></script>
+    <script>
+        function btn_clink(){
+            alert("로그인 후 이용가능 합니다.");
+            location.href = "/sns_login_form";
+        }
+    </script>
 </body>
 </html>
