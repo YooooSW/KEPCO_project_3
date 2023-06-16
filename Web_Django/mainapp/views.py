@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from mainapp.car.car_view import Car_View
 from django.utils import timezone
+from django.contrib import messages
 import cv2
 import numpy as np
 import base64
@@ -51,7 +52,7 @@ def login(request) :
     if request.method == 'POST':
         form = AuthenticationForm(request, request.POST) # 먼저 request 인자를 받아야함
         if form.is_valid():
-            auth_login(request, form.get_user())
+            auth_login(request, form.get_user(), backend='django.contrib.auth.backends.ModelBackend')
             return render(request, "mainapp/index.html", {})
     else:
         form = AuthenticationForm()
@@ -88,6 +89,33 @@ def search_pwd(request) :
                   "mainapp/login/pwd_search.html",
                   {})
 
+#  비밀번호 변경
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth.hashers import check_password
+def change_pwd(request) :
+    context= {}
+    if request.method == 'POST':
+        password = request.POST.get('password')
+        user = request.user
+        if check_password(password,user.password):
+            new_password1 = request.POST.get("new_password1")
+            new_password2 = request.POST.get("new_password2")
+            if new_password1 == new_password2 :
+                user.set_password(new_password1)
+                user.save()
+                auth.login(request,user, backend='django.contrib.auth.backends.ModelBackend')
+                messages.add_message(request, messages.INFO, '성공적으로 비밀번호를 변경하였습니다.')
+                return render(request,
+                    "mainapp/my_Page.html",
+                    {})
+            else :
+                context.update({'error':"새로운 비밀번호를 다시 확인해주세요."})
+        else:
+    	    context.update({'error':"현재 비밀번호가 일치하지 않습니다."})
+    return render(request,
+                  "mainapp/my_Page.html",
+                  context)
+    
 # 회원가입
 def sign_up(request) :
     return render(request,
@@ -108,9 +136,10 @@ def Ssign_up(request) :
         #     return redirect('')
     else : 
         form = CustomUserCreationForm()
-    context = {
-        'form': form
-    }
+        context = {
+            'form': form
+        }
+        return render(request, "mainapp/login/sign_up.html", context)
     msg = """
         <script type="text/javascript">
             alert('잘못된 접근입니다.');

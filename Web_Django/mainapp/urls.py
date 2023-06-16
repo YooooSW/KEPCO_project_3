@@ -62,6 +62,10 @@ urlpatterns = [
 
     ### http://127.0.0.1:8000/search_pwd
     path('search_pwd/', views.search_pwd),
+    
+    # 마이페이지/비밀번호 수정
+    ### http://127.0.0.1:8000/my_page/change_pwd
+    path('my_page/change_pwd/', views.change_pwd),
 
     #  회원가입 페이지 이동
     ### http://127.0.0.1:8000/sign_up

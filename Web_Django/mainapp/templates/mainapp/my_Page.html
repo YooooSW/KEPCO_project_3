@@ -45,24 +45,40 @@
 
                                 </td>
                             </tr>
+                            <form method="POST" action="/my_page/change_pwd/">
+                              {% csrf_token %}
                             <tr>
                                 <th>비밀번호 변경</th>
                                 <td>
+                                  <div class="error_message">
+                                    {% if messages %}
+	                                    {% for message in messages %}
+                                        {{ message.message }}
+                                      {% endfor %}
+                                    {% endif %}
+                                    {{error}}
+                                  </div>
                                     <div class="ch-pwd-row">
                                         <div style="display: flex; flex-direction: row;">
-                                            <input type="password" placeholder="현재 비밀번호">
+                                            <input type="password" name="password" placeholder="현재 비밀번호">
                                             <i class="fa-solid fa-check"></i>
                                         </div>
                                         <div style="display: flex; flex-direction: row;">
-                                            <input type="password" placeholder="변경할 비밀번호">
-                                            
-                                            <button class="img-btn">변경</button>
+                                            <input type="password" name="new_password1" placeholder="변경 비밀번호">
                                         </div>
+                                        <div style="display: flex; flex-direction: row;">
+                                          <input type="password" name="new_password2" placeholder="변경 비밀번호 재입력">
+                                        </div>
+                                        <div style="display: flex; flex-direction: row;">
+                                          <button class="img-btn">변경</button>
+                                        </div>
+
                                     </div>
                                     
                                     
                                 </td>
                             </tr>
+                            </form>
                         </tbody>
                     </table>
                     
