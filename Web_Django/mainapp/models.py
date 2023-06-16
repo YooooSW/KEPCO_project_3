@@ -36,6 +36,8 @@ from django.contrib.auth.models import User
 #         # - 존재하지 않으면 : True
 #         # --> 일반적으로 외부에 테이블을 생성한 후 개발이 진행됨
 #         managed = False
+# class Post(models.Model):
+#     objects = models.Manager()
 
 class User(AbstractUser):
     username = CharField(primary_key=True, max_length=20)
@@ -57,105 +59,105 @@ class User(AbstractUser):
         # --> 일반적으로 외부에 테이블을 생성한 후 개발이 진행됨
         managed = False
         
-class User_img(models.Model):
-    user_num = IntegerField(primary_key=True)
-    username = models.ForeignKey(User,
-                                to_field="username",
-                                db_column="username",
-                                on_delete=models.CASCADE)
-    user_path = CharField(max_length=100)
-    user_date = DateTimeField(auto_now = True)
+# class User_img(models.Model):
+#     user_num = IntegerField(primary_key=True)
+#     username = models.ForeignKey(User,
+#                                 to_field="username",
+#                                 db_column="username",
+#                                 on_delete=models.CASCADE)
+#     user_path = CharField(max_length=100)
+#     user_date = DateTimeField(auto_now = True)
     
-    class Meta:
-        db_table = "User_img"
+#     class Meta:
+#         db_table = "User_img"
 
-        app_label = "mainapp"
+#         app_label = "mainapp"
 
-        managed = False
+#         managed = False
         
         
-class Provision(models.Model):
-    pro_code = CharField(primary_key=True, max_length=20)
-    username = models.ForeignKey(User,
-                                to_field="username",
-                                db_column="username",
-                                on_delete=models.CASCADE)
-    pro_name = CharField(max_length=20)
-    pro_content = CharField(max_length=2000)
-    pro_essential = CharField(max_length=1)
+# class Provision(models.Model):
+#     pro_code = CharField(primary_key=True, max_length=20)
+#     username = models.ForeignKey(User,
+#                                 to_field="username",
+#                                 db_column="username",
+#                                 on_delete=models.CASCADE)
+#     pro_name = CharField(max_length=20)
+#     pro_content = CharField(max_length=2000)
+#     pro_essential = CharField(max_length=1)
     
     
-    class Meta:
-        db_table = "PROVISION"
+#     class Meta:
+#         db_table = "PROVISION"
 
-        app_label = "mainapp"
+#         app_label = "mainapp"
 
-        managed = False
+#         managed = False
         
-class Provision_history(models.Model):
-    his_num = IntegerField(primary_key=True)
-    pro_code = models.ForeignKey(Provision,
-                                to_field="pro_code",
-                                db_column="pro_code",
-                                on_delete=models.CASCADE)
-    username = models.ForeignKey(User,
-                                to_field="username",
-                                db_column="username",
-                                on_delete=models.CASCADE)
-    his_consent = CharField(max_length=1)
-    his_date = DateTimeField(auto_now_add = True)
+# class Provision_history(models.Model):
+#     his_num = IntegerField(primary_key=True)
+#     pro_code = models.ForeignKey(Provision,
+#                                 to_field="pro_code",
+#                                 db_column="pro_code",
+#                                 on_delete=models.CASCADE)
+#     username = models.ForeignKey(User,
+#                                 to_field="username",
+#                                 db_column="username",
+#                                 on_delete=models.CASCADE)
+#     his_consent = CharField(max_length=1)
+#     his_date = DateTimeField(auto_now_add = True)
     
-    class Meta:
-        db_table = "PROVISIONHISTORY"
+#     class Meta:
+#         db_table = "PROVISIONHISTORY"
 
-        app_label = "mainapp"
+#         app_label = "mainapp"
 
-        managed = False
+#         managed = False
         
-class Naver_account(models.Model):
-    naver_id = CharField(primary_key=True, max_length=20)
-    username = models.ForeignKey(User,
-                                to_field="username",
-                                db_column="username",
-                                on_delete=models.PROTECT)
-    naver_token = CharField(max_length=255)
+# class Naver_account(models.Model):
+#     naver_id = CharField(primary_key=True, max_length=20)
+#     username = models.ForeignKey(User,
+#                                 to_field="username",
+#                                 db_column="username",
+#                                 on_delete=models.PROTECT)
+#     naver_token = CharField(max_length=255)
     
-    class Meta:
-        db_table = "NAVER_ACCOUNT"
+#     class Meta:
+#         db_table = "NAVER_ACCOUNT"
 
-        app_label = "mainapp"
+#         app_label = "mainapp"
 
-        managed = False
+#         managed = False
 
-class google_account(models.Model):
-    google_id = CharField(primary_key=True, max_length=20)
-    username = models.ForeignKey(User,
-                                to_field="username",
-                                db_column="username",
-                                on_delete=models.PROTECT)
-    google_token = CharField(max_length=255)
+# class google_account(models.Model):
+#     google_id = CharField(primary_key=True, max_length=20)
+#     username = models.ForeignKey(User,
+#                                 to_field="username",
+#                                 db_column="username",
+#                                 on_delete=models.PROTECT)
+#     google_token = CharField(max_length=255)
     
-    class Meta:
-        db_table = "GOOGLE_ACCOUNT"
+#     class Meta:
+#         db_table = "GOOGLE_ACCOUNT"
 
-        app_label = "mainapp"
+#         app_label = "mainapp"
 
-        managed = False
+#         managed = False
 
-class Kakao_account(models.Model):
-    kakao_id = CharField(primary_key=True, max_length=20)
-    username = models.ForeignKey(User,
-                                to_field="username",
-                                db_column="username",
-                                on_delete=models.PROTECT)
-    kakao_token = CharField(max_length=255)
+# class Kakao_account(models.Model):
+#     kakao_id = CharField(primary_key=True, max_length=20)
+#     username = models.ForeignKey(User,
+#                                 to_field="username",
+#                                 db_column="username",
+#                                 on_delete=models.PROTECT)
+#     kakao_token = CharField(max_length=255)
     
-    class Meta:
-        db_table = "KAKAO_ACCOUNT"
+#     class Meta:
+#         db_table = "KAKAO_ACCOUNT"
 
-        app_label = "mainapp"
+#         app_label = "mainapp"
 
-        managed = False
+#         managed = False
 
 class Category(models.Model):
     cate_num = IntegerField(primary_key=True)
