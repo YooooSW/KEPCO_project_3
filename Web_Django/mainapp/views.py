@@ -11,7 +11,7 @@ from django.contrib.auth import logout as auth_logout
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from .forms import CustomUserCreationForm
-from .models import User, User_img, Provision, Provision_history, Naver_account, google_account, Kakao_account, Category, Community, Comment
+from .models import User, Category, Community, Comment
 from django.contrib.auth import get_user_model
 # from .forms import SignupForm
 
@@ -124,7 +124,8 @@ def Ssign_up(request) :
 def delete(request):
     if request.method == 'POST':
         if request.user.is_authenticated:
-            request.user.delete()
+            username = request.user.username
+            User.objects.filter(username=username).delete()
         auth_logout(request) 
     
         # session 지우기. 단 탈퇴후 로그아웃순으로 처리. 먼저 로그아웃하면 해당 request 객체 정보가 없어져서 삭제가 안됨.
