@@ -90,6 +90,14 @@ def search_pwd(request) :
                   "mainapp/login/pwd_search.html",
                   {})
 
+
+# 비밀번호 찾기 > 새 비밀번호 
+def new_pwd(request) :
+    return render(request,
+                  "mainapp/login/pwd_email.html",
+                  {})
+
+
 # 닉네임 수정
 def nickname(request) :
     if request.method == "POST" :
