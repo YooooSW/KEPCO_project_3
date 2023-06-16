@@ -13,7 +13,7 @@
 <body>
    <div class="container2">
     <div class="form-box">
-        <i class="fa-solid fa-arrow-left" id="back-arrow" value="뒤로돌아가기" onclick="back()"></i> 
+        <i class="fa-solid fa-arrow-left" id="back-arrow" value="뒤로돌아가기" onclick="location.href='/index'"></i> 
         <a href="/index"><img class="form-img" src="/static/img/logo.png"></a>
         <form method="POST" action="/Ssign_up/">
             {% csrf_token %}
@@ -124,11 +124,11 @@
       }
 
       
-    <!-- 페이지 뒤로가기 -->
+    // <!-- 페이지 뒤로가기 -->
       
-    const back = () =>{
-        window.history.back();
-    }
+    // const back = () =>{
+    //     window.history.back();
+    // }
     
     </script>
 </body>
