@@ -1,12 +1,22 @@
 {% load static %}
 <!-- 네비게이션 바 / django에서 따로 빼야됨 -->
-<nav id="navBar">  <!-- 작은 화면에서 메뉴바가 작동하는 함수(js)를 위해 id값을 줌 -->
-    <a href="/index"><img src="/static/img/logo.png" class="logo" alt="project logo image"></a>
-    <ul class="nav-links">
-        <li><a href="/car_repair_calculation_Page" class="active">견적분석</a></li>
-        <li><a href="/board">커뮤니티</a></li>
-        <li><a href="/map">주변 공업사 찾기</a></li>
-    </ul>
-    <a href="/sns_login_form" class="login-btn">login</a>
-    <i class="fa-solid fa-bars" onclick="togglebtn()"></i>
+<nav id="navBar">
+  <!-- 작은 화면에서 메뉴바가 작동하는 함수(js)를 위해 id값을 줌 -->
+  <a href="/index"
+    ><img src="/static/img/logo.png" class="logo" alt="project logo image"
+  /></a>
+  <ul class="nav-links">
+    <li><a href="/car_repair_calculation_Page" class="active">견적분석</a></li>
+    <li><a href="/board">커뮤니티</a></li>
+    <li><a href="/map">주변 공업사 찾기</a></li>
+  </ul>
+  {% if user.is_active %}
+  <a href="/my_page" class="login-btn">
+    <span class="glyphicon glyphicon-heart"></span> {{user.nickname}}</a
+  >
+  <a href="/logout" class="login-btn">Logout</a>
+  {% else %}
+  <a href="/sns_login_form" class="login-btn">login</a>
+  <i class="fa-solid fa-bars" onclick="togglebtn()"></i>
+  {% endif %}
 </nav>

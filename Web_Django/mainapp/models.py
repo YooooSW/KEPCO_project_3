@@ -14,6 +14,7 @@ from django.db.models.fields import TextField
 
 # - user 확장
 from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import User
 # from django.db.models.fields import FileField
 # - DB에서    FileField의 파생클래스로서 이미지 파일인지 체크
 # from django.db.models.fields import ImageField
@@ -61,7 +62,7 @@ class User_img(models.Model):
     username = models.ForeignKey(User,
                                 to_field="username",
                                 db_column="username",
-                                on_delete=models.PROTECT)
+                                on_delete=models.CASCADE)
     user_path = CharField(max_length=100)
     user_date = DateTimeField(auto_now = True)
     
@@ -75,13 +76,18 @@ class User_img(models.Model):
 class User_service(models.Model):
     user_ser_num = IntegerField(primary_key=True)
     username = models.ForeignKey(User,
+                                related_name='service_name',
                                 to_field="username",
                                 db_column="username",
-                                on_delete=models.PROTECT)
-    user_create = DateTimeField(auto_now_add = True)
-    user_pass_modified = DateTimeField(auto_now = True)
-    user_login_date = DateTimeField(auto_now = True)
-    user_count = IntegerField()
+                                on_delete=models.CASCADE)
+    email = models.ForeignKey(User,
+                                unique=True,
+                                related_name='service_email',
+                                to_field="email",
+                                db_column="email",
+                                on_delete=models.CASCADE)
+
+    
     
     class Meta:
         db_table = "USER_SERVICE"
