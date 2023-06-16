@@ -63,11 +63,17 @@ urlpatterns = [
     ### http://127.0.0.1:8000/search_pwd
     path('search_pwd/', views.search_pwd),
 
+    #  회원가입 페이지 이동
     ### http://127.0.0.1:8000/sign_up
     path('sign_up/', views.sign_up),
 
+    #  회원가입
     ### http://127.0.0.1:8000/Ssign_up
     path('Ssign_up/', views.Ssign_up),
+    
+    #  회원탈퇴
+    ### http://127.0.0.1:8000/delete
+    path('delete/', views.delete),
 
     ### http://127.0.0.1:8000/board
     path('board/', views.board),
