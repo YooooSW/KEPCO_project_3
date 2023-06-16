@@ -70,6 +70,11 @@ urlpatterns = [
     # 비밀번호 찾기 페이지 이동
     ### http://127.0.0.1:8000/search_pwd
     path('search_pwd/', views.search_pwd),
+
+    # 비밀번호 찾기 페이지 이동 > 이메일 > 새 비밀번호
+    ### http://127.0.0.1:8000/search_pwd
+    path('new_pwd/', views.new_pwd),
+
     
     # 마이페이지/닉네임 수정 (완료)
     ### http://127.0.0.1:8000/my_page/nickname

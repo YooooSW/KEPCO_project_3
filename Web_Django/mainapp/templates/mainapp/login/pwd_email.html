@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>:::이메일로 받은 비번으로 비번 바꾸기:::</title>
+ 
+    <script type="text/javascript" src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    {% include 'mainapp/include/css.html' %}
+</head>
+<body>
+   <div class="container2">
+    <div class="form-box">
+        <a href="/index"><img class="form-img" src="/static/img/logo.png"></a>
+        <form>
+            <div class="input-group">
+               
+            <p>인증되었습니다. 새 비밀번호를 입력해주세요.</p>
+
+                <form>
+                <div class="input-field">
+                    <i class="fa-solid fa-lock" id="pwd-icon"></i> 
+                    <input type="password" placeholder="변경하실 비밀번호" required>
+                </div>
+
+                <div class="input-field">
+                    <i class="fa-solid fa-lock" id="pwd-icon"></i> 
+                    <input type="password" placeholder="변경하실 비밀번호 재입력" required>
+                </div>
+
+               
+                <div class="form-btn">
+                    <button>확인</button>
+                </div>
+                </form>
+
+            </div>
+
+        </form>
+    </div>
+   </div>
+
+    <script src="login.js"></script>
+    <!-- 페이지 뒤로가기 -->
+    {% comment %} <script>
+        const back = () =>{
+            window.history.back();
+        }
+    </script> {% endcomment %}
+</body>
+</html>
