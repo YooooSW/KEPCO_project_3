@@ -12,7 +12,6 @@
 
 hr {
     color: black; /* 색상을 원하는 옅은 색상으로 설정하세요 */
-    opacity :0.7;
     width: 78%; /* 선의 길이를 80%로 설정하세요 */
     margin-left : 12%;
 }
