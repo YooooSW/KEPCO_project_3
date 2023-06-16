@@ -132,3 +132,14 @@ label {
     align-items: center;
   }
   
+
+/* ------------아이콘 누를시 비밀번호 보이게----------------- */
+#pwd-see-icon{
+    margin-right: 10px;
+    color: #999;
+    cursor: pointer;
+}
+#pwd-see-icon:hover{
+    color: #FF4380;
+}
+
