@@ -15,6 +15,7 @@ from .forms import CustomUserCreationForm
 from .forms import CustomUserChangeForm
 from .models import User, Category, Community, Comment
 from django.contrib.auth import get_user_model
+from django.urls import reverse_lazy
 # from .forms import SignupForm
 
 # Create your views here.
@@ -84,19 +85,38 @@ def forgot_id(request) :
                   "mainapp/login/forgot_id.html",
                   {"username" : username})
 
-# 비밀번호 찾기
-def search_pwd(request) :
+
+def search_email(request) :
     return render(request,
                   "mainapp/login/pwd_search.html",
                   {})
+    
+# 비밀번호 찾기 커스텀 페이지 이동
+from django.contrib.auth import views as auth_views
+from .forms import PasswordResetForm
+class UserPasswordResetView(auth_views.PasswordResetView):
+    
+    # 비밀번호 초기화 - 사용자 ID, email 입력
+    
+    template_name = 'mainapp/registration/password_reset.html' #템플릿을 변경하려면 이와같은 형식으로 입력
+    success_url = reverse_lazy('password_reset_done')
+    form_class = PasswordResetForm
+    # email_template_name = 'common/password_reset_email.html'
 
+# 비밀번호 찾기 메일로 연결된 비밀번호변경 커스텀페이지
+class PasswordResetDoneView(auth_views.PasswordResetDoneView):
 
+    # 비밀번호 초기화 - 메일 전송 완료
+
+    template_name = 'mainapp/registration/password_reset_done.html'
+    
 # 비밀번호 찾기 > 새 비밀번호 
-def new_pwd(request) :
-    return render(request,
-                  "mainapp/login/pwd_email.html",
-                  {})
+class PasswordResetConfirmView(auth_views.PasswordResetConfirmView):
 
+    # 비밀번호 초기화 - 새로운 비밀번호 입력
+    
+    template_name = 'mainapp/registration/password_reset_confirm.html'
+    success_url = reverse_lazy('login')
 
 # 닉네임 수정
 def nickname(request) :

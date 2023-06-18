@@ -4,4 +4,6 @@
 
 # /Web_Django/db.sqlite3
 
+# 나중에 개발끝나고 공유 안해야할 목록
 # /Web_Django/config/db.sqlite3
+# /Web_Django/config/email.py
