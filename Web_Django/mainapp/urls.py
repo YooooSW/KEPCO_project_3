@@ -1,5 +1,4 @@
-from django.urls import path
-from django.urls import include
+from django.urls import path, include
 from django.urls import re_path as url
 # from auth.apis import (
 #     LoginApi, 
@@ -14,6 +13,7 @@ from django.urls import re_path as url
 ###
 
 from . import views
+from django.contrib.auth import views as auth_views
 
 # login_patterns = [
 #     path('google', GoogleLoginApi.as_view(), name='google_login'),
@@ -53,7 +53,7 @@ urlpatterns = [
     
     # 로그인 (완료)
     ### http://127.0.0.1:8000/login/
-    path('login/', views.login),
+    path('login/', views.login, name="login"),
     
     # 로그아웃 (완료)
     ### http://127.0.0.1:8000/logout
@@ -66,15 +66,24 @@ urlpatterns = [
     # 아이디 찾기 (완료)
     ### http://127.0.0.1:8000/forgot_id/
     path('forgot_id/', views.forgot_id),
-
+    
     # 비밀번호 찾기 페이지 이동
-    ### http://127.0.0.1:8000/search_pwd
-    path('search_pwd/', views.search_pwd),
+    ### http://127.0.0.1:8000/search_pwd/
+    path('search_pwd/',
+         views.UserPasswordResetView.as_view(),
+         name="password_reset"),
 
-    # 비밀번호 찾기 페이지 이동 > 이메일 > 새 비밀번호
-    ### http://127.0.0.1:8000/search_pwd
-    path('new_pwd/', views.new_pwd),
-
+    # 비밀번호 찾기 메일 발송
+    ### http://127.0.0.1:8000/search_pwd_done
+    path('search_pwd_done/',
+         views.PasswordResetDoneView.as_view(), 
+         name="password_reset_done"),
+    
+    # 비밀번호 찾기 메일로 연결된 비밀번호변경 페이지
+    ### http://127.0.0.1:8000/reset/<uidb64>/<token>/
+    path('reset/<uidb64>/<token>//',
+         views.PasswordResetConfirmView.as_view(),
+         name='password_reset_confirm'),
     
     # 마이페이지/닉네임 수정 (완료)
     ### http://127.0.0.1:8000/my_page/nickname
