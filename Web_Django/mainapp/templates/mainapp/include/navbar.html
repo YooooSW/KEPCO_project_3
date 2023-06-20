@@ -11,15 +11,14 @@
     <li><a href="/map">주변 공업사 찾기</a></li>
   </ul>
   {% if user.is_active %}
-
-  <img src="/static/img/user.png" class="user-pic" onclick="toggleMenu()" />
+  <h4 class="login-btn" onclick="toggleMenu()">{{user.nickname}} 님</h4>
   <!-- 프로필 사진 클릭시 드롭다운 프로필 메뉴가 나타나는 js와 상관있음 -->
   <i class="fa-solid fa-bars" onclick="togglebtn()"></i>
 
-  <div class="sub-menu-wrap" id="subMenu">
+  <div class="sub-menu-wrap" id="subMenu" style="z-index: 9;">
     <div class="sub-menu">
       <div class="user-info">
-        <img src="/static/img/user.png" />
+       
         <h4>{{user.nickname}}</h4>
       </div>
       <hr />
@@ -32,7 +31,12 @@
         <p>로그아웃</p>
         <span>></span>
       </a>
+<<<<<<< HEAD
       <a href="/delete" class="ub-menu-link">
+=======
+
+      <a href="/delete" class="sub-menu-link">
+>>>>>>> 10dc8a191244ce7caac1fde95447025bcb1f2565
         <p>회원탈퇴</p>
         <span>></span>
       </a>

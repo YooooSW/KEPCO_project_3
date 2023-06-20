@@ -58,7 +58,7 @@
         
                             <!-- 전체 동의 -->
                        
-                            <div>
+                            <div class="provision">
                                 <label style="white-space: nowrap;">
                                     <input type="checkbox" name="terms" id="check_all" value='selectAll' onclick='selectAll(this)'>
                                     <span class='text' >전체 동의</span> 
@@ -66,35 +66,35 @@
                             </div>
                             
                             <!-- 필수 1 -->
-                            <div>
+                            <div class="provision">
                                 <label style="white-space: nowrap;">
                                     <input type="checkbox" name="terms" id="check_1" class="normal" required>
-                                    <span>(필수) 개인 정보 동의 <button>자세히보기</button></span>
+                                    <span>(필수) 개인 정보 동의 <button type="button" class="open-btn1">자세히보기</button></span>
                                 </label>    
                             </div>
                             
                             <!-- 필수 2 -->
-                            <div>
+                            <div class="provision">
                                 <label style="white-space: nowrap;">
                                 <input type="checkbox" name="terms" id="check_2" class="normal" required>
-                                <span>(필수) 개인회원 약관 <button>자세히보기</button></span>
+                                <span>(필수) 개인회원 약관 <button type="button" class="open-btn2">자세히보기</button></span>
                                 </label>
                             </div>    
                             
         
                             <!-- 선택 1 -->
-                            <div>
+                            <div class="provision">
                                 <label style="white-space: nowrap;">
                                 <input type="checkbox" name="terms" id="check_3" class="normal">
-                                <span>(선택) 이메일 광고 수신<button>자세히보기</button></span>
+                                <span>(선택) 이메일 광고 수신<button type="button" class="open-btn3">자세히보기</button></span>
                                 </label>
                             </div>
                             
                             <!-- 선택 2 -->
-                            <div>
+                            <div class="provision">
                                 <label style="white-space: nowrap;">
                                 <input type="checkbox" name="terms" id="check_3" class="normal">
-                                <span>(선택) SMS 광고 수신<button>자세히보기</button></span>
+                                <span>(선택) SMS 광고 수신<button type="button" class="open-btn4">자세히보기</button></span>
                                 </label>
                             </div>
         
@@ -112,7 +112,50 @@
 
         
     </div>
+   <dialog class="modal" id="modal">
+    <div class="modal-header">
+        <h2>개인 정보 동의</h2>
+        <button type="button" class="close-btn">x</button>
+    </div>
+    <div class="modal-content">
+        <pre>
+        1. 수집하는 개인 정보의 종류:
+
+        성명
+        전화번호
+        이메일 주소
+        주소
+        
+        2. 개인 정보의 수집 및 이용 목적:
+
+        웹사이트 회원 가입 및 관리
+        서비스 제공과 관련된 문의사항 처리
+        이벤트 및 프로모션 안내
+        개인맞춤 서비스 제공
+        서비스 개선 및 통계 분석
+
+        3. 개인 정보의 보유 및 이용 기간:
+
+        회원 가입 취소 시 또는 회원 탈퇴 요청 시까지
+        관련 법령에 따른 보존 기간을 요구하는 경우에는 해당 기간 동안 보관 후 파기
+
+        4. 개인 정보의 제공 및 공유:
+
+        귀하의 동의 없이 개인 정보를 외부에 제공하지 않습니다.
+        다만, 관련 법령에 근거하여 정부 기관의 요청이 있는 경우에는 예외로 합니다.
+
+        5. 개인 정보의 보호 조치:
+
+        개인 정보는 암호화되어 안전하게 저장됩니다.
+        개인 정보에 접근하는 권한은 최소한의 인원에게만 제공됩니다.
+        개인 정보 처리 업무를 위해 외부 업체와의 계약 시 개인 정보 보호 조치를 규정합니다.
+        </pre>
+    </div>
+    
    
+    </dialog>
+
+
 
     <script>
     function selectAll(selectAll)  {
@@ -132,8 +175,20 @@
                 password.type= "password";
         }
     }
-   
+
+    // 모달창 관련 함수
+    const modal = document.querySelector(".modal");
+    const openModal1 =document.querySelector(".open-btn1");
+    const closeModal = document.querySelector(".close-btn");
     
+    openModal1.addEventListener("click", () => {
+        modal.showModal();
+    })
+    closeModal.addEventListener("click", () => {
+        modal.close();
+    })
+
+
     </script>
 </body>
 </html>

@@ -7,30 +7,18 @@
     
 }
 
-/* .img-btn{
-
-  appearance: none;
-    text-decoration: none;
-    background: #FF4380;
-    width: 100%;
-    margin: 60px auto;
-    padding: 15px;
-    border-radius: 10px;
-    font-size: 20px; 
-} */
-
 .img-btn{
     display: flex; 
     flex-direction: row;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     position: relative;
     border: none;
-    width: 100%;
+    width: 50%;
     border-radius: 5px;
     color: #ffffff;
-    background-color: #ff7846;
-    font-size:20px; 
-    padding:10px 10px;
+    background-color: #5D5A98;
+    font-size:15px; 
+    padding:5px;
 }
 button{
     cursor: pointer;
@@ -149,7 +137,7 @@ th {
 }
 
 .fa-user-pen, .fa-table-list{
-    color: rgb(255, 173, 203);
+    color: #5D5A98;
     margin-right: 2px;
 }
 .fa-lock{
@@ -169,5 +157,17 @@ th {
     width: 50%;
 }
 .ch-pwd-row .img-btn{
-    width: 30%;
+    width: 25%;
+    text-align: center;
+    justify-content: center;
+}
+
+.nick-row .img-btn{
+    width: 25%;
+    text-align: center;
+    justify-content: center;
+}
+
+#table-title{
+    text-align: center;
 }
