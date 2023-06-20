@@ -22,7 +22,7 @@
             <div class = "btn-box">
                 <button id="btn1" onclick="openHTML()"><i class="fa-solid fa-user-pen"></i>정보 수정</button>
                 <button id="btn2" onclick="openCSS()"><i class="fa-solid fa-table-list"></i>이력 관리</button>
-                <button id="btn3" onclick="openJAVASCRIPT()"><i class="fa-solid fa-lock"></i>회원 탈퇴</button>
+                
             </div>
 
 
@@ -195,22 +195,6 @@
                 </div>
             </div>
 
-          
-
-            <div class="content" id="content3">
-                <div class="content-left">
-                  <img src="/static/img/r_2.png" />
-                  <p>닉네임</p>
-                  <form action="/delete/" method="POST">
-                    {% csrf_token %}
-                    <a
-                      href="/delete/"
-                      style="position: absolute; left: 50%; transform: translateX(-50%)"
-                      ><input type="submit" value="회원탈퇴"
-                    /></a>
-                  </form>
-                </div>
-              </div>
             
         </div>
     

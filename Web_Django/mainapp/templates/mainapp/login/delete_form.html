@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      type="text/javascript"
+      src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
+      crossorigin="anonymous"
+    ></script>
+    {% include 'mainapp/include/css.html' %}
+  </head>
+  <body>
+    <div class="container2">
+      <div class="form-box">
+       
+        <i class="fa-solid fa-arrow-left" id="back-arrow" value="뒤로돌아가기" onclick="location.href='/index'"></i> 
+        <a href="/index"><img class="form-img" src="/static/img/logo.png" /></a>
+
+        <div class="input-group">
+          <h1>{{user.nickname}} 님 정말 <br>탈퇴하시겠습니까?</h1>
+          <hr />
+          <br />
+          <h4>탈퇴시 아이디 및 비밀번호가<br> 전부 삭제 됩니다.</h4>
+            <br />
+            <br />
+            
+           
+
+          <form action="/delete/" method="POST">
+            {% csrf_token %}
+            <div class="form-btn">
+                <a href="/delete/">
+            <button value="회원탈퇴" onclick="delete_user()">회원탈퇴</button>
+                </a>
+            </button>
+        </form>
+
+
+
+        </div>
+      </div>
+    </div>
+
+    <script src="login.js"></script>
+
+    <!-- 페이지 뒤로가기 -->
+    <script>
+     
+
+      function delete_user(){
+        alert("정상적으로 회원탈퇴 되었습니다.");
+    }
+    </script>
+  </body>
+</html>

@@ -211,7 +211,7 @@ def delete(request):
         return render(request, "mainapp/index.html", {})
     else :
         return render(request,
-                  "mainapp/my_Page.html",
+                  "mainapp/login/delete_form.html",
                   {})
 
 from .forms import CommunityForm, CommentForm
@@ -300,7 +300,7 @@ def update_send(request, com_num) :
         form = CommunityForm(instance=community)
     context = {'form': form, 'community':community, 'com_num': num}
     return render(request,
-                  "mainapp/index.html",
+                  "mainapp/board_des.html",
                   context)
 
 # MY_PAGE
