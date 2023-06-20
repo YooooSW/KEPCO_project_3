@@ -361,11 +361,11 @@ def comments_update(request, comment_num):
     else :
         form = CommentForm(instance=comment)
     community = get_object_or_404(Community, com_num=com_num)
-    comments = Comment.objects.filter(com_num=com_num)
+    comment = Comment.objects.filter(comment_num=comment_num)
     context = {'form' : form,
                'com_num' : com_num,
                'community' : community,
-               'comments' : comments,
+               'comment' : comment,
                'comment_num' : comment_num}
     return render(request,
                   "mainapp/comment_form.html",
