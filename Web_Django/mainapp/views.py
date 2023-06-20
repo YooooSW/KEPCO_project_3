@@ -211,7 +211,7 @@ def delete(request):
         return render(request, "mainapp/index.html", {})
     else :
         return render(request,
-                  "mainapp/my_Page.html",
+                  "mainapp/login/delete_form.html",
                   {})
 
 from .forms import CommunityForm, CommentForm
