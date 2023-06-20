@@ -39,8 +39,9 @@
         <form method="POST">
           {% csrf_token %}
           <input type="hidden" name="com_num" value="{{community.com_num}}"></input>
+          {% for community in community_list %}
           <div class="table-row">
-            {% for community in community_list %}
+          
             <tr>
             <td><div class="table-cell first-cell">
               <p>{{community.com_num}}</p>
@@ -69,67 +70,61 @@
     {% endfor %}
         </form>
         {% endif %}
+        <!-- 여기까지 css 수정 완료 -->
         <!-- ------------로그인 한 사람만 글쓰기 가능하도록--------------- -->
-        {% if user.is_active %}
+  {% if user.is_active %}
         <button type="button" onclick="location.href='/article'">글쓰기</button>
         <!-- 유저정보까지 같이 넘어가야함 -->
-        <li>
+
+        <!-- 페이징 처리 -->
+        <div class="paging">
+        <ul>
           <div id="divPaging">
-            <div>
+              <!--  -->
               {% if community_list.has_previous %}
               <li class="page-item">
-                <a
-                  class="page-link"
-                  href="?page={{ community_list.previous_page_number }}"
-                  >◀</a
-                >
+                <a class="page-link" href="?page={{ community_list.previous_page_number }}"> ◀ </a>
               </li>
               {% else %}
               <li class="page-item disabled">
-                <a class="page-link" tabindex="-1" aria-disabled="true" href="#"
-                  >◀</a
-                >
+                <a class="page-link" tabindex="-1" aria-disabled="true" href="#"> ◀ </a>
               </li>
               {% endif %}
-            </div>
+           
+              <!-- 여기 한세트 -->
+
+              <!--  -->
             {% for page_number in community_list.paginator.page_range %}
-            <div>
+         
               {% if page_number == community_list.number %}
               <li class="page-item active" aria-current="page">
-                <a class="page-link" href="?page={{ page_number }}"
-                  >{{ page_number }}</a
-                >
+                <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
               </li>
               {% else %}
               <li class="page-item">
-                <a class="page-link" href="?page={{ page_number }}"
-                  >{{ page_number }}</a
-                >
+                <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
               </li>
-            </div>
-            {% endif %} {% endfor %}
-            <div>
+           
+            <!-- 여기 한세트 -->
+              {% endif %} 
+            {% endfor %}
+
+           
               {% if community_list.has_next %}
               <li class="page-item">
-                <a
-                  class="page-link"
-                  href="?page={{ community_list.next_page_number }}"
-                  >▶</a
-                >
-                {% else %}
+                <a class="page-link" href="?page={{ community_list.next_page_number }}"> ▶ </a>
               </li>
-
+              {% else %}
               <li class="page-item disabled">
-                <a class="page-link" tabindex="-1" aria-disabled="true" href="#"
-                  >▶</a
-                >
+                <a class="page-link" tabindex="-1" aria-disabled="true" href="#"> ▶ </a>
               </li>
-            </div>
+              {% endif %}
+          
 
-            {% endif %}
           </div>
-        </li>
-        {% else %}
+        </ul>
+        </div>
+    {% else %}
         <button type="button" onclick="btn_clink()">글쓰기</button>
 
         {% endif %}
