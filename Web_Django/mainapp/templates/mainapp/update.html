@@ -16,69 +16,68 @@
       {% include 'mainapp/include/navbar.html' %}
 
       <div class="container">
-        <input type="hidden" name="com_num" value="form.com_num" />
-        <br /><br />
-        <h3 class="title">게시글 수정하기</h3>
-        <hr />
-        <br />
-        <table style="width: 90%">
-          <tr>
-            <th style="width: 10%"></th>
-            <td style="width: 50%">
-              <input
-                type="text"
-                name="com_title"
-                size="25"
-                style="height: 35px; width: 100%; font-size: 15px"
-                required
-                value="{{form.com_title.value}}"
-              />
-            </td>
+        <form id="fm" name="fm" method="POST" action="/update/send/{{com_num}}/">
+          {% csrf_token %}
+          <input type="hidden" name="com_num" value="{{form.com_num}}" />
+          <input type="hidden" name="username" value="{{user.username}}"></input>
+          <br /><br />
+          <h3 class="title">게시글 수정하기</h3>
+          <hr />
+          <br />
+          <table style="width: 90%">
+            <tr>
+              <th style="width: 10%"></th>
+              <td style="width: 50%">
+                <input
+                  type="text"
+                  name="com_title"
+                  size="25"
+                  style="height: 35px; width: 100%; font-size: 15px"
+                  required
+                  value="{{form.com_title.value}}"
+                />
+              </td>
 
-            <th style="width: 1%"></th>
-            <td style="width: 20%">
-              <select
-                name="cate_name"
-                style="width: 100%; font-size: 15px; padding: 5px"
-              >
-                <option value="차량견적" selected="selected">차량견적</option>
-                <option value="자유">자유</option>
-                <option value="공업사">공업사</option>
-              </select>
-            </td>
-          </tr>
-          <tr>
-            <th></th>
-            <td colspan="3">
-              <br />
-              <textarea
-                name="com_content"
-                rows="20"
-                cols="55"
-                style="width: 100%; font-size: 15px"
-                required
-              >
+              <th style="width: 1%"></th>
+              <td style="width: 20%">
+                <select
+                  name="cate_name"
+                  style="width: 100%; font-size: 15px; padding: 5px"
+                >
+                  <option value="차량견적" selected="selected">차량견적</option>
+                  <option value="자유">자유</option>
+                  <option value="공업사">공업사</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <th></th>
+              <td colspan="3">
+                <br />
+                <textarea
+                  name="com_content"
+                  rows="20"
+                  cols="55"
+                  style="width: 100%; font-size: 15px"
+                  required
+                >
 {{ form.com_content.value }}</textarea
-              >
-            </td>
-          </tr>
-          <tr class="button-row">
-            <td colspan="4" style="text-align: right">
-              <a
-                href="{% url 'mainapp:com_update_send' com_num %}"
-                class="w-btn w-btn-gra1"
-              >
-                수정
-              </a>
-              <input
-                type="button"
-                value="뒤로 가기"
-                class="w-btn w-btn-gra1"
-                onclick="history.back()"
-              />
-            </td>
-          </tr>
-        </table>
+                >
+              </td>
+            </tr>
+            <tr class="button-row">
+              <td colspan="4" style="text-align: right">
+                <button class="w-btn w-btn-gra1">수정</button>
+                <input
+                  type="button"
+                  value="뒤로 가기"
+                  class="w-btn w-btn-gra1"
+                  onclick="history.back()"
+                />
+              </td>
+            </tr>
+          </table>
+        </form>
       </div>
     </div>
 

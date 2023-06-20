@@ -278,7 +278,7 @@ def update(request, com_num) :
             return redirect('mainapp:detail', com_num=community.com_num)
     else :
         form = CommunityForm(instance=community)
-    context = {'form': form, 'com_num': num}
+    context = {'form': form, 'community':community, 'com_num': num}
     return render(request,
                   "mainapp/update.html",
                   context)
@@ -298,7 +298,7 @@ def update_send(request, com_num) :
             return redirect('mainapp:detail', com_num=community.com_num)
     else :
         form = CommunityForm(instance=community)
-    context = {'form': form, 'com_num': num}
+    context = {'form': form, 'community':community, 'com_num': num}
     return render(request,
                   "mainapp/board_des.html",
                   context)
