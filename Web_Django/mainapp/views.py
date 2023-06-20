@@ -303,6 +303,17 @@ def update_send(request, com_num) :
                   "mainapp/board_des.html",
                   context)
 
+from django.contrib.auth.decorators import login_required
+# 게시글 삭제
+@login_required(login_url='mainapp:login')
+def com_delete(request, com_num):
+    community = get_object_or_404(Community, pk=com_num)
+    if request.user != community.username :
+        messages.error(request, "삭제 권한이 없습니다.")
+        return redirect('mainapp:detail', com_num=community.com_num)
+    community.delete()
+    return redirect('mainapp:board')
+
 # MY_PAGE
 def my_page(request) :
     return render(request,

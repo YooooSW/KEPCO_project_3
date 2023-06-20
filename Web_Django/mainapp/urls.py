@@ -127,6 +127,9 @@ urlpatterns = [
     # 게시글 수정 페이지 이동
     ### http://127.0.0.1:8000/update
     path('update/send/<int:com_num>/', views.update_send, name="com_update_send"),
+    # 게시글 삭제
+    ### http://127.0.0.1:8000/update
+    path('update/delete/<int:com_num>/', views.com_delete, name="com_delete"),
 
     # my_page 이동
     ### http://127.0.0.1:8000/my_page

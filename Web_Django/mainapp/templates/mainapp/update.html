@@ -67,7 +67,16 @@
             </tr>
             <tr class="button-row">
               <td colspan="4" style="text-align: right">
+                <!-- 수정하는 사람과 게시판 유저가 
+                  같아야 수정, 삭제 버튼 활성화 -->
+                {% if request.user == community.username %}
                 <button class="w-btn w-btn-gra1">수정</button>
+                <!-- 삭제 버튼 -->
+                <a href="javascript:void(0)" class="delete w-btn w-btn-gra1" 
+                data-url="{% url 'mainapp:com_delete' community.com_num %}">
+                삭제</a>
+                <!-- 버튼 끝 -->
+                {% endif %}
                 <input
                   type="button"
                   value="뒤로 가기"
@@ -86,5 +95,15 @@
     {% comment %}
     <script src="/static/js/update.js"></script>
     {% endcomment %}
+    <script type='text/javascript'>
+      const delete_elements = document.getElementsByClassName("delete");
+      Array.from(delete_elements).forEach(function(element) {
+        element.addEventListener('click', function() {
+          if(confirm("정말로 삭제하시겠습니까?")) {
+            location.href = this.dataset.url;
+          };
+        });
+      });
+    </script>
   </body>
 </html>
