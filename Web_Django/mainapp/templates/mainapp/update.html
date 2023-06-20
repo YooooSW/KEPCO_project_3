@@ -72,17 +72,12 @@
                 {% if request.user == community.username %}
                 <button class="w-btn w-btn-gra1">수정</button>
                 <!-- 삭제 버튼 -->
-                <a href="javascript:void(0)" class="delete w-btn w-btn-gra1" 
-                data-url="{% url 'mainapp:com_delete' community.com_num %}">
-                삭제</a>
+                <button class="w-btn w-btn-gra1" >
+                  <a class="delete" href="javascript:void(0)" data-url="{% url 'mainapp:com_delete' community.com_num %}">삭제</a>
+                </button>
                 <!-- 버튼 끝 -->
                 {% endif %}
-                <input
-                  type="button"
-                  value="뒤로 가기"
-                  class="w-btn w-btn-gra1"
-                  onclick="history.back()"
-                />
+                <button class="w-btn w-btn-gra1" onclick="history.back()">뒤로가기</button>
               </td>
             </tr>
           </table>
