@@ -1,102 +1,149 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>::: 게시판 페이지 :::</title>
     <!-- css파일 불러오기 -->
     {% include 'mainapp/include/css.html' %}
-    <link rel="stylesheet" type="text/css" href="/static/css/header.css">
-    <link rel="stylesheet" type="text/css" href="/static/css/board.css">
- 
-</head>
-<body>
-    <div class="header">
-        {% include 'mainapp/include/navbar.html' %}
-    </div>
-    
-        <div class="container">
-            <h2>게시판</h2>
-            
-            <!-- 게시판 -->
-            <div class="table-box">
 
-                <div class="table-row table-head">
-                    <div class="table-cell first-cell">
-                        <p>순번</p>
-                    </div>
-                    <div class="table-cell">
-                        <p>카테고리</p>
-                    </div>
-                    <div class="table-cell">
-                        <p>제목</p>
-                    </div>
-                    <div class="table-cell">
-                        <p>작성자</p>
-                    </div>
-                    <div class="table-cell last-cell">
-                        <p>작성일</p>
-                    </div>
-                    
-                </div>
-            <!-- ----------------------db랑 연결시 이부분만 수정하면 됨----------------------- -->
-                <div class="table-row">
-                    <div class="table-cell first-cell">
-                        <p>{{com_num}}</p>
-                    </div>
-                    <div class="table-cell">
-                        <p>{{cate_name}}</p>
-                    </div>
-                    <div class="table-cell">
-                        <p>{{com_title}}</p>
-                    </div>
-                    <div class="table-cell">
-                        <p>{{nickname}}</p>
-                    </div>
-                    <div class="table-cell last-cell">
-                        <p>{{com_date}}</p>
-                    </div>
-                    
-                </div>
+    <link rel="stylesheet" type="text/css" href="/static/css/header.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/board.css" />
+  </head>
+  <body>
+    <div class="header">{% include 'mainapp/include/navbar.html' %}</div>
 
+    <div class="container">
+      <h2>게시판</h2>
 
-                 <!-- ------------로그인 한 사람만 글쓰기 가능하도록--------------- -->
-                 {% if user.is_active %}
-                 <button type="button" onclick="location.href='/article'">글쓰기</button>
-                 <!-- 유저정보까지 같이 넘어가야함 -->
-                
+      <!-- 게시판 -->
+      <div class="table-box">
+        <div class="table-row table-head">
+          <div class="table-cell first-cell">
+            <p>순번</p>
+          </div>
+          <div class="table-cell">
+            <p>제목</p>
+          </div>
+          <div class="table-cell">
+            <p>작성자</p>
+          </div>
+          <div class="table-cell last-cell">
+            <p>작성일</p>
+          </div>
+        </div>
+        <!-- ----------------------db랑 연결시 이부분만 수정하면 됨----------------------- -->
+        {% if community_list %}
+        <form method="POST">
+          {% csrf_token %}
+          <input type="hidden" name="com_num" value="{{community.com_num}}"></input>
+          <div class="table-row">
+            {% for community in community_list %}
+            <tr>
+            <td><div class="table-cell first-cell">
+              <p>{{community.com_num}}</p>
+            </div></td>
+            <td><div class="table-cell">
+              <p>
+                <a href="{% url 'mainapp:detail' community.com_num %}"
+                  >{{community.com_title}}</a
+                >
+              </p>
+            </div></td>
+            {% if community.nickname is not null %}
+            <td><div class="table-cell">
+              <p>{{community.nickname}}</p>
+            </div></td>
+            {% else %}
+            <td><div class="table-cell">
+              <p>{{community.username}}</p>
+            </div></td>
+            {% endif %}
+            <td><div class="table-cell last-cell">
+              <p>{{community.com_date}}</p>
+            </div></td>
+        </div>
+    </tr>
+    {% endfor %}
+        </form>
+        {% endif %}
+        <!-- ------------로그인 한 사람만 글쓰기 가능하도록--------------- -->
+        {% if user.is_active %}
+        <button type="button" onclick="location.href='/article'">글쓰기</button>
+        <!-- 유저정보까지 같이 넘어가야함 -->
+        <li>
+          <div id="divPaging">
+            <div>
+              {% if community_list.has_previous %}
+              <li class="page-item">
+                <a
+                  class="page-link"
+                  href="?page={{ community_list.previous_page_number }}"
+                  >◀</a
+                >
+              </li>
+              {% else %}
+              <li class="page-item disabled">
+                <a class="page-link" tabindex="-1" aria-disabled="true" href="#"
+                  >◀</a
+                >
+              </li>
+              {% endif %}
+            </div>
+            {% for page_number in community_list.paginator.page_range %}
+            <div>
+              {% if page_number == community_list.number %}
+              <li class="page-item active" aria-current="page">
+                <a class="page-link" href="?page={{ page_number }}"
+                  >{{ page_number }}</a
+                >
+              </li>
+              {% else %}
+              <li class="page-item">
+                <a class="page-link" href="?page={{ page_number }}"
+                  >{{ page_number }}</a
+                >
+              </li>
+            </div>
+            {% endif %} {% endfor %}
+            <div>
+              {% if community_list.has_next %}
+              <li class="page-item">
+                <a
+                  class="page-link"
+                  href="?page={{ community_list.next_page_number }}"
+                  >▶</a
+                >
                 {% else %}
-                <button type="button" onclick="btn_clink()">글쓰기</button>
-                   
-                {% endif %}
-               
-                
-               
-                <li>
-                    <div id="divPaging">
-                        <div>◀</div>
-                        <div><b>1</b></div>
-                        <div>2</div>
-                        <div>3</div>
-                        <div>4</div>
-                        <div>5</div>
-                        <div>▶</div>
-                    </div>
-                </li>
+              </li>
+
+              <li class="page-item disabled">
+                <a class="page-link" tabindex="-1" aria-disabled="true" href="#"
+                  >▶</a
+                >
+              </li>
             </div>
 
+            {% endif %}
+          </div>
+        </li>
+        {% else %}
+        <button type="button" onclick="btn_clink()">글쓰기</button>
+
+        {% endif %}
+      </div>
     </div>
-    
 
     <!-- js파일불러오기 -->
     <script src="/static/js/user.js"></script>
+    <script src="{% static 'bootstrap.min.js' %}"></script>
     <script>
-        function btn_clink(){
-            alert("로그인 후 이용가능 합니다.");
-            location.href = "/sns_login_form";
-        }
+      function btn_clink() {
+        alert("로그인 후 이용가능 합니다.");
+        location.href = "/sns_login_form";
+      }
     </script>
-</body>
+  </body>
 </html>

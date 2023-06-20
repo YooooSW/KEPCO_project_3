@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from mainapp.car.car_view import Car_View
 from django.utils import timezone
@@ -214,23 +214,94 @@ def delete(request):
                   "mainapp/my_Page.html",
                   {})
 
+from .forms import CommunityForm, CommentForm
+from django.core.paginator import Paginator
 # 게시판
 def board(request) :
+    page = request.GET.get('page', '1') # 페이지
+    community_list = Community.objects.order_by('-com_date')
+    paginator = Paginator(community_list, 10) # 페이지당 10개씩 보여주기
+    page_obj = paginator.get_page(page)
+    context = {'community_list': page_obj}
     return render(request,
                   "mainapp/board.html",
-                  {})
+                  context)
 
 # 게시판 상세 보기
-def board_des(request) :
+def board_des(request, com_num) :
+    com_count_ = Community.objects.get(com_num=com_num).com_count + 1
+    Community.objects.filter(com_num=com_num).update(com_count = com_count_)
+    
+    community = get_object_or_404(Community, pk=com_num)
+    context = {'community': community}
     return render(request,
                   "mainapp/board_des.html",
-                  {})
+                  context)
 
-# 게시물 작성
+# 게시물 작성 페이지 이동
 def article(request) :
+
     return render(request,
                   "mainapp/article.html",
                   {})
+# 게시물 작성
+def article_send(request) :
+    if request.method == 'POST':
+        form = CommunityForm(request.POST)
+        user = request.user
+        if form.is_valid(): # 폼이 유효하다면
+            community = form.save(commit=False) # 임시 저장하여 community 객체를 리턴받는다.
+            community.username = User.objects.get(username=user.username)
+            community.com_date = timezone.now() #실제 저장을 위해 작성일시를 설정한다.
+            community.save() # 데이터를 실제로 저장한다.
+            return redirect('mainapp:board')
+    else:
+        form = CommunityForm()
+    context = {'form': form}
+    return render(request,
+                  "mainapp/article.html",
+                  context)
+    
+# 게시물 수정 페이지 이동
+def update(request, com_num) :
+    num = com_num
+    community = get_object_or_404(Community, pk=com_num)
+    if request.user != community.username:
+        messages.error(request, '수정권한이 없습니다.')
+        return redirect('mainapp:detail', com_num=community.com_num)
+    if request.method == "POST":
+        form = CommunityForm(request.POST, instance=community)
+        if form.is_valid():
+            community = form.save(commit=False)
+            # community.modify_date = timezone.now() #수정 날짜 저장
+            community.save()
+            return redirect('mainapp:detail', com_num=community.com_num)
+    else :
+        form = CommunityForm(instance=community)
+    context = {'form': form, 'com_num': num}
+    return render(request,
+                  "mainapp/update.html",
+                  context)
+# 게시물 수정
+def update_send(request, com_num) :
+    num = com_num
+    community = get_object_or_404(Community, pk=com_num)
+    if request.user != community.username:
+        messages.error(request, '수정권한이 없습니다.')
+        return redirect('mainapp:detail', com_num=community.com_num)
+    if request.method == "POST":
+        form = CommunityForm(request.POST, instance=community)
+        if form.is_valid():
+            community = form.save(commit=False)
+            # community.modify_date = timezone.now() #수정 날짜 저장
+            community.save()
+            return redirect('mainapp:detail', com_num=community.com_num)
+    else :
+        form = CommunityForm(instance=community)
+    context = {'form': form, 'com_num': num}
+    return render(request,
+                  "mainapp/board_des.html",
+                  context)
 
 # MY_PAGE
 def my_page(request) :

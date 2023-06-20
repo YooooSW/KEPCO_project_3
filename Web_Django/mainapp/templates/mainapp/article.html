@@ -1,74 +1,101 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>::: 게시판 페이지 :::</title>
     {% include 'mainapp/include/css.html' %}
     <!-- css파일 불러오기 -->
-    <link rel="stylesheet" type="text/css" href="/static/css/header.css">
-    <link rel="stylesheet" href="/static/css/article.css">
- 
-</head>
-<body>
+    <link rel="stylesheet" type="text/css" href="/static/css/header.css" />
+    <link rel="stylesheet" href="/static/css/article.css" />
+  </head>
+  <body>
     <div class="header">
-        {% include 'mainapp/include/navbar.html' %}
+      {% include 'mainapp/include/navbar.html' %}
 
-        <div class="container">
-            
-                <form id="fm" name="fm" method="post" action="/Post_send/">
-                    {% csrf_token %}
-                    <br><br>
-                    <h3 class="title">게시글 작성하기</h3>
-                    <hr>
-                    <br>
-                    <table style="width: 90%;">
-                        <tr>
-                            <th style="width: 10%;"> </th>
-                            <td style="width: 50%;"><input type="text" name="title" size="25" style="height: 35px; width: 100%; font-size: 15px;" required placeholder="    제목을 입력해 주세요."></td>
-        
-                            <th style="width: 1%;"></th> 
-                            <td style="width: 20%;">
-                                <select name="category" style="width: 100%; font-size: 15px; padding: 5px;">
-                                    <option value="car">차량견적</option>
-                                    <option value="free">자유</option>
-                                    <option value="car-repair">공업사</option>
-                                </select>
-                            </td>
-        
-                            
-                        </tr>
-                        <tr>
-                            <th></th>
-                            <td colspan="3">
-                                <br>
-                                <textarea name="content" rows="20" cols="55" style="width: 100%; font-size: 15px;" required placeholder="     내용을 입력하세요."></textarea>
-                            </td>
-                        </tr>
-                        <tr class="button-row">
-                            <td colspan="4" style="text-align: right;">
-                                <input type="button" value="글 작성" class="w-btn w-btn-gra1"  onclick="oneSelect()"> 
-                                <input type="button" value="뒤로 가기" class="w-btn w-btn-gra1" onclick="history.back()">
-        
-                            </td>
-                        </tr>
-                    </table>
-                   
-                    
-                </form>
-        
-            
+      <div class="container">
+        <form id="fm" name="fm" method="POST" action="/article/send/">
+          {% csrf_token %}
+          <input type="hidden" name="username" value="{{user.username}}"></input>
+          <!-- 오류표시 Start-->
+          {% if form.errors %}
+          <div class="alert alert-danger" role="alert">
+            {% for field in form %} {% if field.errors %}
+            <div>
+              <strong>{{ field.label }}</strong>
+              {{ field.errors }}
+            </div>
+            {% endif %}
+            <!--  -->
+            {% endfor %}
+          </div>
+          {% endif %}
+          <!-- 오류표시 End -->
+          <br /><br />
+          <h3 class="title">게시글 작성하기</h3>
+          <hr />
+          <br />
+          <table style="width: 90%">
+            <tr>
+              <th style="width: 10%"></th>
+              <td style="width: 50%">
+                <input
+                  type="text"
+                  name="com_title"
+                  size="25"
+                  style="height: 35px; width: 100%; font-size: 15px"
+                  required
+                  placeholder="     제목을 입력하세요."
+                  value="{{ form.com_title.value|default_if_none:'' }}"
+                />
+              </td>
 
-
-
-
-
-        </div>  
+              <th style="width: 1%"></th>
+              <td style="width: 20%">
+                <select
+                  name="cate_name"
+                  style="width: 100%; font-size: 15px; padding: 5px"
+                >
+                  <option value="차량견적">차량견적</option>
+                  <option value="자유">자유</option>
+                  <option value="공업사">공업사</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <th></th>
+              <td colspan="3">
+                <br />
+                <textarea
+                  name="com_content"
+                  rows="20"
+                  cols="55"
+                  style="width: 100%; font-size: 15px"
+                  required
+                >
+                {{ form.com_content.value|default_if_none:'' }}
+                </textarea>
+              </td>
+            </tr>
+            <tr class="button-row">
+              <td colspan="4" style="text-align: right">
+                <button class="w-btn w-btn-gra1">글작성</button>
+                <input
+                  type="button"
+                  value="뒤로 가기"
+                  class="w-btn w-btn-gra1"
+                  onclick="history.back()"
+                />
+              </td>
+            </tr>
+          </table>
+        </form>
+      </div>
     </div>
-          
+
     <!-- js파일불러오기 -->
     <script src="/static/js/user.js"></script>
-</body>
+  </body>
 </html>
