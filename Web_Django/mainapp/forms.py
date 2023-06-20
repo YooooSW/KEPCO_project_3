@@ -57,3 +57,27 @@ class PasswordResetForm(auth_forms.PasswordResetForm):
             u for u in active_users
             if u.has_usable_password()
         )
+        
+from django import forms
+from mainapp.models import Community, Comment
+
+class CommunityForm(forms.ModelForm):
+    class Meta:
+        model = Community # 사용할 모델
+        fields = ['com_num', 'com_title', 'com_content', 'username', 'cate_name'] # QuestionForm에서 사용할 Question 모델의 속성
+        labels = {
+            'com_num' : '게시글번호',
+            'com_title' : '제목',
+            'com_content' : '내용',
+            'username' : '작성자',
+            'cate_name' : '카테고리',
+        }
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['comment_num','comment_content','username']
+        labels = {
+            'comment_num' : '댓글번호',
+            'comment_content' : '댓글내용',
+            'username' : '작성자',
+        }

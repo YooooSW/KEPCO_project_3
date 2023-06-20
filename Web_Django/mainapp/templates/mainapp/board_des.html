@@ -15,6 +15,15 @@
     </div>
 
     <div class="container">
+        <!-- message 표시 추가 시작부분 -->
+        {% if messages %}
+        <div class='alert alert_danger my-3' role="alert">
+            {% for message in messages %}
+            <strong>{{ message.messages }}
+            {% endfor %}
+        </div>
+        {% endif %}
+        <!-- message 표시 추가 끝부분 -->
         <div class="board_wrap">
         <div class="board_title">
             <strong>게 시 판</strong>
@@ -22,40 +31,44 @@
         <div class="board_view_wrap">
             <div class="board_view">
                 <div class="title">
-                    글 제목이 들어갑니다.
+                    <p>{{ community.com_title }}</P>
                 </div>
                 <div class="info">
                     <dl>
                         <dt>번호</dt>
-                        <dd>1</dd>
+                        <dd>{{ community.com_num }}</dd>
                     </dl>
+                    {% if community2.nickname == None %}
                     <dl>
                         <dt>글쓴이</dt>
-                        <dd>김이름</dd>
+                        {% if community.nickname != None %}
+                        <dd>{{ community.username }}</dd>
+                        {% else %}
+                        <dd>{{ community.username }}</dd>
+                        {% endif %}
                     </dl>
+                    {% else %}
+                    <dl>
+                        <dt>글쓴이</dt>
+                        <dd>{{ community.nickname }}</dd>
+                    </dl>
+                    {% endif %}
                     <dl>
                         <dt>작성일</dt>
-                        <dd>2021.1.16</dd>
+                        <dd>{{ community.comment_create_date }}</dd>
                     </dl>
                     <dl>
-                        <dt>조회</dt>
-                        <dd>33</dd>
+                        <dt>조회수</dt>
+                        <dd>{{ community.com_count }}</dd>
                     </dl>
                 </div>
                 <div class="cont">
-                    글 내용이 들어갑니다<br>
-                    글 내용이 들어갑니다<br>
-                    글 내용이 들어갑니다<br>
-                    글 내용이 들어갑니다<br>
-                    글 내용이 들어갑니다<br>
-                    글 내용이 들어갑니다<br>
-                    글 내용이 들어갑니다<br>
-                    글 내용이 들어갑니다
+                    {{ community.com_content }}
                 </div>
             </div>
             <div class="bt_wrap">
                 <a href="/board" class="on">목록</a>
-                <a href="/article">수정</a>
+                <a href="{% url 'mainapp:com_update' community.com_num %}">수정</a>
             </div>
         </div>
     </div>

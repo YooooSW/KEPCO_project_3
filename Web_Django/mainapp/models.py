@@ -3,6 +3,8 @@ from django.utils import timezone
 from django import forms
 # - DB에서 varchar2 또는 char 등 문자열 타입
 from django.db.models.fields import CharField
+# - DB에서 숫자형 타입 자동증가
+from django.db.models.fields import AutoField
 # - DB에서 number 또는 integer 등 숫자형 타입
 from django.db.models.fields import IntegerField
 # - DB에서 날짜와 시간을 갖는 필드.
@@ -165,7 +167,7 @@ class Category(models.Model):
                                 to_field="username",
                                 db_column="username",
                                 on_delete=models.PROTECT)
-    cate_name = CharField(max_length=100)
+    cate_name = CharField(max_length=100, unique=True)
     cate_date = DateTimeField(auto_now_add = True)
     
     class Meta:
@@ -176,24 +178,21 @@ class Category(models.Model):
         managed = False
 
 class Community(models.Model):
-    com_num = IntegerField(primary_key=True)
-    username = models.ForeignKey(User,
+    com_num = AutoField(primary_key=True)
+    username = models.ForeignKey("User",
                                 to_field="username",
                                 db_column="username",
                                 on_delete=models.PROTECT)
-    cate_num = models.ForeignKey(Category,
-                                to_field="cate_num",
-                                db_column="cate_num",
-                                on_delete=models.PROTECT)
+    cate_name = CharField(max_length=255)
     com_title = CharField(max_length=255)
     com_content = TextField()
     com_combool = CharField(max_length=1)
     com_date = DateTimeField(auto_now_add = True)
-    com_count = IntegerField()
+    com_count = IntegerField(default=1)
     com_path = CharField(max_length=100)
     
     class Meta:
-        db_table = "COMMUNITY"
+        db_table = "Community"
 
         app_label = "mainapp"
 
@@ -201,7 +200,7 @@ class Community(models.Model):
 
 class Comment(models.Model):
     comment_num = IntegerField(primary_key=True)
-    com_num = models.ForeignKey(Community,
+    com_num = models.ForeignKey("Community",
                                 to_field="com_num",
                                 db_column="com_num",
                                 on_delete=models.PROTECT)

@@ -19,7 +19,7 @@ from django.contrib.auth import views as auth_views
 #     path('google', GoogleLoginApi.as_view(), name='google_login'),
 #     path('google/callback', GoogleSigninCallBackApi.as_view(), name='google_login_callback'),
 # ]
-
+app_name = 'mainapp'
 
 urlpatterns = [
 
@@ -107,13 +107,26 @@ urlpatterns = [
 
     # 게시판 페이지 이동
     ### http://127.0.0.1:8000/board
-    path('board/', views.board),
+    path('board/', views.board, name='board'),
     
-    ### http://127.0.0.1:8000/board_des
-    path('board_des/', views.board_des),
+    # 게시판 상세보기
+    ### http://127.0.0.1:8000/board/<int:com_num>
+    path('board/<int:com_num>/', views.board_des, name='detail'),
     
+    # 게시글 작성 페이지 이동
     ### http://127.0.0.1:8000/article
     path('article/', views.article),
+    
+    # 게시글 저장
+    ### http://127.0.0.1:8000/article/send/
+    path('article/send/', views.article_send),
+    
+    # 게시글 수정 페이지 이동
+    ### http://127.0.0.1:8000/update
+    path('update/<int:com_num>/', views.update, name="com_update"),
+    # 게시글 수정 페이지 이동
+    ### http://127.0.0.1:8000/update
+    path('update/send/<int:com_num>/', views.update_send, name="com_update_send"),
 
     # my_page 이동
     ### http://127.0.0.1:8000/my_page
