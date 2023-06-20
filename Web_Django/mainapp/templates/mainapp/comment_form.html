@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>::: 댓글 생성 페이지 :::</title>
+    {% include 'mainapp/include/css.html' %}
+    <!-- css파일 불러오기 -->
+    <link rel="stylesheet" type="text/css" href="/static/css/header.css" />
+    <link rel="stylesheet" href="/static/css/article.css" />
+  </head>
+  <body>
+    <div class="header">
+      {% include 'mainapp/include/navbar.html' %}
+
+      <div class="container">
+        <h5 class="border-bottom pb-2">댓글 등록하기</h5>
+        <form method="POST" class="post-form my-3">
+          {% csrf_token %}
+          <!-- 오류표시 Start-->
+          {% if form.errors %}
+          <div class="alert alert-danger" role="alert">
+            {% for field in form %} {% if field.errors %}
+            <div>
+              <strong>{{ field.label }}</strong>
+              {{ field.errors }}
+            </div>
+            {% endif %}
+            <!--  -->
+            {% endfor %}
+          </div>
+          {% endif %}
+          <!-- 오류표시 End -->
+          <input type="hidden" name="com_num" value="{{com_num}}" />
+          <input type="hidden" name="username" value="{{user.username}}"/>
+          <div class="form-group">
+            <label for="comment_content"> 댓글내용 </label>
+            <textarea class="form-control" name="comment_content" id-"comment_content" rows="3">
+              {{ form.com_content.value|default_if_none:'' }}</textarea>
+          </div>
+          <button type"submit" class="btn btn-primary">저장하기</button>
+          <input
+          type="button"
+          value="뒤로 가기"
+          class="w-btn w-btn-gra1"
+          onclick="history.back()"
+          />
+        </form>
+      </div>
+    </div>
+
+    <!-- js파일불러오기 -->
+    <script src="/static/js/user.js"></script>
+  </body>
+</html>

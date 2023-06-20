@@ -199,12 +199,12 @@ class Community(models.Model):
         managed = False
 
 class Comment(models.Model):
-    comment_num = IntegerField(primary_key=True)
+    comment_num = AutoField(primary_key=True)
     com_num = models.ForeignKey("Community",
                                 to_field="com_num",
                                 db_column="com_num",
                                 on_delete=models.PROTECT)
-    username = models.ForeignKey(User,
+    username = models.ForeignKey("User",
                                 to_field="username",
                                 db_column="username",
                                 on_delete=models.PROTECT)

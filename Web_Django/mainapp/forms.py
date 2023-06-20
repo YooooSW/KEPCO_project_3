@@ -75,9 +75,13 @@ class CommunityForm(forms.ModelForm):
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
-        fields = ['comment_num','comment_content','username']
+        fields = ['comment_num',
+                  'comment_content',
+                  'username',
+                  'com_num']
         labels = {
             'comment_num' : '댓글번호',
             'comment_content' : '댓글내용',
             'username' : '작성자',
+            'com_num' : '게시글 번호',
         }

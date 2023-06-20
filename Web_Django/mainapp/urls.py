@@ -110,8 +110,20 @@ urlpatterns = [
     path('board/', views.board, name='board'),
     
     # 게시판 상세보기
-    ### http://127.0.0.1:8000/board/<int:com_num>
+    ### http://127.0.0.1:8000/board/<int:com_num>/
     path('board/<int:com_num>/', views.board_des, name='detail'),
+    
+    # 댓글 작성
+    ### http://127.0.0.1:8000/board/comments/<int:com_num>/
+    path('board/comments/<int:com_num>/', views.comments_create, name='comments_create'),
+    
+    # 댓글 수정
+    ### http://127.0.0.1:8000/board/comments/update/<int:comment_num>/
+    path('board/comments/update/<int:comment_num>/', views.comments_update, name='comments_update'),
+    
+    # 댓글 삭제
+    ### http://127.0.0.1:8000/'board/<int:com_num>/comments/<int:comment_num>/delete/
+    path('board/comments/delete/<int:comment_num>/', views.comments_delete, name='comments_delete'),
     
     # 게시글 작성 페이지 이동
     ### http://127.0.0.1:8000/article

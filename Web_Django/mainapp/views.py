@@ -233,7 +233,8 @@ def board_des(request, com_num) :
     Community.objects.filter(com_num=com_num).update(com_count = com_count_)
     
     community = get_object_or_404(Community, pk=com_num)
-    context = {'community': community}
+    comments = Comment.objects.filter(com_num=com_num)
+    context = {'community': community, 'comments': comments}
     return render(request,
                   "mainapp/board_des.html",
                   context)
@@ -313,6 +314,74 @@ def com_delete(request, com_num):
         return redirect('mainapp:detail', com_num=community.com_num)
     community.delete()
     return redirect('mainapp:board')
+
+# 댓글 생성
+@login_required(login_url='mainapp:login')
+def comments_create(request, com_num):
+    community = get_object_or_404(Community, pk=com_num)
+    if request.method == "POST" :
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.username = request.user
+            comment.com_num = Community.objects.get(com_num=com_num)
+            comment.comment_create_date = timezone.now()
+            comment.comment_modified_date = timezone.now()
+            comment.save()
+            return redirect('mainapp:detail', com_num=com_num)
+    else :
+        form = CommentForm()
+    community = get_object_or_404(Community, pk=com_num)
+    comments = Comment.objects.filter(com_num=com_num)
+    context = {'form' : form,
+               'com_num' : com_num,
+               'community' : community,
+               'comments' : comments}
+    return render(request,
+                  "mainapp/comment_form.html",
+                  context)
+
+# 댓글 수정
+@login_required(login_url='mainapp:login')
+def comments_update(request, comment_num):
+    comment = get_object_or_404(Comment, pk=comment_num)
+    com_num = comment.com_num.com_num
+    if request.user != comment.username :
+        messages.error(request, '댓글 수정권한이 없습니다.')
+        return redirect('mainapp:detail', com_num=com_num)
+    
+    if request.method == 'POST':
+        form = CommentForm(request.POST, instance=comment)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            # comment.username = request.user
+            comment.comment_modified_date = timezone.now()
+            comment.save()
+            return redirect('mainapp:detail', com_num=com_num)
+    else :
+        form = CommentForm(instance=comment)
+    community = get_object_or_404(Community, com_num=com_num)
+    comments = Comment.objects.filter(com_num=com_num)
+    context = {'form' : form,
+               'com_num' : com_num,
+               'community' : community,
+               'comments' : comments,
+               'comment_num' : comment_num}
+    return render(request,
+                  "mainapp/comment_form.html",
+                  context)
+
+# 댓글 삭제
+@login_required(login_url='mainapp:login')
+def comments_delete(request, comment_num):
+    comment = get_object_or_404(Comment, pk=comment_num)
+    com_num = comment.com_num.com_num
+    if request.user != comment.username :
+        messages.error(request, '댓글 삭제권한이 없습니다.')
+        return redirect('mainapp:detail', com_num=com_num)
+    else :
+        comment.delete()
+    return redirect('mainapp:detail', com_num=com_num)
 
 # MY_PAGE
 def my_page(request) :

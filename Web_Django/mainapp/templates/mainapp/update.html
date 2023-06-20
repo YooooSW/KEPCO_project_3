@@ -16,10 +16,15 @@
       {% include 'mainapp/include/navbar.html' %}
 
       <div class="container">
-        <form id="fm" name="fm" method="POST" action="/update/send/{{com_num}}/">
+        <form
+          id="fm"
+          name="fm"
+          method="POST"
+          action="/update/send/{{com_num}}/"
+        >
           {% csrf_token %}
           <input type="hidden" name="com_num" value="{{form.com_num}}" />
-          <input type="hidden" name="username" value="{{user.username}}"></input>
+          <input type="hidden" name="username" value="{{user.username}}" />
           <br /><br />
           <h3 class="title">게시글 수정하기</h3>
           <hr />
@@ -72,9 +77,13 @@
                 {% if request.user == community.username %}
                 <button class="w-btn w-btn-gra1">수정</button>
                 <!-- 삭제 버튼 -->
-                <a href="javascript:void(0)" class="delete w-btn w-btn-gra1" 
-                data-url="{% url 'mainapp:com_delete' community.com_num %}">
-                삭제</a>
+                <a
+                  href="javascript:void(0)"
+                  class="delete w-btn w-btn-gra1"
+                  data-url="{% url 'mainapp:com_delete' community.com_num %}"
+                >
+                  삭제</a
+                >
                 <!-- 버튼 끝 -->
                 {% endif %}
                 <input
@@ -95,13 +104,13 @@
     {% comment %}
     <script src="/static/js/update.js"></script>
     {% endcomment %}
-    <script type='text/javascript'>
+    <script type="text/javascript">
       const delete_elements = document.getElementsByClassName("delete");
-      Array.from(delete_elements).forEach(function(element) {
-        element.addEventListener('click', function() {
-          if(confirm("정말로 삭제하시겠습니까?")) {
+      Array.from(delete_elements).forEach(function (element) {
+        element.addEventListener("click", function () {
+          if (confirm("정말로 삭제하시겠습니까?")) {
             location.href = this.dataset.url;
-          };
+          }
         });
       });
     </script>
