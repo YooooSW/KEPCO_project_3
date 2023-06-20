@@ -66,6 +66,46 @@
                     {{ community.com_content }}
                 </div>
             </div>
+
+            <!--  -->
+            <h4>댓글 목록</h4>
+
+            <!--read-->
+            {% if comments %}
+            <p><b>{{ comments|length }}개의 댓글이 있습니다.</b></p>
+            {% endif %}
+            <ul>
+            {% if comments %}
+            <!--  -->
+            {% for comment in comments %}
+                <div class="comment pv-2 text-muted">
+                    <span style="white-space: pre-line;"> {{ comment.comment_content }}</span>
+                    <span>
+                        - {{ comment.username }}, {{ comment.comment_create_date }}
+                        {% if comment.comment_modified_date %}
+                        (수정:{{ comment.comment_modified_date }})
+                        {% endif %}
+                    </span>
+                    {% if request.user == comment.username %}
+                    <a href="{% url 'mainapp:comments_update' comment.comment_num %}"
+                    class="small">수정</a>,
+                    <a href="{% url 'mainapp:comments_delete' comment.comment_num %}" class="small delete_comment" data.url="{% url 'mainapp:comments_delete' comment.comment_num %}">
+                        삭제</a>
+                    {% endif %}
+                </div>
+                {% endfor %}
+                <!--  -->
+            {% endif %}
+            </ul>
+            <div>
+                <a href="{% url 'mainapp:comments_create' community.com_num %}" class="small">
+                    <small>댓글 추가</small>
+                </a>
+            </div>
+
+            <hr>
+            <!--  -->
+
             <div class="bt_wrap">
                 <a href="/board" class="on">목록</a>
                 <a href="{% url 'mainapp:com_update' community.com_num %}">수정</a>
