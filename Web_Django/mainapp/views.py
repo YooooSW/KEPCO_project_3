@@ -341,6 +341,11 @@ def comments_create(request, com_num):
                   "mainapp/comment_form.html",
                   context)
 
+def comments_update2(request):
+     return render(request,
+                  "mainapp/comment_form.html",
+                  {})
+
 # 댓글 수정
 @login_required(login_url='mainapp:login')
 def comments_update(request, comment_num):
