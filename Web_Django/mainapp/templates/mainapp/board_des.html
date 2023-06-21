@@ -66,37 +66,86 @@
                     {{ community.com_content }}
                 </div>
             </div>
-
+            <div class="bt_wrap">
+                <a href="/board" class="on">목록</a>
+                <a href="{% url 'mainapp:com_update' community.com_num %}">수정</a>
+            </div>
+            <br><br>
+            <hr>
             <!--  -->
             <h4>댓글 목록</h4>
 
-            <!--read-->
+            <!--댓글 저장 후 불러오기 read-->
             {% if comments %}
             <p><b>{{ comments|length }}개의 댓글이 있습니다.</b></p>
             {% endif %}
+            <hr>
+
             <ul>
             {% if comments %}
             <!--  -->
             {% for comment in comments %}
                 <div class="comment pv-2 text-muted">
-                    <span style="white-space: pre-line;"> {{ comment.comment_content }}</span>
-                    <span>
-                        - {{ comment.username }}, {{ comment.comment_create_date }}
-                        {% if comment.comment_modified_date %}
-                        (수정:{{ comment.comment_modified_date }})
-                        {% endif %}
-                    </span>
-                    {% if request.user == comment.username %}
-                    <a href="{% url 'mainapp:comments_update' comment.comment_num %}"
-                    class="small">수정</a>,
-                    <a href="{% url 'mainapp:comments_delete' comment.comment_num %}" class="small delete_comment" data.url="{% url 'mainapp:comments_delete' comment.comment_num %}">
-                        삭제</a>
-                    {% endif %}
+                <form name="fm" id="fm" class="fm" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="comment_num" value="{{comment.comment_num}}"/>
+                    <div class="comment-content">
+                        <span> 
+                            <strong>{{ comment.username }} </strong> {{ comment.comment_modified_date }}
+                            {% if request.user == comment.username %}
+                            <span id="buttonContainer">
+                            <button type="button" onclick="showEditInput()">수정</button>
+                            <button type="button"  onclick = "location.href = '{% url 'mainapp:comments_delete' comment.comment_num %}' ">삭제</button>
+                        </span>
+                        <button id="saveButton" type="button" onclick="saveComment()" style="display: none;">저장</button>
+                            {% endif %}
+                        </span>
+                    </div>
+                    <!-- name달기 -->
+                    <span id="commentContent" style="white-space: pre-line;"> {{ comment.comment_content }}</span>
+
+                </form>
                 </div>
+                <hr>
                 {% endfor %}
                 <!--  -->
             {% endif %}
             </ul>
+
+<!-- --------------댓글추가-------------- -->
+
+<br>
+<form method="POST" class="post-form my-3">
+    {% csrf_token %}
+    <!-- 오류표시 Start-->
+    {% if form.errors %}
+    <div class="alert alert-danger" role="alert">
+      {% for field in form %} {% if field.errors %}
+      <div>
+        <strong>{{ field.label }}</strong>
+        {{ field.errors }}
+      </div>
+      {% endif %}
+      <!--  -->
+      {% endfor %}
+    </div>
+    {% endif %}
+    <!-- 오류표시 End -->
+    <input type="hidden" name="com_num" value="{{com_num}}" />
+    <input type="hidden" name="username" value="{{user.username}}"/>
+    <div class="form-group">
+      
+      <textarea class="form-control" name="comment_content" id="comment_content" rows="5" cols="50">
+        {{ form.comment_content.value|default_if_none:'' }}</textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">댓글입력</button>
+   
+  </form>
+  <br>
+
+
+<!-- --------------댓글추가-------------- -->
+
             <div>
                 <a href="{% url 'mainapp:comments_create' community.com_num %}" class="small">
                     <small>댓글 추가</small>
@@ -106,16 +155,10 @@
             <hr>
             <!--  -->
 
-            <div class="bt_wrap">
-                <a href="/board" class="on">목록</a>
-                <a href="{% url 'mainapp:com_update' community.com_num %}">수정</a>
-            </div>
+        
         </div>
     </div>
                
-        
-            
-
 
 
 
@@ -125,5 +168,63 @@
           
      <!-- js파일불러오기 -->
      <script src="/static/js/user.js"></script>
+
+     <script>
+        // 수정버튼을 눌렀을때 작동하는 함수
+        function showEditInput() {
+            const commentContentElement = document.getElementById("commentContent"); //댓글 내용이 출력되는 id값을 불러옴
+            const buttonContainer = document.getElementById("buttonContainer"); //수정, 삭제 버튼을 묶어놓은 div의 id값 불러옴
+
+             // commentContentElement가 input 요소가 아닌 경우에만 실행
+            if (commentContentElement.tagName !== "input") {
+                const inputElement = document.createElement("input"); // 새로운 input 요소 생성
+                inputElement.type = "text"; //input태그의 type을 text
+                inputElement.value = commentContentElement.textContent;
+                inputElement.placeholder = "{{ comment.comment_content }}";
+                inputElement.id = "commentInput";
+        
+                commentContentElement.parentNode.replaceChild(inputElement, commentContentElement);
+        
+                buttonContainer.style.display = "none";
+        
+                const saveButton = document.getElementById("saveButton");
+                saveButton.style.display = "inline";
+        
+                inputElement.focus();
+                inputElement.addEventListener("blur", saveComment);
+            }
+        }
+        
+        //저장버튼 클릭시 작동하는 함수
+        function saveComment() {
+            const inputElement = document.getElementById("commentInput"); // 수정된 내용을 담은 새로운 span 요소 생성
+            const commentContent = inputElement.value;
+        
+            const spanElement = document.createElement("span"); // 수정된 내용을 담은 새로운 span 요소 생성
+            spanElement.style.whiteSpace = "pre-line";
+            spanElement.textContent = commentContent;
+        
+            
+            const parentElement = inputElement.parentNode;   // 기존의 input 요소와 교체
+            parentElement.replaceChild(spanElement, inputElement);
+        
+            const buttonContainer = document.getElementById("buttonContainer"); // 버튼 컨테이너 표시
+            buttonContainer.style.display = "inline";
+        
+            const saveButton = document.getElementById("saveButton"); // 저장 버튼 숨김
+            saveButton.style.display = "none";
+        
+            // AJAX를 사용하여 수정된 댓글을 서버에 전송하고 업데이트하는 코드 추가
+            let comment_url = 'board/comments/update/';
+            const comment_num = document.getElementById("fm").comment_num.value;
+            comment_url += comment_num + '/';
+            // 페이지 이동을 원하는 경우 아래 코드 활성화
+            window.location.href = comment_url //현재 페이지로 
+           
+            // 수정 버튼 클릭 시 다시 showEditInput() 함수를 호출하도록 추가
+            const editButton = document.getElementById("editButton");
+            editButton.addEventListener("click", showEditInput);
+        }
+        </script>
 </body>
 </html>
