@@ -11,4 +11,5 @@ urlpatterns = [
     path('index/', views.index),
     path('', include('mainapp.urls')),
     path('admin/', admin.site.urls),
+    path('sns_login_form/account/', include('allauth.urls')),
 ]
