@@ -43,7 +43,7 @@ urlpatterns = [
     path('sns_login_form/', views.slogin_form),
     # sns로그인 (부분완료)
     ### http://127.0.0.1:8000/sns_login_form
-    path('sns_login_form/account/', include('allauth.urls')),
+    
     # path('logout', LogoutApi.as_view(), name="logout"),
     # path('login/', include(login_patterns)),
 
