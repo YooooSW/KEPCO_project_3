@@ -433,10 +433,22 @@ def comments_delete(request, comment_num):
     return redirect('mainapp:detail', com_num=com_num)
 
 # MY_PAGE
+@login_required(login_url='mainapp:login')
 def my_page(request) :
+    username = request.user
+    page = request.GET.get('page', '1') # 페이지
+    page_comment = request.GET.get('page_comment', '1') # 페이지
+    community_list = Community.objects.filter(username=username).order_by('-com_date')
+    comment_list = Comment.objects.filter(username=username).order_by('-comment_modified_date')
+    paginator = Paginator(community_list, 10) # 페이지당 10개씩 보여주기
+    paginator2 = Paginator(comment_list, 10) # 페이지당 10개씩 보여주기
+    page_obj = paginator.get_page(page)
+    page_obj2 = paginator2.get_page(page_comment)
+    context = {'community_list': page_obj,
+               'comment_list' : page_obj2}
     return render(request,
                   "mainapp/my_Page.html",
-                  {})
+                  context)
     
 
 # MAP

@@ -121,37 +121,92 @@
                             </div>
                             
                         </div>
-                    
+                        
+                        {% if community_list %}
+                        <form method="POST">
+                        {% csrf_token %}
+                        {% for community in community_list %}
                         <div class="table-row">
-                            <div class="table-cell first-cell">
-                                <p>{{community.com_num}}</p>
-                            </div>
-                            <div class="table-cell">
-                                <p>{{community.com_title}}</p>
-                            </div>
-                            <div class="table-cell">
-                                <p>{{community.nickname}}</p>
-                            </div>
-                            <div class="table-cell last-cell">
-                                <p>{{community.com_date}}</p>
-                            </div>
                             
+                            <tr>
+                                <td><div class="table-cell first-cell">
+                                    <p>{{community.com_num}}</p>
+                                </div></td>
+                                <td><div class="table-cell">
+                                    <input type="hidden" name="com_num" value="{{community.com_num}}"></input>
+                                <p>
+                                    <a href="{% url 'mainapp:detail' community.com_num %}"
+                                    >{{community.com_title}}</a
+                                    >
+                                </p>
+                                </div></td>
+                                {% if community.nickname is not null %}
+                                <td><div class="table-cell">
+                                <p>{{community.nickname}}</p>
+                                </div></td>
+                                {% else %}
+                                <td><div class="table-cell">
+                                <p>{{community.username}}</p>
+                                </div></td>
+                                {% endif %}
+                                <td><div class="table-cell last-cell">
+                                <p>{{community.com_date}}</p>
+                                </div></td>
+                                </tr>
+                            </div>
+                        {% endfor %}
+                        </form>
+                        {% endif %}
+
+                        <!-- 페이징 처리 -->
+                        <div class="paging">
+                            <ul>
+                            <div id="divPaging">
+                                <!--  -->
+                                {% if community_list.has_previous %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ community_list.previous_page_number }}"> ◀ </a>
+                                </li>
+                                {% else %}
+                                <li class="page-item disabled">
+                                    <a class="page-link" tabindex="-1" aria-disabled="true" href="#"> ◀ </a>
+                                </li>
+                                {% endif %}
+                            
+                                <!-- 여기 한세트 -->
+                    
+                                <!--  -->
+                                {% for page_number in community_list.paginator.page_range %}
+                            
+                                {% if page_number == community_list.number %}
+                                <li class="page-item active" aria-current="page">
+                                    <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+                                </li>
+                                {% else %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+                                </li>
+                            
+                                <!-- 여기 한세트 -->
+                                {% endif %} 
+                                {% endfor %}
+                    
+                            
+                                {% if community_list.has_next %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ community_list.next_page_number }}"> ▶ </a>
+                                </li>
+                                {% else %}
+                                <li class="page-item disabled">
+                                    <a class="page-link" tabindex="-1" aria-disabled="true" href="#"> ▶ </a>
+                                </li>
+                                {% endif %}
+                            
+                    
+                            </div>
+                            </ul>
                         </div>
                     </div>
-                        
-                        <li>
-                            <div id="divPaging">
-                                <div>◀</div>
-                                <div><b>1</b></div>
-                                <div>2</div>
-                                <div>3</div>
-                                <div>4</div>
-                                <div>5</div>
-                                <div>▶</div>
-                            </div>
-                        </li>
-
-
 
                         <h2 align="left">댓글 내역</h2>
                         <div class="table-box">
@@ -160,9 +215,6 @@
                                 <div class="table-cell first-cell">
                                     <p>댓글내용</p>
                                 </div>
-                                <div class="table-cell">
-                                    <p>글 제목</p>
-                                </div>
                                 
                                 <div class="table-cell last-cell">
                                     <p>작성일</p>
@@ -170,31 +222,76 @@
                                 
                             </div>
                         
+                            {% if comment_list %}
+                            <form method="POST">
+                            {% csrf_token %}
+                            {% for comment in comment_list %}
                             <div class="table-row">
-                                <div class="table-cell first-cell">
-                                    <p>견적겁나비싸네</p>
-                                </div>
-                                <div class="table-cell">
-                                    <p>견적비용확인좀</p>
-                                </div>
                                 
-                                <div class="table-cell last-cell">
-                                    <p>23.06.12</p>
+                                <tr>
+                                    <td><div class="table-cell first-cell">
+                                        <p>{{comment.comment_content}}</p>
+                                    </div></td>
+
+
+                                    <td><div class="table-cell last-cell">
+                                    <p>{{comment.comment_modified_date}}</p>
+                                    </div></td>
+                                    </tr>
                                 </div>
-                                
-                            </div>
-                            
-                            <li>
+                            {% endfor %}
+                            </form>
+                            {% endif %}
+
+                            <!-- 페이징 처리 -->
+                            <div class="paging">
+                                <ul>
                                 <div id="divPaging">
-                                    <div>◀</div>
-                                    <div><b>1</b></div>
-                                    <div>2</div>
-                                    <div>3</div>
-                                    <div>4</div>
-                                    <div>5</div>
-                                    <div>▶</div>
+                                    <!--  -->
+                                    {% if comment_list.has_previous %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page_comment={{ comment_list.previous_page_number }}"> ◀ </a>
+                                    </li>
+                                    {% else %}
+                                    <li class="page-item disabled">
+                                        <a class="page-link" tabindex="-1" aria-disabled="true" href="#"> ◀ </a>
+                                    </li>
+                                    {% endif %}
+                                
+                                    <!-- 여기 한세트 -->
+                        
+                                    <!--  -->
+                                    {% for page_number in comment_list.paginator.page_range %}
+                                
+                                    {% if page_number == comment_list.number %}
+                                    <li class="page-item active" aria-current="page">
+                                        <a class="page-link" href="?page_comment={{ page_number }}">{{ page_number }}</a>
+                                    </li>
+                                    {% else %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page_comment={{ page_number }}">{{ page_number }}</a>
+                                    </li>
+                                
+                                    <!-- 여기 한세트 -->
+                                    {% endif %} 
+                                    {% endfor %}
+                        
+                                
+                                    {% if comment_list.has_next %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page_comment={{ comment_list.next_page_number }}"> ▶ </a>
+                                    </li>
+                                    {% else %}
+                                    <li class="page-item disabled">
+                                        <a class="page-link" tabindex="-1" aria-disabled="true" href="#"> ▶ </a>
+                                    </li>
+                                    {% endif %}
+                                
+                        
                                 </div>
-                            </li>
+                                </ul>
+                            </div>
+
                         </div>
                     </div>
 

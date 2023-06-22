@@ -65,14 +65,14 @@
             <td><div class="table-cell last-cell">
               <p>{{community.com_date}}</p>
             </div></td>
-        </div>
-    </tr>
-    {% endfor %}
+            </div>
+        </tr>
+        {% endfor %}
         </form>
         {% endif %}
         <!-- 여기까지 css 수정 완료 -->
         <!-- ------------로그인 한 사람만 글쓰기 가능하도록--------------- -->
-  {% if user.is_active %}
+        {% if user.is_active %}
         <button type="button" onclick="location.href='/article'">글쓰기</button>
         <!-- 유저정보까지 같이 넘어가야함 -->
 
