@@ -213,9 +213,11 @@
 
                             <div class="table-row table-head">
                                 <div class="table-cell first-cell">
-                                    <p>댓글내용</p>
+                                    <p>게시글 번호</p>
                                 </div>
-                                
+                                <div class="table-cell first-cell">
+                                    <p>댓글내용</p>
+                                </div> 
                                 <div class="table-cell last-cell">
                                     <p>작성일</p>
                                 </div>
@@ -230,10 +232,13 @@
                                 
                                 <tr>
                                     <td><div class="table-cell first-cell">
+                                        <p><a href="http://127.0.0.1:8000/board/{{comment.com_num.com_num}}/"
+                                            >{{comment.com_num.com_num}}</a
+                                          ></p>
+                                    </div></td>
+                                    <td><div class="table-cell first-cell">
                                         <p>{{comment.comment_content}}</p>
                                     </div></td>
-
-
                                     <td><div class="table-cell last-cell">
                                     <p>{{comment.comment_modified_date}}</p>
                                     </div></td>
