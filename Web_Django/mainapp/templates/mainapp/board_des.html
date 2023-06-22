@@ -86,18 +86,21 @@
             <!--  -->
             {% for comment in comments %}
                 <div class="comment pv-2 text-muted">
-                <form name="fm" id="fm" class="fm" method="post">
+                <form name="fm" id="fm" class="fm" method="POST">
                     {% csrf_token %}
                     <input type="hidden" name="comment_num" value="{{comment.comment_num}}"/>
                     <div class="comment-content">
+                        <input type="hidden" name="com_num" value="{{community.com_num}}" />
+                        <input type="hidden" name="username" value="{{user.username}}"/>
                         <span> 
                             <strong>{{ comment.username }} </strong> {{ comment.comment_modified_date }}
                             {% if request.user == comment.username %}
                             <span id="buttonContainer">
                             <button type="button" onclick="showEditInput()">수정</button>
-                            <button type="button"  onclick = "location.href = '{% url 'mainapp:comments_delete' comment.comment_num %}' ">삭제</button>
+                            <button type="button" class="delete" onclick = "delete_Comment()" 
+                            data-url="{% url 'mainapp:comments_delete' comment.comment_num %}">삭제</button>
                         </span>
-                        <button id="saveButton" type="button" onclick="saveComment()" style="display: none;">저장</button>
+                        <button id="saveButton" type="button" style="display: none;">저장</button>
                             {% endif %}
                         </span>
                     </div>
@@ -115,7 +118,7 @@
 <!-- --------------댓글추가-------------- -->
 
 <br>
-<form method="POST" class="post-form my-3">
+<form method="POST" id="comment_create" name="comment_create" class="post-form my-3" action="/board/{{ community.com_num }}/comment/">
     {% csrf_token %}
     <!-- 오류표시 Start-->
     {% if form.errors %}
@@ -131,29 +134,17 @@
     </div>
     {% endif %}
     <!-- 오류표시 End -->
-    <input type="hidden" name="com_num" value="{{com_num}}" />
+    <input type="hidden" name="com_num" id="save_com_num" value="{{community.com_num}}" />
     <input type="hidden" name="username" value="{{user.username}}"/>
     <div class="form-group">
       
       <textarea class="form-control" name="comment_content" id="comment_content" rows="5" cols="50">
         {{ form.comment_content.value|default_if_none:'' }}</textarea>
     </div>
-    <button type="submit" class="btn btn-primary">댓글입력</button>
+    <button class="btn btn-primary">댓글입력</button>
    
   </form>
   <br>
-
-
-<!-- --------------댓글추가-------------- -->
-
-            <div>
-                <a href="{% url 'mainapp:comments_create' community.com_num %}" class="small">
-                    <small>댓글 추가</small>
-                </a>
-            </div>
-
-            <hr>
-            <!--  -->
 
         
         </div>
@@ -179,6 +170,7 @@
             if (commentContentElement.tagName !== "input") {
                 const inputElement = document.createElement("input"); // 새로운 input 요소 생성
                 inputElement.type = "text"; //input태그의 type을 text
+                inputElement.name = "comment_content";
                 inputElement.value = commentContentElement.textContent;
                 inputElement.placeholder = "{{ comment.comment_content }}";
                 inputElement.id = "commentInput";
@@ -198,16 +190,23 @@
         //저장버튼 클릭시 작동하는 함수
         function saveComment() {
             const inputElement = document.getElementById("commentInput"); // 수정된 내용을 담은 새로운 span 요소 생성
+            const form_fm = document.getElementById("fm"); // 수정된 내용을 담은 새로운 span 요소 생성
             const commentContent = inputElement.value;
         
             const spanElement = document.createElement("span"); // 수정된 내용을 담은 새로운 span 요소 생성
             spanElement.style.whiteSpace = "pre-line";
             spanElement.textContent = commentContent;
-        
-            
+            spanElement.name = "content";
+  
             const parentElement = inputElement.parentNode;   // 기존의 input 요소와 교체
             parentElement.replaceChild(spanElement, inputElement);
-        
+
+            const input1 = document.createElement('input');
+            input1.setAttribute("type", "hidden");
+            input1.setAttribute("name", "comment_content");
+            input1.setAttribute("value", commentContent);
+            form_fm.appendChild(input1);
+
             const buttonContainer = document.getElementById("buttonContainer"); // 버튼 컨테이너 표시
             buttonContainer.style.display = "inline";
         
@@ -215,16 +214,40 @@
             saveButton.style.display = "none";
         
             // AJAX를 사용하여 수정된 댓글을 서버에 전송하고 업데이트하는 코드 추가
-            let comment_url = 'board/comments/update/';
-            const comment_num = document.getElementById("fm").comment_num.value;
+            let comment_url = 'http://127.0.0.1:8000/board/comments/update/';
+            const form = document.getElementById("fm");
+            const comment_num = form.comment_num.value;
             comment_url += comment_num + '/';
             // 페이지 이동을 원하는 경우 아래 코드 활성화
-            window.location.href = comment_url //현재 페이지로 
+            form.action = comment_url;
+            form.method="POST";
+            form.submit();  //현재 페이지로 
            
             // 수정 버튼 클릭 시 다시 showEditInput() 함수를 호출하도록 추가
             const editButton = document.getElementById("editButton");
             editButton.addEventListener("click", showEditInput);
         }
+
+        // 삭제버튼
+        const delete_elements = document.getElementsByClassName("delete");
+            Array.from(delete_elements).forEach(function (element) {
+                element.addEventListener("click", function () {
+                if (confirm("정말로 삭제하시겠습니까?")) {
+                    //let comment_url = 'http://127.0.0.1:8000/board/comments/delete/';
+                    const form = document.getElementById("fm");
+                    //const comment_num = form.comment_num.value;
+                    //comment_url += comment_num + '/';
+                    // 페이지 이동을 원하는 경우 아래 코드 활성화
+                    //form.action = this.dataset.url;
+                    //form.method="POST";
+                    //form.submit(); 
+                    location.href = this.dataset.url;
+                }
+                });
+            });
+        
+        
+        
         </script>
 </body>
 </html>

@@ -24,7 +24,7 @@ app_name = 'mainapp'
 urlpatterns = [
 
     ### http://127.0.0.1:8000/index
-    path('', views.index),
+    path('', views.index, name="index"),
     path('index/', views.index),
 
      ### http://127.0.0.1:8000/login_index
@@ -115,11 +115,19 @@ urlpatterns = [
     
     # 댓글 작성
     ### http://127.0.0.1:8000/board/comments/<int:com_num>/
-    path('board/comments/<int:com_num>/', views.comments_create, name='comments_create'),
+#     path('board/comments/<int:com_num>/', views.comments_create, name='comments_create'),
+    
+    # 댓글 작성2
+    ### http://127.0.0.1:8000/board/comments/<int:com_num>/
+    path('board/<int:com_num>/comment/', views.comments_create2, name='comments_create2'),
     
     # 댓글 수정
+    ### http://127.0.0.1:8000/board/<int:com_num>/update/<int:comment_num>/
+#     path('board/<int:com_num>/update/<int:comment_num>/', views.comments_update, name='comments_update'),
+    
+    # 댓글 수정2
     ### http://127.0.0.1:8000/board/comments/update/<int:comment_num>/
-    path('board/comments/update/<int:comment_num>/', views.comments_update, name='comments_update'),
+    path('board/comments/update/<int:comment_num>/', views.comments_update2, name='comments_update2'),
     
     # 댓글 삭제
     ### http://127.0.0.1:8000/'board/<int:com_num>/comments/<int:comment_num>/delete/
