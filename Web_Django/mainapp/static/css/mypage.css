@@ -70,7 +70,7 @@ button{
   }
   
 .content-left{
-    flex-basis: 50%;
+    /* flex-basis: 50%; */
     padding-left: 10%;
     padding-right: 10%;
 }
@@ -79,6 +79,7 @@ button{
     text-align: 30px 0;
 }
 
+/* 
 .content-left a{
     width: 150px;
     display: block;
@@ -88,7 +89,7 @@ button{
     background-color: #ff7846;
     color: #fff;
     text-align: center;
-}
+} */
 
 .content-right{
     flex-basis: 50%;
@@ -136,7 +137,7 @@ th {
     margin-top: 10px;
 }
 
-.fa-user-pen, .fa-table-list{
+.fa-user-pen, .fa-table-list, .fa-comments{
     color: #5D5A98;
     margin-right: 2px;
 }
@@ -170,4 +171,10 @@ th {
 
 #table-title{
     text-align: center;
+}
+
+
+/* 이력관리 a태그 수정 */
+.mypage_a{
+    color: #5D5A98;
 }

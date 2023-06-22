@@ -61,23 +61,24 @@
                         <dt>조회수</dt>
                         <dd>{{ community.com_count }}</dd>
                     </dl>
+                    <dl>
+                        <div class="bt_wrap">
+                            <a href="{% url 'mainapp:com_update' community.com_num %}">수정</a>
+                        </div>
+                    </dl>
                 </div>
                 <div class="cont">
                     {{ community.com_content }}
                 </div>
             </div>
-            <div class="bt_wrap">
-                <a href="/board" class="on">목록</a>
-                <a href="{% url 'mainapp:com_update' community.com_num %}">수정</a>
-            </div>
+           
             <br><br>
-            <hr>
-            <!--  -->
-            <h4>댓글 목록</h4>
+            
+        
 
             <!--댓글 저장 후 불러오기 read-->
             {% if comments %}
-            <p><b>{{ comments|length }}개의 댓글이 있습니다.</b></p>
+            <p><b style="color: red;">{{ comments|length }} </b>개의 댓글이 있습니다.</p>
             {% endif %}
             <hr>
 
@@ -85,22 +86,22 @@
             {% if comments %}
             <!--  -->
             {% for comment in comments %}
-                <div class="comment pv-2 text-muted">
+                <div class="comment pv-2 text-muted" style="margin: 3px;">
                 <form name="fm" id="fm" class="fm" method="POST">
                     {% csrf_token %}
                     <input type="hidden" name="comment_num" value="{{comment.comment_num}}"/>
-                    <div class="comment-content">
+                    <div class="comment-content" style="margin-top: 5px; margin-bottom: 5px;">
                         <input type="hidden" name="com_num" value="{{community.com_num}}" />
                         <input type="hidden" name="username" value="{{user.username}}"/>
                         <span> 
                             <strong>{{ comment.username }} </strong> {{ comment.comment_modified_date }}
                             {% if request.user == comment.username %}
                             <span id="buttonContainer">
-                            <button type="button" onclick="showEditInput()">수정</button>
-                            <button type="button" class="delete" onclick = "delete_Comment()" 
+                            <button type="button" class="comment_ubtn" onclick="showEditInput()">수정</button>
+                            <button type="button" class="delete comment_ubtn" onclick = "delete_Comment()" 
                             data-url="{% url 'mainapp:comments_delete' comment.comment_num %}">삭제</button>
                         </span>
-                        <button id="saveButton" type="button" style="display: none;">저장</button>
+                        <button id="saveButton" class="comment_ubtn" type="button" style="display: none;">저장</button>
                             {% endif %}
                         </span>
                     </div>
@@ -109,7 +110,7 @@
 
                 </form>
                 </div>
-                <hr>
+                <hr style="border-style: dashed; color: rgb(178, 178, 178);">
                 {% endfor %}
                 <!--  -->
             {% endif %}
@@ -138,13 +139,16 @@
     <input type="hidden" name="username" value="{{user.username}}"/>
     <div class="form-group">
       
-      <textarea class="form-control" name="comment_content" id="comment_content" rows="5" cols="50">
+      <textarea class="form-control" name="comment_content" id="comment_content" rows="5" cols="70">
         {{ form.comment_content.value|default_if_none:'' }}</textarea>
     </div>
-    <button class="btn btn-primary">댓글입력</button>
+    <button class="comment_btn">댓글입력</button>
    
   </form>
-  <br>
+  <br><br>
+  <div class="bt_wrap">
+    <a href="/board" class="on" style="margin-right: 3%;">글 목록</a>   
+</div>
 
         
         </div>

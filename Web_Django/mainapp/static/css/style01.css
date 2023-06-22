@@ -22,7 +22,7 @@ a {
 }
 
 .bt_wrap {
-    margin-top: 30px;
+    margin-top: 10px;
     text-align: right;
     font-size: 2;
 }
@@ -156,13 +156,17 @@ a {
 }
 
 .board_view .info dl {
-    position: relative;
+    /* position: relative; */
     display: inline-block;
     padding: 0 20px;
 }
 
 .board_view .info dl:first-child {
     padding-left: 0;
+}
+
+.board_view dl:last-child {
+    float: right;
 }
 
 .board_view .info dl::before {
@@ -268,4 +272,21 @@ a {
     box-sizing: border-box;
     border: 0;
     resize: vertical;
+}
+
+
+
+/* 댓글 입력 버튼 css */
+.comment_btn{
+    border: none;
+    display: inline-block;
+    padding: 5px 10px;
+    text-decoration: none;
+}
+
+.comment_ubtn{
+    border: none;
+    
+    padding: 3px 7px;
+    text-decoration: none;
 }
