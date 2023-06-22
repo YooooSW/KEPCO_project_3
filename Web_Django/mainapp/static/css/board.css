@@ -1,13 +1,14 @@
 /* 게시판 페이지 css, table코드를 사용하지않음 */
 
 .table-box{
-    margin: 50px auto;
+    margin: 30px auto;
 }
 li{
     list-style: none;
 }
 a{
     color: inherit;
+    margin-left: 10px;
     text-decoration: none;
 }
 .divPaging ul{
