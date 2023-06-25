@@ -166,7 +166,7 @@ class Category(models.Model):
     username = models.ForeignKey(User,
                                 to_field="username",
                                 db_column="username",
-                                on_delete=models.PROTECT)
+                                on_delete=models.CASCADE)
     cate_name = CharField(max_length=100, unique=True)
     cate_date = DateTimeField(auto_now_add = True)
     
@@ -182,7 +182,7 @@ class Community(models.Model):
     username = models.ForeignKey("User",
                                 to_field="username",
                                 db_column="username",
-                                on_delete=models.PROTECT)
+                                on_delete=models.CASCADE)
     cate_name = CharField(max_length=255)
     com_title = CharField(max_length=255)
     com_content = TextField()
@@ -203,11 +203,11 @@ class Comment(models.Model):
     com_num = models.ForeignKey("Community",
                                 to_field="com_num",
                                 db_column="com_num",
-                                on_delete=models.PROTECT)
+                                on_delete=models.CASCADE)
     username = models.ForeignKey("User",
                                 to_field="username",
                                 db_column="username",
-                                on_delete=models.PROTECT)
+                                on_delete=models.CASCADE)
     comment_content = TextField()
     comment_create_date = DateTimeField(auto_now_add = True)
     comment_modified_date = DateTimeField(auto_now = True)

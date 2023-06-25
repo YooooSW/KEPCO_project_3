@@ -365,36 +365,6 @@ def comments_update2(request):
                   "mainapp/comment_form.html",
                   {})
 
-# 댓글 수정
-# @login_required(login_url='mainapp:login')
-# def comments_update(request, comment_num):
-#     comment = get_object_or_404(Comment, pk=comment_num)
-#     com_num = comment.com_num.com_num
-#     if request.user != comment.username :
-#         messages.error(request, '댓글 수정권한이 없습니다.')
-#         return redirect('mainapp:detail', com_num=com_num)
-    
-#     if request.method == 'POST':
-#         form = CommentForm(request.POST, instance=comment)
-#         if form.is_valid():
-#             comment = form.save(commit=False)
-#             # comment.username = request.user
-#             comment.comment_modified_date = timezone.now()
-#             comment.save()
-#             return redirect('mainapp:detail', com_num=com_num)
-#     else :
-#         form = CommentForm(instance=comment)
-#     community = get_object_or_404(Community, com_num=com_num)
-#     comment = Comment.objects.filter(comment_num=comment_num)
-#     context = {'form' : form,
-#                'com_num' : com_num,
-#                'community' : community,
-#                'comment' : comment,
-#                'comment_num' : comment_num}
-#     return render(request,
-#                   "mainapp/comment_form.html",
-#                   context)
-    
 # 댓글 수정2
 @login_required(login_url='mainapp:login')
 def comments_update2(request, comment_num):
