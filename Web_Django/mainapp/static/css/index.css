@@ -16,14 +16,39 @@ h2{
 
 .slides{
     width: 100%;
-    height: 500px;
+    height: 90%;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 50px;
     color: white;
-    scroll-snap-align: start;
    
+}
+
+section{
+    display: flex;
+    position: absolute;
+    align-items: center;
+}
+
+
+.hidden{
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(-100%);
+    transition: all 1.3s
+}
+
+@media(prefers-reduced-motion) {
+    .hidden{
+        transition: none;
+    }
+}
+
+.show{
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
 }
 
 .slides img{
@@ -38,11 +63,14 @@ h2{
 }
 
 .slide1{
-    background: linear-gradient(297deg, rgba(89,152,140,1) 0%, rgba(114,208,190,1) 41%, rgba(196,252,240,1) 100%);
+    /* background: rgb(255,67,128);
+    background: linear-gradient(240deg, rgba(255,67,128,1) 0%, rgba(93,90,152,1) 51%, rgba(47,72,88,1) 100%); */
+    background: linear-gradient(90deg, rgba(47,72,88,1) 0%, rgba(55,84,123,1) 35%, rgba(93,90,152,1) 100%);
 }
 
 .slide2{
-    background: linear-gradient(56deg, rgba(255,67,128,1) 0%, rgba(255,167,218,1) 48%, rgba(216,181,255,1) 100%);
+    /* background: linear-gradient(56deg, rgba(255,67,128,1) 0%, rgba(255,167,218,1) 48%, rgba(216,181,255,1) 100%); */
+    background: linear-gradient(90deg, rgba(47,72,88,1) 0%, rgba(55,84,123,1) 35%, rgba(93,90,152,1) 100%);
 }
 .slide3{
     background: linear-gradient(90deg, rgba(47,72,88,1) 0%, rgba(55,84,123,1) 35%, rgba(93,90,152,1) 100%);
@@ -92,7 +120,11 @@ nav{
     text-decoration: none; /* 밑줄 없애기 */
     font-size: 14px;
 }
-
+.login-btn:hover{
+    background: #FF4380;
+    color: white;
+    transition: all .8s;
+}
 
 .header h1{
     font-size: 4vw;
@@ -103,7 +135,7 @@ nav{
 }
 
 /* 배경이미지 */
-.custom-shape-divider-bottom-1686727694 {
+.wave {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -113,7 +145,7 @@ nav{
     transform: rotate(180deg);
 }
 
-.custom-shape-divider-bottom-1686727694 svg {
+.wave svg {
     position: relative;
     display: block;
     width: calc(114% + 1.3px);
@@ -121,10 +153,48 @@ nav{
     transform: rotateY(180deg);
 }
 
-.custom-shape-divider-bottom-1686727694 .shape-fill {
+.wave  .shape-fill {
     fill: #FFFFFF;
 }
+.wave2 {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
 
+.wave2 svg {
+    position: relative;
+    display: block;
+    width: calc(137% + 1.3px);
+    height: 118px;
+}
+
+.wave2 .shape-fill {
+    fill: #FFFFFF;
+}
+.wave3 {
+    position: absolute;
+    top: 366%;
+    left: 0;
+    width: 100%;
+    
+    line-height: 0;
+}
+
+.wave3 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 96px;
+}
+
+.wave3 .shape-fill {
+    fill: white;
+}
 
 .upload-btn{
     text-decoration: none;
@@ -141,6 +211,12 @@ nav{
 .start-btn{
     text-decoration: none;
     color: white;
+    
+}
+.upload-btn:hover{
+    background-color: white;
+    color: black;
+    transition: all .7s;
 }
 
 /* 파일 업로드하는 버튼 꾸미기 */

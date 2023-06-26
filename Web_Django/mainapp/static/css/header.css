@@ -52,6 +52,11 @@ nav{
     text-decoration: none; /* 밑줄 없애기 */
     font-size: 14px;
 }
+.login-btn:hover{
+    background: #FF4380;
+    color: white;
+    transition: all .8s;
+}
 
 .container{
     padding: 0 5%;  
