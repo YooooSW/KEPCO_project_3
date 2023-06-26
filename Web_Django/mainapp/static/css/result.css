@@ -106,13 +106,32 @@ input::-webkit-file-upload-button {
     border: 5px dashed rgb(89, 89, 89);
 
     text-align: center;
-    color: rgb(255, 255, 255);
+    color: white;
     
     /* 파일 드로그 앤 드롭 동작하는 범위 */
     /* margin: 0; */
     border-radius: 5px;
     cursor: pointer;
 }
+/* 
+#imageInput{
+    padding: 10px 25px;
+    font-size: 20px;
+    height: 450px;
+    border: 5px dashed rgb(89, 89, 89);
+    text-align: center;
+    color: white;
+    
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+#imageInput .active{
+    border: 5px solid rgb(89, 89, 89);
+
+} */
+
+
 #imagePreview{
     height: 0;
     width: 0;

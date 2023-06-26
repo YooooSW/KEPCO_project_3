@@ -78,6 +78,7 @@ input{
    /* 안쪽 여백 */
    border-radius: 3px;
    background-color: #FF4380;
+   cursor: pointer;
 }
 
 form p{

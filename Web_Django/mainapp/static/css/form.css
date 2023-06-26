@@ -75,7 +75,10 @@ input{
    /* 안쪽 여백 */
    border-radius: 3px;
    background-color: #FF4380;
+   cursor: pointer;
 }
+
+
 
 /* -------------sns 로그인 버튼------------- */
 .naver-btn button{
@@ -90,6 +93,7 @@ input{
     /* 안쪽 여백 */
     border-radius: 3px;
     background-color: #1EC800;
+    cursor: pointer;
 }
 
 .google-btn button{  
@@ -104,7 +108,7 @@ input{
     /* 안쪽 여백 */
     border-radius: 3px;
     background-color: #413c75;
-
+    cursor: pointer;
 }
 
 .kakao-btn button{
@@ -119,6 +123,7 @@ input{
     /* 안쪽 여백 */
     border-radius: 3px;
     background-color: #fef01b;
+    cursor: pointer;
 }
 
 

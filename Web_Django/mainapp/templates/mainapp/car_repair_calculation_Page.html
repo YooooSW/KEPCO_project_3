@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>::: 차 수리 견적 계산 :::</title>
+    <title>:::차 수리 견적 계산:::</title>
     <!-- css파일 불러오기 -->
     {% include 'mainapp/include/css.html' %}
     <link rel="stylesheet" type="text/css" href="/static/css/header.css">
@@ -25,10 +25,12 @@
           <div class="image-upload" id="image-upload">
             <form id="imageForm" method="post" enctype="multipart/form-data">
               {% csrf_token %}
+              <div>
               <label for="imageInput" class="drag-area">
-                <input class="drag-area" type="file" name="image" id="imageInput" accept="image/*" required onchange="updateFileName(event)">
+                <input class="drag-area" type="file" name="image" id="imageInput" accept="image/*" required onchange="updateFileName(event)">   
                 <div id="imagePreview"></div>
               </label>
+              </div>
               <br>
               <!-- <div id="car_data"></div> 주석 처리됨 -->
               <button type="button" onclick="uploadImage()">Submit</button>
@@ -93,14 +95,27 @@
           xhr.send(formData);
         }
 
-        // 이미지 제거 
-        function removeImage() {
-          var preview = document.getElementById('imagePreview');
-          preview.innerHTML = '';
-          var input = document.getElementById('imageInput');
-          input.value = null;
-        }
+        // // 이미지 제거 
+        // function removeImage() {
+        //   var preview = document.getElementById('imagePreview');
+        //   preview.innerHTML = '';
+        //   var input = document.getElementById('imageInput');
+        //   input.value = null;
+        // }
 
+
+        // //이미지 드래그시 선 변경
+        // const dropArea = document.querySelector("#imageInput");
+
+        // dropArea.addEventListener("dragover", ()=>{
+        //   console.log("file is over DragArea");
+        //   dropArea.classList.add("active");
+        // });
+
+        // dropArea.addEventListener("dragover", ()=>{
+        //   console.log("file is outside from DragArea");
+        //   dropArea.classList.remove("active");
+        // });
       </script>
         
     {% include 'mainapp/include/js.html' %}
